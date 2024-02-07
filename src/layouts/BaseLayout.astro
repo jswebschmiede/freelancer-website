@@ -1,0 +1,37 @@
+---
+import '@fontsource/poppins/300.css';
+import '@fontsource/poppins/400.css';
+import '@fontsource/poppins/600.css';
+import '@fontsource/poppins/700.css';
+import '@fontsource/poppins/800.css';
+import '@fontsource/poppins/900.css';
+import { SITE } from '../config';
+import type { MetaSEO } from '../types';
+import '../styles/global.css';
+import MetaTags from '@components/MetaTags.astro';
+import BasicScripts from '@components/BasicScripts.astro';
+
+export interface Props {
+	meta?: MetaSEO;
+	bodyClass?: string;
+}
+
+const { meta = {}, bodyClass = 'site' } = Astro.props;
+const { textDirection = 'ltr', lang = 'en' } = SITE;
+---
+
+<!doctype html>
+<html
+	lang={lang}
+	dir={textDirection}
+	class="scrollbar-rounded-lg scrollbar-thin scrollbar-track-black-500 scrollbar-thumb-slate-300 scrollbar-thumb-rounded scroll-smooth"
+>
+	<head>
+		<MetaTags {...meta} />
+	</head>
+	<body class:list={['h-full font-sans antialiased', bodyClass]} data-theme="night">
+		<slot />
+
+		<BasicScripts />
+	</body>
+</html>

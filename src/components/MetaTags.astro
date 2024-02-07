@@ -1,0 +1,62 @@
+---
+import { SEO } from 'astro-seo';
+import { SITE } from '../config';
+import type { MetaSEO } from '../types';
+
+export interface Props extends MetaSEO {}
+
+const {
+	title = SITE.siteName,
+	description = '',
+	noindex = false,
+	nofollow = false,
+	ogTitle = title,
+	ogType = 'website',
+	ogImage = '/og-image.jpg'
+} = Astro.props;
+---
+
+<SEO
+	title={title}
+	titleTemplate={`%s - ${SITE.siteName}`}
+	description={description}
+	charset={'utf-8'}
+	noindex={noindex}
+	nofollow={nofollow}
+	openGraph={{
+		basic: { title: ogTitle, type: ogType, image: ogImage }
+	}}
+	,
+	extend={{
+		meta: [
+			{
+				name: 'viewport',
+				content: 'width=device-width, initial-scale=1.0'
+			},
+			{
+				name: 'theme-color',
+				content: '#8D46E7'
+			}
+		],
+		link: [
+			{
+				rel: 'icon',
+				type: 'image/svg+xml',
+				href: '/favicon.svg'
+			},
+			{
+				rel: 'shortcut icon',
+				href: '/favicon.ico'
+			},
+			{
+				rel: 'mask-icon',
+				href: '/favicon.svg'
+			},
+			{
+				rel: 'sitemap',
+				type: 'application/xml',
+				href: '/sitemap.xml'
+			}
+		]
+	}}
+/>
