@@ -9,7 +9,14 @@ export default {
 		}
 	},
 	daisyui: {
-		themes: ['night']
+		themes: [
+			{
+				synthwave: {
+					...require('daisyui/src/theming/themes')['synthwave'],
+					'--rounded-btn': '5rem'
+				}
+			}
+		]
 	},
 	plugins: [
 		require('@tailwindcss/typography'),
