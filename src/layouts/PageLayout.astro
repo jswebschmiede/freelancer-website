@@ -1,5 +1,6 @@
 ---
 import Header from '@components/Header/Header.astro';
+import Hero from '@components/Hero.astro';
 import Footer from '@components/Footer/Footer.astro';
 import Layout from '@layouts/BaseLayout.astro';
 
@@ -7,17 +8,19 @@ const { meta, bodyClass } = Astro.props;
 ---
 
 <Layout {meta} {bodyClass}>
-	<div class="site relative overflow-hidden">
-		<slot name="header">
-			<Header />
-		</slot>
+	<slot name="header">
+		<Header />
+	</slot>
 
-		<main class="main-content" id="main-content">
-			<slot />
-		</main>
+	<slot name="hero">
+		<Hero />
+	</slot>
 
-		<slot name="footer">
-			<Footer />
-		</slot>
-	</div>
+	<main class="main-content" id="main-content">
+		<slot />
+	</main>
+
+	<slot name="footer">
+		<Footer />
+	</slot>
 </Layout>

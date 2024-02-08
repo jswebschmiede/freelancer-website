@@ -24,12 +24,15 @@ const { textDirection = 'ltr', lang = 'en' } = SITE;
 <html
 	lang={lang}
 	dir={textDirection}
-	class="scrollbar-rounded-lg scrollbar-thin scrollbar-track-black-500 scrollbar-thumb-slate-300 scrollbar-thumb-rounded scroll-smooth"
+	class="scrollbar-rounded-lg scrollbar-track-black-500 h-full scroll-smooth scrollbar-thin scrollbar-thumb-slate-300 scrollbar-thumb-rounded"
 >
 	<head>
 		<MetaTags {...meta} />
 	</head>
-	<body class:list={['h-full font-sans antialiased', bodyClass]} data-theme="night">
+	<body
+		class:list={['flex h-full flex-col font-sans antialiased', bodyClass]}
+		data-theme="synthwave"
+	>
 		<slot />
 
 		<BasicScripts />
