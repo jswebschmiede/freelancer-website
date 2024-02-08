@@ -5,16 +5,20 @@ const SiteConfig = {
 	lang: 'de',
 	links: [
 		{
-			name: 'Home',
-			href: '/'
+			name: 'Alle Leistungen',
+			href: '#'
 		},
 		{
-			name: 'Über mich',
-			href: '/ueber-mich'
+			name: 'Der Prozess',
+			href: '#'
 		},
 		{
-			name: 'Projekte',
-			href: '/projekte'
+			name: 'Mein Portfolio',
+			href: '#'
+		},
+		{
+			name: 'Fragen?',
+			href: '#'
 		}
 	],
 	footerLinks: [
