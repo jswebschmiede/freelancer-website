@@ -1,0 +1,17 @@
+---
+import { twMerge } from 'tailwind-merge';
+
+const { title, className } = Astro.props;
+---
+
+<div
+	class:list={twMerge(
+		'card border-2 border-white/5 bg-base-100/60 shadow-xl backdrop-blur transition-all duration-300 will-change-transform hover:-translate-y-2 hover:shadow-2xl',
+		className
+	)}
+>
+	<div class="card-body">
+		<h2 class="card-title">{title}</h2>
+		<slot />
+	</div>
+</div>

@@ -1,0 +1,13 @@
+---
+import { twMerge } from 'tailwind-merge';
+
+const { className } = Astro.props;
+---
+
+<div
+	class:list={twMerge(
+		'pointer-events-none absolute -left-28 -top-40 -z-10 h-[600px] w-[600px] select-none rounded-full bg-gradient-to-br from-accent to-neutral opacity-20 blur-[100px]',
+		className
+	)}
+>
+</div>

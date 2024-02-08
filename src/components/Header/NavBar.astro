@@ -1,0 +1,33 @@
+---
+import { SITE } from 'src/config';
+import Button from '@components/Ui/Button.astro';
+
+const navLinks = SITE.links;
+---
+
+<div
+	class="z-20 mx-auto flex h-28 w-full max-w-screen-xl items-center justify-between border-b border-b-white/5 px-4"
+>
+	<a
+		class="btn btn-circle btn-outline btn-primary flex h-16 w-16 items-center justify-center text-4xl font-bold shadow-2xl"
+		href="/"
+	>
+		JS
+	</a>
+
+	<nav aria-label="Main">
+		<ul class="flex gap-8">
+			{
+				navLinks.map((item) => (
+					<li>
+						<a class="btn btn-ghost text-base" href={item.href}>
+							{item.name}
+						</a>
+					</li>
+				))
+			}
+		</ul>
+	</nav>
+
+	<Button href="#kontakt" variant="outline"> Kontakt </Button>
+</div>
