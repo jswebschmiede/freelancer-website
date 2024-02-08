@@ -1,0 +1,29 @@
+---
+import Button from '@components/Ui/Button.astro';
+import Glow from '@components/Ui/Glow.astro';
+---
+
+<div class="hero h-full pb-24 pt-36">
+	<div class="hero-content relative z-10 text-center">
+		<Glow />
+		<div class="max-w-[1024px]">
+			<h1 class="text-[clamp(1.75rem,-0.3765rem_+_7.2289vw,4.25rem)] font-bold leading-tight">
+				Umwandlung Ihrer Designs in
+				<span
+					class="bg-gradient-to-l from-primary from-20% to-accent bg-clip-text text-transparent"
+				>
+					benutzerfreundliche Webseiten
+				</span>
+			</h1>
+			<p class="pb-12 pt-6 text-[clamp(1rem,0.8319rem_+_0.7470vw,1.5rem)]">
+				Ich biete Ihnen eine schnelle und zuverlässige Umsetzung Ihrer Designs, als statische
+				Webseite oder als Theme für aktuelle CMS-Systeme.
+			</p>
+
+			<div class="flex items-center justify-center gap-8">
+				<Button href="#kontakt" variant="outline"> Zeig mir wie das geht </Button>
+				<Button href="#kontakt" variant="neutral"> Was bietest du noch an? </Button>
+			</div>
+		</div>
+	</div>
+</div>
