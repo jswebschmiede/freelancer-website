@@ -1,5 +1,9 @@
 ---
+import Section from '@components/Ui/Section.astro';
+import Card from '@components/Ui/Card.astro';
 import PageLayout from '@layouts/PageLayout.astro';
+import Glow from '@components/Ui/Glow.astro';
+import Button from '@components/Ui/Button.astro';
 
 const meta = {
 	title: 'Jörg Schöneburg - Full-Stack Entwickler in Altenburg | Erfahrung & Leidenschaft',
@@ -10,5 +14,95 @@ const meta = {
 ---
 
 <PageLayout {meta} bodyClass="home">
-	<h1>Hallo Astro</h1>
+	<Section>
+		<div class="pros prose-lg mx-auto max-w-screen-lg text-center">
+			<h2 class="text-5xl font-bold">Meine Leistungen</h2>
+			<p>
+				Ich biete Ihnen maßgeschneiderte Web-Lösungen für Ihr Projekt. Egal ob Website, Web-App oder
+				ein individuelles System, ich unterstütze Sie bei der Umsetzung.
+			</p>
+		</div>
+
+		<div class="relative z-10 mx-auto mb-6 mt-24 grid max-w-screen-xl grid-cols-3 gap-8 px-4">
+			<Glow className="left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2" />
+			<Card title="Card title!">
+				<p>If a dog chews shoes whose shoes does he choose?</p>
+			</Card>
+			<Card title="Card title!">
+				<p>If a dog chews shoes whose shoes does he choose?</p>
+			</Card>
+			<Card title="Card title!">
+				<p>If a dog chews shoes whose shoes does he choose?</p>
+			</Card>
+			<Card title="Card title!">
+				<p>If a dog chews shoes whose shoes does he choose?</p>
+			</Card>
+			<Card title="Card title!">
+				<p>If a dog chews shoes whose shoes does he choose?</p>
+			</Card>
+			<Card title="Card title!">
+				<p>If a dog chews shoes whose shoes does he choose?</p>
+			</Card>
+		</div>
+	</Section>
+
+	<Section>
+		<div class="relative z-10 mx-auto grid max-w-screen-xl grid-cols-12 gap-20 px-4">
+			<div class="col-span-5">
+				<div class="prose prose-lg sticky top-5">
+					<h3 class="text-5xl font-bold">Workflow</h3>
+					<p>
+						Ich entwickle moderne und performante Webseiten und Web-Apps. Dabei setze ich auf
+						aktuelle Technologien und Frameworks.
+					</p>
+					<div class="mt-9 flex items-center justify-start gap-8">
+						<Button href="#kontakt" variant="outline"> Anfrage </Button>
+						<Button href="#kontakt" variant="neutral"> Fragen? </Button>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-span-7 space-y-24">
+				<Card className="mx-auto max-w-md transition-none hover:translate-y-0">
+					<h3 class="text-2xl font-bold">Schritt 1</h3>
+					<p>
+						Ich entwickle moderne und performante Webseiten und Web-Apps. Dabei setze ich auf
+						aktuelle Technologien und Frameworks.
+					</p>
+				</Card>
+				<Card className="mx-auto max-w-md transition-none hover:translate-y-0">
+					<h3 class="text-2xl font-bold">Schritt 2</h3>
+					<p>
+						Ich entwickle moderne und performante Webseiten und Web-Apps. Dabei setze ich auf
+						aktuelle Technologien und Frameworks.
+					</p>
+				</Card>
+				<Card className="mx-auto max-w-md transition-none hover:translate-y-0">
+					<h3 class="text-2xl font-bold">Schritt 3</h3>
+					<p>
+						Ich entwickle moderne und performante Webseiten und Web-Apps. Dabei setze ich auf
+						aktuelle Technologien und Frameworks.
+					</p>
+				</Card>
+				<Card className="mx-auto max-w-md transition-none hover:translate-y-0">
+					<h3 class="text-2xl font-bold">Schritt 4</h3>
+					<p>
+						Ich entwickle moderne und performante Webseiten und Web-Apps. Dabei setze ich auf
+						aktuelle Technologien und Frameworks.
+					</p>
+				</Card>
+			</div>
+			<Glow className="bottom-12 left-auto right-0 top-auto h-[400px] w-[400px]" />
+		</div>
+	</Section>
+
+	<Section>
+		<div class="prose mx-auto max-w-screen-lg text-center">
+			<h2 class="text-5xl font-bold">Meine Projekte</h2>
+			<p class="text-lg">
+				Ich habe bereits an vielen spannenden Projekten gearbeitet. Hier finden Sie eine Auswahl
+				meiner Arbeiten.
+			</p>
+		</div>
+	</Section>
 </PageLayout>
