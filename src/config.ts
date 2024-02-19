@@ -6,19 +6,19 @@ const SiteConfig = {
 	links: [
 		{
 			name: 'Alle Leistungen',
-			href: '#'
+			href: '#leistungen'
 		},
 		{
 			name: 'Der Prozess',
-			href: '#'
+			href: '#prozess'
 		},
 		{
 			name: 'Mein Portfolio',
-			href: '#'
+			href: '#portfolio'
 		},
 		{
 			name: 'Fragen?',
-			href: '#'
+			href: '#fragen'
 		}
 	],
 	footerLinks: [
@@ -33,6 +33,22 @@ const SiteConfig = {
 		{
 			name: 'AGB',
 			href: '/agb'
+		}
+	],
+	faq: [
+		{
+			question: 'Was kostet eine Website?',
+			answer:
+				'Das ist abhängig von vielen Faktoren. Kontaktieren Sie mich für ein unverbindliches Angebot.'
+		},
+		{
+			question: 'Wie lange dauert die Entwicklung einer Website?',
+			answer: 'Das ist abhängig von vielen Faktoren. Kontaktieren Sie mich für eine Einschätzung.'
+		},
+		{
+			question: 'Wie kann ich Sie kontaktieren?',
+			answer:
+				'Sie können mich per E-Mail oder Telefon kontaktieren. Alle Informationen finden Sie auf der Kontaktseite.'
 		}
 	]
 };
