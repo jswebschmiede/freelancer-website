@@ -1,0 +1,30 @@
+.cards:hover > .card::after {
+	@apply opacity-100;
+}
+
+.card:hover::before {
+	@apply opacity-100;
+}
+
+.card::before,
+.card::after {
+	@apply absolute left-0 top-0 h-full w-full rounded-[inherit] opacity-0 transition-opacity duration-500 content-[""];
+}
+
+.card::before {
+	background: radial-gradient(
+		800px circle at var(--mouse-x, 0) var(--mouse-y, 0),
+		rgba(255, 255, 255, 0.06),
+		transparent 40%
+	);
+	z-index: 3;
+}
+
+.card::after {
+	background: radial-gradient(
+		600px circle at var(--mouse-x, 0) var(--mouse-y, 0),
+		rgba(255, 255, 255, 0.4),
+		transparent 40%
+	);
+	z-index: 1;
+}

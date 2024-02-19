@@ -5,8 +5,10 @@ import Button from '@components/Ui/Button.astro';
 const navLinks = SITE.links;
 ---
 
-<div class="navbar mx-auto h-28 max-w-screen-xl border-b border-b-white/5 px-4">
-	<div class="navbar-start">
+<div
+	class="navbar mx-auto h-[--fixed-header-height] max-w-screen-xl border-b border-b-white/5 px-4"
+>
+	<div class="navbar-start translate-x-0 opacity-100">
 		<a
 			class="btn btn-circle btn-outline btn-primary flex h-16 w-16 items-center justify-center text-4xl font-bold shadow-2xl"
 			href="/"
@@ -15,7 +17,7 @@ const navLinks = SITE.links;
 		</a>
 	</div>
 	<div class="navbar-center hidden md:flex">
-		<ul class="menu menu-horizontal items-center gap-8">
+		<ul class="menu menu-horizontal items-center gap-8 rounded-btn border border-transparent">
 			{
 				navLinks.map((item) => (
 					<li>
@@ -31,3 +33,14 @@ const navLinks = SITE.links;
 		<Button href="#kontakt" variant="outline"> Kontakt </Button>
 	</div>
 </div>
+
+<script>
+	const navbar = document.querySelector('.navbar');
+	window.addEventListener('scroll', () => {
+		if (window.scrollY > 50) {
+			navbar.classList.add('sticky-navbar');
+		} else {
+			navbar.classList.remove('sticky-navbar');
+		}
+	});
+</script>

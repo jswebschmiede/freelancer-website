@@ -4,6 +4,9 @@ import Card from '@components/Ui/Card.astro';
 import PageLayout from '@layouts/PageLayout.astro';
 import Glow from '@components/Ui/Glow.astro';
 import Button from '@components/Ui/Button.astro';
+import Dots from '@components/Ui/Dots.astro';
+
+import leitmecke from '@assets/buergerbad-leitmecke.png';
 
 const meta = {
 	title: 'Jörg Schöneburg - Full-Stack Entwickler in Altenburg | Erfahrung & Leidenschaft',
@@ -14,16 +17,18 @@ const meta = {
 ---
 
 <PageLayout {meta} bodyClass="home">
-	<Section>
-		<div class="pros prose-lg mx-auto max-w-screen-lg text-center">
-			<h2 class="text-5xl font-bold">Meine Leistungen</h2>
+	<Section id="leistungen">
+		<div class="prose prose-lg mx-auto max-w-screen-lg text-center">
+			<h2 class="text-5xl font-bold"><Dots />Meine Leistungen</h2>
 			<p>
 				Ich biete Ihnen maßgeschneiderte Web-Lösungen für Ihr Projekt. Egal ob Website, Web-App oder
 				ein individuelles System, ich unterstütze Sie bei der Umsetzung.
 			</p>
 		</div>
 
-		<div class="relative z-10 mx-auto mb-6 mt-24 grid max-w-screen-xl grid-cols-3 gap-8 px-4">
+		<div
+			class="cards-wrap relative z-10 mx-auto mb-6 mt-24 grid max-w-screen-xl grid-cols-3 gap-8 px-4"
+		>
 			<Glow className="left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2" />
 			<Card title="Card title!">
 				<p>If a dog chews shoes whose shoes does he choose?</p>
@@ -46,11 +51,11 @@ const meta = {
 		</div>
 	</Section>
 
-	<Section>
+	<Section id="prozess">
 		<div class="relative z-10 mx-auto grid max-w-screen-xl grid-cols-12 gap-20 px-4">
 			<div class="col-span-5">
-				<div class="prose prose-lg sticky top-5">
-					<h3 class="text-5xl font-bold">Workflow</h3>
+				<div class="prose prose-lg sticky top-24">
+					<h3 class="text-5xl font-bold"><Dots className="mx-0" />Workflow</h3>
 					<p>
 						Ich entwickle moderne und performante Webseiten und Web-Apps. Dabei setze ich auf
 						aktuelle Technologien und Frameworks.
@@ -96,13 +101,41 @@ const meta = {
 		</div>
 	</Section>
 
-	<Section>
+	<Section id="portfolio">
 		<div class="prose mx-auto max-w-screen-lg text-center">
-			<h2 class="text-5xl font-bold">Meine Projekte</h2>
+			<h2 class="text-5xl font-bold"><Dots />Meine Projekte</h2>
 			<p class="text-lg">
 				Ich habe bereits an vielen spannenden Projekten gearbeitet. Hier finden Sie eine Auswahl
 				meiner Arbeiten.
 			</p>
 		</div>
+
+		<div class="mx-auto mt-24 grid max-w-screen-xl grid-cols-3 gap-8 px-4">
+			<Card title="Card title!" image={leitmecke} href="#">
+				<div class="flex items-center gap-2 py-4">
+					<div class="badge badge-outline">Fashion</div>
+					<div class="badge badge-outline">Products</div>
+				</div>
+				<p>If a dog chews shoes whose shoes does he choose?</p>
+				<div class="card-actions justify-end pt-4">
+					<div>Projekt Details</div>
+				</div>
+			</Card>
+		</div>
 	</Section>
 </PageLayout>
+
+<script>
+	Array.from(document.getElementsByClassName('cards-wrap')).forEach((element) => {
+		element.addEventListener('mousemove', (e: MouseEvent) => {
+			for (const card of document.getElementsByClassName('card') as any) {
+				const rect = card.getBoundingClientRect(),
+					x = e.clientX - rect.left,
+					y = e.clientY - rect.top;
+
+				card.style.setProperty('--mouse-x', `${x}px`);
+				card.style.setProperty('--mouse-y', `${y}px`);
+			}
+		});
+	});
+</script>

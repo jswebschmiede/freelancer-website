@@ -1,0 +1,21 @@
+.sticky-navbar {
+	@apply !border-b-white/0 transition-all duration-300;
+
+	.navbar-start,
+	.navbar-end,
+	.menu {
+		@apply transition-all duration-300 will-change-transform;
+	}
+
+	.navbar-start {
+		@apply -translate-x-4 opacity-0;
+	}
+
+	.navbar-end {
+		@apply translate-x-4 opacity-0;
+	}
+
+	.menu {
+		@apply rounded-btn border border-white/5 bg-base-100/85 shadow-xl backdrop-blur;
+	}
+}

@@ -1,0 +1,15 @@
+---
+import { twMerge } from 'tailwind-merge';
+
+const { className } = Astro.props;
+---
+
+<div
+	class:list={twMerge(
+		'relative mx-auto mb-8 flex h-4 w-8 items-center justify-center gap-1',
+		className
+	)}
+>
+	<div class="aspect-1 h-3 w-3 rounded-full bg-base-300 shadow-sm"></div>
+	<div class="aspect-1 h-3 w-3 rounded-full bg-base-300 shadow-sm"></div>
+</div>

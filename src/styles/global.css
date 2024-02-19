@@ -1,3 +1,11 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss/base';
+
+@import 'tailwindcss/components';
+@import './components/sticky-navbar.css';
+/* @import './components/card.css'; */
+
+@import 'tailwindcss/utilities';
+
+:root {
+	--fixed-header-height: theme('height.28');
+}
