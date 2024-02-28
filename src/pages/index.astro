@@ -1,12 +1,16 @@
 ---
+import { getCollection } from 'astro:content';
 import Section from '@components/Ui/Section.astro';
 import Card from '@components/Ui/Card.astro';
 import PageLayout from '@layouts/PageLayout.astro';
 import Glow from '@components/Ui/Glow.astro';
 import Button from '@components/Ui/Button.astro';
 import Dots from '@components/Ui/Dots.astro';
+import Project from '@components/Project/Project.astro';
+import Faq from '@components/Faq.astro';
+import Hero from '@components/Hero.astro';
 
-import leitmecke from '@assets/buergerbad-leitmecke.png';
+const allProjects = await getCollection('projects');
 
 const meta = {
 	title: 'Jörg Schöneburg - Full-Stack Entwickler in Altenburg | Erfahrung & Leidenschaft',
@@ -17,6 +21,8 @@ const meta = {
 ---
 
 <PageLayout {meta} bodyClass="home">
+	<Hero slot="hero" />
+
 	<Section id="leistungen">
 		<div class="prose prose-lg mx-auto max-w-screen-lg text-center">
 			<h2 class="text-5xl font-bold"><Dots />Meine Leistungen</h2>
@@ -102,25 +108,33 @@ const meta = {
 	</Section>
 
 	<Section id="portfolio">
-		<div class="prose mx-auto max-w-screen-lg text-center">
+		<div class="prose mx-auto max-w-screen-lg px-4 text-center">
 			<h2 class="text-5xl font-bold"><Dots />Meine Projekte</h2>
 			<p class="text-lg">
-				Ich habe bereits an vielen spannenden Projekten gearbeitet. Hier finden Sie eine Auswahl
+				Ich habe bereits an vielen spannenden Projekten gearbeitet. <br /> Hier finden Sie eine Auswahl
 				meiner Arbeiten.
 			</p>
 		</div>
 
-		<div class="mx-auto mt-24 grid max-w-screen-xl grid-cols-3 gap-8 px-4">
-			<Card title="Card title!" image={leitmecke} href="#">
-				<div class="flex items-center gap-2 py-4">
-					<div class="badge badge-outline">Fashion</div>
-					<div class="badge badge-outline">Products</div>
-				</div>
-				<p>If a dog chews shoes whose shoes does he choose?</p>
-				<div class="card-actions justify-end pt-4">
-					<div>Projekt Details</div>
-				</div>
-			</Card>
+		<div class="relative z-10 mx-auto mt-24 grid max-w-screen-xl grid-cols-3 gap-8 px-4">
+			<Glow className="left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2" />
+
+			{allProjects.map((project) => <Project project={project} />)}
+		</div>
+	</Section>
+
+	<Section id="fragen">
+		<div class="prose mx-auto max-w-screen-lg text-center">
+			<h2 class="text-5xl font-bold"><Dots />Fragen?</h2>
+			<p class="text-lg">
+				Haben Sie Fragen oder möchten Sie mehr über meine Leistungen erfahren? <br /> Kontaktieren Sie
+				mich gerne.
+			</p>
+		</div>
+		<div class="relative z-10 mx-auto mt-24 max-w-screen-xl grid-cols-3 px-4">
+			<Glow className="left-auto right-0" />
+
+			<Faq />
 		</div>
 	</Section>
 </PageLayout>
