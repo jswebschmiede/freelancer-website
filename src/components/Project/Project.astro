@@ -1,0 +1,22 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import Card from '@components/Ui/Card.astro';
+import { Icon } from 'astro-icon/components';
+
+interface Props {
+	project: CollectionEntry<'projects'>;
+}
+
+const { project } = Astro.props;
+---
+
+<Card title={project.data.title} image={project.data.image} href={`/projekte/${project.slug}`}>
+	<div class="flex items-center gap-2 py-4">
+		{project.data.tags.map((tag) => <div class="badge badge-outline">{tag}</div>)}
+	</div>
+	<p>{project.data.description}</p>
+	<div class="card-actions relative justify-end pt-4">
+		Projekt Details
+		<Icon name="mdi:arrow-top-right" class="relative -top-1 h-5 w-5" />
+	</div>
+</Card>
