@@ -1,5 +1,25 @@
 ---
-
+import { SITE } from '../config';
 ---
 
-<script></script>
+<script>
+	// import { followCursor } from '@scripts/mouse-cursor';
+	import { totopButton } from '@scripts/totop-button';
+	import { NavLinkManager } from '@scripts/navLinkManager';
+
+	(() => {
+		// init mouse cursor
+		// followCursor();
+
+		// init totop button
+		const progressWrap = (document.querySelector('.progress-wrap') as HTMLElement) || null;
+		if (progressWrap) new totopButton(progressWrap);
+
+		const mainNav = document.getElementById('main-nav') as HTMLElement | null;
+		if (mainNav) new NavLinkManager(mainNav);
+	})();
+</script>
+
+<script is:inline define:vars={{ defaultTheme: SITE.defaultTheme }}>
+	document.documentElement.classList.add('js');
+</script>
