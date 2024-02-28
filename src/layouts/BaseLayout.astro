@@ -10,6 +10,8 @@ import type { MetaSEO } from '../types';
 import '../styles/global.css';
 import MetaTags from '@components/MetaTags.astro';
 import BasicScripts from '@components/BasicScripts.astro';
+import ProgressToTopButton from '@components/Ui/ProgressToTopButton.astro';
+import MouseFollow from '@components/Ui/MouseFollow.astro';
 
 export interface Props {
 	meta?: MetaSEO;
@@ -37,6 +39,8 @@ const { textDirection = 'ltr', lang = 'en' } = SITE;
 		data-theme="synthwave"
 	>
 		<slot />
+
+		<ProgressToTopButton />
 
 		<BasicScripts />
 	</body>

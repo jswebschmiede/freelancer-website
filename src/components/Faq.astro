@@ -1,0 +1,19 @@
+---
+import { SITE } from '../config';
+
+const { faq } = SITE;
+---
+
+<div class="join join-vertical w-full rounded-lg border-white/5 shadow-2xl">
+	{
+		faq.map((item, index) => (
+			<div class="collapse join-item collapse-arrow border-2 border-white/5">
+				<input type="radio" name="my-accordion-4" />
+				<div class="collapse-title text-xl font-medium">{item.question}</div>
+				<div class="collapse-content">
+					<p>{item.answer}</p>
+				</div>
+			</div>
+		))
+	}
+</div>
