@@ -6,6 +6,7 @@ import { SITE } from '../config';
 	// import { followCursor } from '@scripts/mouse-cursor';
 	import { totopButton } from '@scripts/totop-button';
 	import { NavLinkManager } from '@scripts/navLinkManager';
+	import { ObfuscateEmail } from '@scripts/obfuscateEmail';
 	import '@scripts/preloader';
 
 	(() => {
@@ -18,6 +19,8 @@ import { SITE } from '../config';
 
 		const mainNav = document.getElementById('main-nav') as HTMLElement | null;
 		if (mainNav) new NavLinkManager(mainNav);
+
+		new ObfuscateEmail();
 	})();
 </script>
 

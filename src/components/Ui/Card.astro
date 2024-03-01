@@ -20,7 +20,7 @@ const { title, className, image, href } = Astro.props;
 				</figure>
 			)}
 			<div class="card-body">
-				<h2 class="card-title">{title}</h2>
+				{title !== undefined ? <h2 class="card-title">{title}</h2> : null}
 				<slot />
 			</div>
 		</a>
@@ -37,7 +37,7 @@ const { title, className, image, href } = Astro.props;
 				</figure>
 			)}
 			<div class="card-body">
-				<h2 class="card-title">{title}</h2>
+				{title !== undefined ? <h2 class="card-title">{title}</h2> : null}
 				<slot />
 			</div>
 		</div>

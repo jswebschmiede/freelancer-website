@@ -1,11 +1,13 @@
 ---
 import { getCollection } from 'astro:content';
+import { Icon } from 'astro-icon/components';
 import Section from '@components/Ui/Section.astro';
 import Card from '@components/Ui/Card.astro';
 import PageLayout from '@layouts/PageLayout.astro';
 import Glow from '@components/Ui/Glow.astro';
 import Button from '@components/Ui/Button.astro';
 import Dots from '@components/Ui/Dots.astro';
+import ContactItem from '@components/Ui/ContactItem.astro';
 import Project from '@components/Project/Project.astro';
 import Faq from '@components/Faq.astro';
 import Hero from '@components/Hero.astro';
@@ -24,7 +26,7 @@ const meta = {
 	<Hero slot="hero" />
 
 	<Section id="leistungen">
-		<div class="prose prose-lg mx-auto max-w-screen-lg text-center">
+		<div class="prose mx-auto max-w-screen-lg px-4 text-center lg:prose-lg">
 			<h2 class="text-5xl font-bold"><Dots />Meine Leistungen</h2>
 			<p>
 				Ich biete Ihnen maßgeschneiderte Web-Lösungen für Ihr Projekt. Egal ob Website, Web-App oder
@@ -33,7 +35,7 @@ const meta = {
 		</div>
 
 		<div
-			class="cards-wrap relative z-10 mx-auto mb-6 mt-24 grid max-w-screen-xl grid-cols-3 gap-8 px-4"
+			class="cards-wrap relative z-10 mx-auto mb-6 mt-24 grid max-w-screen-xl grid-cols-1 gap-8 px-4 sm:grid-cols-2 lg:grid-cols-3"
 		>
 			<Glow className="left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2" />
 			<Card title="Card title!">
@@ -58,9 +60,9 @@ const meta = {
 	</Section>
 
 	<Section id="prozess">
-		<div class="relative z-10 mx-auto grid max-w-screen-xl grid-cols-12 gap-20 px-4">
-			<div class="col-span-5">
-				<div class="prose prose-lg sticky top-24">
+		<div class="relative z-10 mx-auto grid max-w-screen-xl grid-cols-1 gap-20 px-4 lg:grid-cols-12">
+			<div class="lg:col-span-5">
+				<div class="prose sticky top-24 lg:prose-lg">
 					<h3 class="text-5xl font-bold"><Dots className="mx-0" />Workflow</h3>
 					<p>
 						Ich entwickle moderne und performante Webseiten und Web-Apps. Dabei setze ich auf
@@ -73,29 +75,29 @@ const meta = {
 				</div>
 			</div>
 
-			<div class="col-span-7 space-y-24">
-				<Card className="mx-auto max-w-md transition-none hover:translate-y-0">
+			<div class="space-y-24 lg:col-span-7">
+				<Card className="mx-auto transition-none hover:translate-y-0 lg:max-w-md">
 					<h3 class="text-2xl font-bold">Schritt 1</h3>
 					<p>
 						Ich entwickle moderne und performante Webseiten und Web-Apps. Dabei setze ich auf
 						aktuelle Technologien und Frameworks.
 					</p>
 				</Card>
-				<Card className="mx-auto max-w-md transition-none hover:translate-y-0">
+				<Card className="mx-auto transition-none hover:translate-y-0 lg:max-w-md">
 					<h3 class="text-2xl font-bold">Schritt 2</h3>
 					<p>
 						Ich entwickle moderne und performante Webseiten und Web-Apps. Dabei setze ich auf
 						aktuelle Technologien und Frameworks.
 					</p>
 				</Card>
-				<Card className="mx-auto max-w-md transition-none hover:translate-y-0">
+				<Card className="mx-auto transition-none hover:translate-y-0 lg:max-w-md">
 					<h3 class="text-2xl font-bold">Schritt 3</h3>
 					<p>
 						Ich entwickle moderne und performante Webseiten und Web-Apps. Dabei setze ich auf
 						aktuelle Technologien und Frameworks.
 					</p>
 				</Card>
-				<Card className="mx-auto max-w-md transition-none hover:translate-y-0">
+				<Card className="mx-auto transition-none hover:translate-y-0 lg:max-w-md">
 					<h3 class="text-2xl font-bold">Schritt 4</h3>
 					<p>
 						Ich entwickle moderne und performante Webseiten und Web-Apps. Dabei setze ich auf
@@ -108,7 +110,7 @@ const meta = {
 	</Section>
 
 	<Section id="portfolio">
-		<div class="prose mx-auto max-w-screen-lg px-4 text-center">
+		<div class="prose mx-auto max-w-screen-lg px-4 text-center lg:prose-lg">
 			<h2 class="text-5xl font-bold"><Dots />Meine Projekte</h2>
 			<p class="text-lg">
 				Ich habe bereits an vielen spannenden Projekten gearbeitet. <br /> Hier finden Sie eine Auswahl
@@ -116,7 +118,9 @@ const meta = {
 			</p>
 		</div>
 
-		<div class="relative z-10 mx-auto mt-24 grid max-w-screen-xl grid-cols-3 gap-8 px-4">
+		<div
+			class="relative z-10 mx-auto mt-24 grid max-w-screen-xl grid-cols-1 gap-8 px-4 sm:grid-cols-2 lg:grid-cols-3"
+		>
 			<Glow className="left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2" />
 
 			{allProjects.map((project) => <Project project={project} />)}
@@ -124,7 +128,7 @@ const meta = {
 	</Section>
 
 	<Section id="fragen">
-		<div class="prose mx-auto max-w-screen-lg text-center">
+		<div class="prose mx-auto max-w-screen-lg px-4 text-center">
 			<h2 class="text-5xl font-bold"><Dots />Fragen?</h2>
 			<p class="text-lg">
 				Haben Sie Fragen oder möchten Sie mehr über meine Leistungen erfahren? <br /> Kontaktieren Sie
@@ -137,19 +141,116 @@ const meta = {
 			<Faq />
 		</div>
 	</Section>
+
+	<Section id="kontakt">
+		<div class="prose mx-auto max-w-screen-lg px-4 text-center lg:prose-lg">
+			<h2 class="text-5xl font-bold"><Dots />Kontakt</h2>
+			<p class="text-lg">
+				Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quibusdam aspernatur error nobis
+				sequi, odio, omnis ducimus sunt, eius dignissimos commodi maiores veniam consequatur
+				temporibus voluptate. Eius facilis ipsa tempore cum?
+			</p>
+		</div>
+		<div
+			class="relative z-10 mx-auto mb-6 mt-24 grid max-w-screen-xl grid-cols-1 place-items-center gap-8 px-4 lg:grid-cols-2"
+		>
+			<div>
+				<ul>
+					<ContactItem
+						icon="mdi:map-outline"
+						title="Adresse"
+						text="Heinrich-Heine-Straße 34, 04600 Altenburg"
+					/>
+					<ContactItem
+						icon="mdi:email-outline"
+						title="E-Mail"
+						isMail={true}
+						text="info@joerg-schoeneburg.de"
+					/>
+
+					<ContactItem
+						icon="mdi:phone-outline"
+						title="Telefon"
+						text="03447-487890"
+						isPhone={true}
+					/>
+				</ul>
+			</div>
+
+			<Card className="w-full transition-none hover:translate-y-0">
+				<form id="kontakt-form" class="mb-8 space-y-8" method="post">
+					<div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
+						<label class="form-control w-full gap-3">
+							<span class="label-text">Ihr Name *</span>
+							<input
+								type="text"
+								name="name"
+								class="input w-full rounded-lg border-2 border-white/5 bg-neutral"
+								required
+							/>
+						</label>
+						<label class="form-control w-full gap-3">
+							<span class="label-text">E-Mail Adresse *</span>
+							<input
+								type="email"
+								name="email"
+								class="input w-full rounded-lg border-2 border-white/5 bg-neutral"
+								required
+							/>
+						</label>
+					</div>
+					<div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
+						<label class="form-control w-full gap-3">
+							<span class="label-text">Telefonummer</span>
+							<input
+								type="text"
+								name="name"
+								class="input w-full rounded-lg border-2 border-white/5 bg-neutral"
+							/>
+						</label>
+						<label class="form-control w-full gap-3">
+							<span class="label-text">Betreff</span>
+							<input
+								type="email"
+								name="email"
+								class="input w-full rounded-lg border-2 border-white/5 bg-neutral"
+							/>
+						</label>
+					</div>
+
+					<label class="form-control w-full gap-3">
+						<span class="label-text">Ihr Anliegen *</span>
+						<textarea
+							class="textarea h-32 w-full rounded-lg border-2 border-white/5 bg-neutral"
+							required></textarea>
+					</label>
+
+					<div class="form-control">
+						<label class="label cursor-pointer justify-start gap-3">
+							<input type="checkbox" class="checkbox" name="datenschutz" required />
+							<span class="label-text"
+								>Ich habe die Datenschutzerklärung gelesen und stimme ihr zu.
+							</span>
+						</label>
+					</div>
+
+					<div
+						class="inline-block transform cursor-pointer rounded-btn bg-gradient-to-r from-primary to-accent p-[0.05rem] transition-transform duration-300 will-change-transform hover:scale-[1.025] hover:shadow-2xl"
+					>
+						<button
+							type="submit"
+							class="btn btn-outline no-animation h-14 min-h-14 bg-base-100 px-12 text-base font-normal shadow-md hover:bg-base-200 hover:text-neutral-content"
+						>
+							Absenden
+						</button>
+					</div>
+				</form>
+
+				<span class="badge h-8 gap-2 self-end border-2 border-white/5">
+					<Icon name="mdi:info" />
+					Felder mit * müssen ausgefüllt werden!</span
+				>
+			</Card>
+		</div>
+	</Section>
 </PageLayout>
-
-<script>
-	Array.from(document.getElementsByClassName('cards-wrap')).forEach((element) => {
-		element.addEventListener('mousemove', (e: MouseEvent) => {
-			for (const card of document.getElementsByClassName('card') as any) {
-				const rect = card.getBoundingClientRect(),
-					x = e.clientX - rect.left,
-					y = e.clientY - rect.top;
-
-				card.style.setProperty('--mouse-x', `${x}px`);
-				card.style.setProperty('--mouse-y', `${y}px`);
-			}
-		});
-	});
-</script>
