@@ -15,8 +15,8 @@ const { title, className, image, href } = Astro.props;
 			)}
 		>
 			{image && (
-				<figure>
-					<Image src={image} class="card-image" alt={title} />
+				<figure class="h-[220px]">
+					<Image src={image} class="card-image h-full w-full object-cover" alt={title} />
 				</figure>
 			)}
 			<div class="card-body">

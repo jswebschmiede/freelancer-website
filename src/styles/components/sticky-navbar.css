@@ -7,14 +7,14 @@
 	}
 
 	.navbar-start {
-		@apply -translate-x-4 opacity-0;
+		@apply lg:-translate-x-4 lg:opacity-0;
 	}
 
 	.navbar-end {
-		@apply translate-x-4 opacity-0;
+		@apply lg:translate-x-4 lg:opacity-0;
 	}
 
-	.menu {
+	.menu:not(.menu-sm) {
 		@apply rounded-btn border border-white/5 bg-base-100/85 shadow-xl backdrop-blur;
 	}
 }
