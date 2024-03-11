@@ -7,5 +7,9 @@
 @import 'tailwindcss/utilities';
 
 :root {
-	--fixed-header-height: theme('height.28');
+	--fixed-header-height: theme('height.16');
+
+	@screen lg {
+		--fixed-header-height: theme('height.28');
+	}
 }

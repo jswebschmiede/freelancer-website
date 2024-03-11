@@ -32,13 +32,10 @@ const { textDirection = 'ltr', lang = 'en' } = SITE;
 		<MetaTags {...meta} />
 	</head>
 	<body
-		class:list={[
-			'mt-[--fixed-header-height] flex h-full flex-col  font-sans antialiased',
-			bodyClass
-		]}
+		class:list={['flex h-full flex-col font-sans antialiased', bodyClass]}
 		data-theme="synthwave"
 	>
-		<div class="overflow-hidden">
+		<div class="overflow-hidden pt-[--fixed-header-height]">
 			<slot />
 			<ProgressToTopButton />
 			<Preloader />

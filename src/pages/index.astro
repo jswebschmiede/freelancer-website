@@ -27,7 +27,7 @@ const meta = {
 
 	<Section id="leistungen">
 		<div class="prose mx-auto max-w-screen-lg px-4 text-center lg:prose-lg">
-			<h2 class="text-5xl font-bold"><Dots />Meine Leistungen</h2>
+			<h2 class="text-3xl font-bold md:text-5xl"><Dots />Meine Leistungen</h2>
 			<p>
 				Ich biete Ihnen maßgeschneiderte Web-Lösungen für Ihr Projekt. Egal ob Website, Web-App oder
 				ein individuelles System, ich unterstütze Sie bei der Umsetzung.
@@ -63,14 +63,16 @@ const meta = {
 		<div class="relative z-10 mx-auto grid max-w-screen-xl grid-cols-1 gap-20 px-4 lg:grid-cols-12">
 			<div class="lg:col-span-5">
 				<div class="prose sticky top-24 lg:prose-lg">
-					<h3 class="text-5xl font-bold"><Dots className="mx-0" />Workflow</h3>
+					<h3 class="text-3xl font-bold md:text-5xl"><Dots className="mx-0" />Workflow</h3>
 					<p>
 						Ich entwickle moderne und performante Webseiten und Web-Apps. Dabei setze ich auf
 						aktuelle Technologien und Frameworks.
 					</p>
-					<div class="mt-9 flex items-center justify-start gap-8">
+					<div
+						class="mt-9 flex flex-col items-start justify-start gap-8 sm:flex-row sm:items-center"
+					>
 						<Button href="#kontakt" variant="outline"> Anfrage </Button>
-						<Button href="#kontakt" variant="neutral"> Fragen? </Button>
+						<Button href="#fragen" variant="neutral"> Fragen? </Button>
 					</div>
 				</div>
 			</div>
@@ -111,7 +113,7 @@ const meta = {
 
 	<Section id="portfolio">
 		<div class="prose mx-auto max-w-screen-lg px-4 text-center lg:prose-lg">
-			<h2 class="text-5xl font-bold"><Dots />Meine Projekte</h2>
+			<h2 class="text-3xl font-bold md:text-3xl md:text-5xl"><Dots />Meine Projekte</h2>
 			<p class="text-lg">
 				Ich habe bereits an vielen spannenden Projekten gearbeitet. <br /> Hier finden Sie eine Auswahl
 				meiner Arbeiten.
@@ -129,7 +131,7 @@ const meta = {
 
 	<Section id="fragen">
 		<div class="prose mx-auto max-w-screen-lg px-4 text-center">
-			<h2 class="text-5xl font-bold"><Dots />Fragen?</h2>
+			<h2 class="text-3xl font-bold md:text-5xl"><Dots />Fragen?</h2>
 			<p class="text-lg">
 				Haben Sie Fragen oder möchten Sie mehr über meine Leistungen erfahren? <br /> Kontaktieren Sie
 				mich gerne.
@@ -144,7 +146,7 @@ const meta = {
 
 	<Section id="kontakt">
 		<div class="prose mx-auto max-w-screen-lg px-4 text-center lg:prose-lg">
-			<h2 class="text-5xl font-bold"><Dots />Kontakt</h2>
+			<h2 class="text-3xl font-bold md:text-3xl md:text-5xl"><Dots />Kontakt</h2>
 			<p class="text-lg">
 				Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quibusdam aspernatur error nobis
 				sequi, odio, omnis ducimus sunt, eius dignissimos commodi maiores veniam consequatur
