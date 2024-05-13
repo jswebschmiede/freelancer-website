@@ -5,22 +5,23 @@ import { SITE } from '../config';
 <script>
 	// import { followCursor } from '@scripts/mouse-cursor';
 	import { totopButton } from '@scripts/totop-button';
-	import { NavLinkManager } from '@scripts/navLinkManager';
 	import { ObfuscateEmail } from '@scripts/obfuscateEmail';
+	import { ChangeUrl } from '@scripts/changeUrl';
 	import '@scripts/preloader';
 
 	(() => {
-		// init mouse cursor
-		// followCursor();
-
 		// init totop button
 		const progressWrap = (document.querySelector('.progress-wrap') as HTMLElement) || null;
 		if (progressWrap) new totopButton(progressWrap);
 
-		const mainNav = document.getElementById('main-nav') as HTMLElement | null;
-		if (mainNav) new NavLinkManager(mainNav);
-
 		new ObfuscateEmail();
+
+		const changeUrl = document.querySelector('.navbar') as HTMLElement | null;
+		const body = document.querySelector('body') as HTMLElement | null;
+
+		if (changeUrl && !body.classList.contains('home')) {
+			new ChangeUrl(changeUrl);
+		}
 	})();
 </script>
 
