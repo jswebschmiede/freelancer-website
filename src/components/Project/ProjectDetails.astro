@@ -1,36 +1,36 @@
 ---
 interface Props {
-  client: string;
-  handover: string;
-  services: string;
-  website: string;
+	client: string;
+	handover: string;
+	services: string;
+	website: string;
 }
 
 const { client, handover, services, website } = Astro.props;
 ---
 
-<div class="md:grid grid-cols-12 gap-16 border-t-2 mt-8">
-  <div class="col-span-3">
-    <h3 class="text-2xl mb-0 font-black">Kunde:</h3>
-    <p class="text-lg font-heading font-bold text-orange-500">{client}</p>
-  </div>
-  <div class="col-span-3">
-    <h3 class="text-2xl mb-0 font-black">Fertiggestellt:</h3>
-    <p class="text-lg font-heading font-bold text-orange-500">{handover}</p>
-  </div>
-  <div class="col-span-3">
-    <h3 class="text-2xl mb-0 font-black">Technologien:</h3>
-    <p class="text-lg font-heading font-bold text-orange-500">{services}</p>
-  </div>
-  <div class="col-span-3">
-    <h3 class="text-2xl mb-0 font-black">Webseite:</h3>
-    <p>
-      <a
-        class="text-lg font-heading font-bold text-orange-500 no-underline"
-        href={website}
-        target="_blank"
-        rel="nofollow">{website}</a
-      >
-    </p>
-  </div>
+<div class="mt-8 grid-cols-12 gap-16 border-t-2 md:grid">
+	<div class="col-span-3">
+		<h3 class="mb-0 text-2xl font-black">Kunde:</h3>
+		<p class="font-heading text-lg font-bold text-accent">{client}</p>
+	</div>
+	<div class="col-span-3">
+		<h3 class="mb-0 text-2xl font-black">Fertiggestellt:</h3>
+		<p class="font-heading text-lg font-bold text-accent">{handover}</p>
+	</div>
+	<div class="col-span-3">
+		<h3 class="mb-0 text-2xl font-black">Technologien:</h3>
+		<p class="font-heading text-lg font-bold text-accent">{services}</p>
+	</div>
+	<div class="col-span-3">
+		<h3 class="mb-0 text-2xl font-black">Webseite:</h3>
+		<p>
+			<a
+				class="font-heading text-lg font-bold text-accent no-underline"
+				href={website}
+				target="_blank"
+				rel="nofollow">{website}</a
+			>
+		</p>
+	</div>
 </div>

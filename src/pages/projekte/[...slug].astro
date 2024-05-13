@@ -4,6 +4,7 @@ import type { CollectionEntry } from 'astro:content';
 import { Image } from 'astro:assets';
 
 import Layout from '@layouts/PageLayout.astro';
+import Glow from '@components/Ui/Glow.astro';
 
 interface Props {
 	project: CollectionEntry<'projects'>;
@@ -38,7 +39,25 @@ const meta = {
 ---
 
 <Layout {meta}>
-	<div class="mx-auto max-w-screen-xl px-4">
+	<div class="relative z-10 mx-auto max-w-screen-xl px-4 pt-36">
+		<Glow />
+
+		<p class="pb-4">
+			<a href="/#portfolio" class="group flex items-center gap-2 text-white">
+				<svg
+					class="h-4 w-4 rotate-90 transition-all duration-300 will-change-transform group-hover:-translate-x-1"
+					width="52"
+					height="61"
+					viewBox="0 0 52 61"
+					fill="none"
+				>
+					<path
+						d="M23.5251 59.4749C24.892 60.8417 27.108 60.8417 28.4749 59.4749L50.7487 37.201C52.1156 35.8342 52.1156 33.6181 50.7487 32.2513C49.3819 30.8844 47.1658 30.8844 45.799 32.2513L26 52.0503L6.20101 32.2513C4.83418 30.8844 2.6181 30.8844 1.25126 32.2513C-0.115571 33.6181 -0.115571 35.8342 1.25126 37.201L23.5251 59.4749ZM22.5 1.5299e-07L22.5 57L29.5 57L29.5 -1.5299e-07L22.5 1.5299e-07Z"
+						fill="currentColor"></path>
+				</svg>
+				zurück zur Übersicht
+			</a>
+		</p>
 		<Image
 			src={project.data.image as ImageMetadata}
 			width={1600}
