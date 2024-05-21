@@ -15,6 +15,6 @@
 	}
 
 	.menu:not(.menu-sm) {
-		@apply rounded-btn border border-white/5 bg-base-100/85 shadow-xl backdrop-blur;
+		@apply rounded-btn border border-white/5 bg-base-100 bg-opacity-95 shadow-xl backdrop-blur-lg;
 	}
 }

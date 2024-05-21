@@ -1,0 +1,17 @@
+---
+interface Props {
+	services?: string[];
+}
+
+const { services } = Astro.props;
+---
+
+<div class="avatar-group my-4 flex items-center -space-x-3">
+	{
+		services.map((tag) => (
+			<div class="bg-black-gradient avatar flex h-8 w-8 items-center justify-center rounded-full border-2 border-white/10 lg:h-10 lg:w-10">
+				<img src={'/' + tag + '.svg'} alt="icon5" class="!object-contain p-2" title={tag} />
+			</div>
+		))
+	}
+</div>

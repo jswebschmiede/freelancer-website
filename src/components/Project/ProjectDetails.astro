@@ -1,8 +1,10 @@
 ---
+import ProjektTech from './ProjektTech.astro';
+
 interface Props {
 	client: string;
 	handover: string;
-	services: string;
+	services: string[];
 	website: string;
 }
 
@@ -20,7 +22,7 @@ const { client, handover, services, website } = Astro.props;
 	</div>
 	<div class="col-span-3">
 		<h3 class="mb-0 text-2xl font-black">Technologien:</h3>
-		<p class="font-heading text-lg font-bold text-accent">{services}</p>
+		<ProjektTech services={services} />
 	</div>
 	<div class="col-span-3">
 		<h3 class="mb-0 text-2xl font-black">Webseite:</h3>

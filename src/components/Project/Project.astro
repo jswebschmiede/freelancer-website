@@ -1,6 +1,7 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import Card from '@components/Ui/Card.astro';
+import ProjektTech from '@components/Project/ProjektTech.astro';
 import { Icon } from 'astro-icon/components';
 
 interface Props {
@@ -11,9 +12,12 @@ const { project } = Astro.props;
 ---
 
 <Card title={project.data.title} image={project.data.image} href={`/projekte/${project.slug}`}>
-	<div class="flex items-center gap-2 py-4">
+	<!-- <div class="flex items-center gap-2 py-4">
 		{project.data.tags.map((tag) => <div class="badge badge-outline">{tag}</div>)}
-	</div>
+	</div> -->
+
+	<ProjektTech services={project.data.tags} />
+
 	<p>{project.data.description}</p>
 	<div class="card-actions relative justify-end pt-4">
 		Projekt Details

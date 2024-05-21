@@ -7,11 +7,17 @@ const { meta, bodyClass } = Astro.props;
 ---
 
 <Layout {meta} {bodyClass}>
-	<slot name="header">
-		<Header />
-	</slot>
+	<div class="bg-grid-white bg-base-100 pt-[--fixed-header-height]">
+		<div
+			class="pointer-events-none absolute inset-0 flex items-center justify-center bg-base-100 [mask-image:radial-gradient(ellipse_at_center,transparent_-10%,#000)]"
+		>
+		</div>
+		<slot name="header">
+			<Header />
+		</slot>
 
-	<slot name="hero" />
+		<slot name="hero" />
+	</div>
 
 	<main class="main-content" id="main-content">
 		<slot />
