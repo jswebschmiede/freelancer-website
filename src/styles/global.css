@@ -13,3 +13,7 @@
 		--fixed-header-height: theme('height.28');
 	}
 }
+
+.projects a:nth-child(6) ~ a {
+	@apply hidden;
+}

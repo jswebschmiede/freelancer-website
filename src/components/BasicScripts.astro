@@ -7,6 +7,7 @@ import { SITE } from '../config';
 	import { totopButton } from '@scripts/totop-button';
 	import { ObfuscateEmail } from '@scripts/obfuscateEmail';
 	import { ChangeUrl } from '@scripts/changeUrl';
+	import { FakeLoadMore } from '@scripts/fakeLoadMore';
 	import '@scripts/preloader';
 
 	(() => {
@@ -21,6 +22,11 @@ import { SITE } from '../config';
 
 		if (changeUrl && !body.classList.contains('home')) {
 			new ChangeUrl(changeUrl);
+		}
+
+		const loadMore = document.querySelector('.projects') as HTMLElement | null;
+		if (loadMore) {
+			new FakeLoadMore(loadMore);
 		}
 	})();
 </script>
