@@ -2,7 +2,7 @@
 import { Image } from 'astro:assets';
 import { twMerge } from 'tailwind-merge';
 
-const { title, className, image, href } = Astro.props;
+const { title, className, image, image_alt, href } = Astro.props;
 ---
 
 {
@@ -10,17 +10,23 @@ const { title, className, image, href } = Astro.props;
 		<a
 			href={href}
 			class={twMerge(
-				'magic-card group card relative overflow-hidden border-2 border-white/5 bg-base-100/75 shadow-xl backdrop-blur transition-all duration-300 will-change-transform hover:-translate-y-2 hover:shadow-2xl',
+				'group isolate relative bg-base-100/75 shadow-xl hover:shadow-2xl backdrop-blur border-2 border-white/5 transition-all hover:-translate-y-2 duration-300 will-change-transform magic-card card',
 				className
 			)}
 		>
-			<div class="magic-card-glow pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+			<div class="z-0 absolute inset-0 opacity-0 group-hover:opacity-100 rounded-[inherit] transition-opacity duration-300 pointer-events-none magic-card-glow mix-blend-screen" />
 			{image && (
-				<figure class="h-[220px]">
-					<Image src={image} class="card-image h-full w-full object-cover" alt={title} />
+				<figure class="z-10 relative h-[220px]">
+					<Image
+						src={image}
+						width={350}
+						height={350 / 1.5}
+						class="w-full h-full object-cover card-image"
+						alt={image_alt || title || 'Magic card image'}
+					/>
 				</figure>
 			)}
-			<div class="card-body">
+			<div class="z-10 relative card-body">
 				{title !== undefined ? <h2 class="card-title">{title}</h2> : null}
 				<slot />
 			</div>
@@ -28,17 +34,23 @@ const { title, className, image, href } = Astro.props;
 	) : (
 		<div
 			class={twMerge(
-				'magic-card group card relative overflow-hidden border-2 border-white/5 bg-base-100/75 shadow-xl backdrop-blur transition-all duration-300 will-change-transform hover:-translate-y-2 hover:shadow-2xl',
+				'group isolate relative bg-base-100/75 shadow-xl hover:shadow-2xl backdrop-blur border-2 border-white/5 transition-all hover:-translate-y-2 duration-300 will-change-transform magic-card card',
 				className
 			)}
 		>
-			<div class="magic-card-glow pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+			<div class="z-0 absolute inset-0 opacity-0 group-hover:opacity-100 rounded-[inherit] transition-opacity duration-300 pointer-events-none magic-card-glow mix-blend-screen" />
 			{image && (
-				<figure>
-					<Image src={image} class="card-image" alt={title} />
+				<figure class="z-10 relative h-[220px]">
+					<Image
+						src={image}
+						width={350}
+						height={350 / 1.5}
+						class="w-full h-full object-cover card-image"
+						alt={image_alt || title || ''}
+					/>
 				</figure>
 			)}
-			<div class="card-body">
+			<div class="z-10 relative card-body">
 				{title !== undefined ? <h2 class="card-title">{title}</h2> : null}
 				<slot />
 			</div>
@@ -53,20 +65,22 @@ const { title, className, image, href } = Astro.props;
 	 */
 	const magicCards = document.querySelectorAll('.magic-card');
 
-	magicCards.forEach((card) => {
-		const glowElement = card.querySelector('.magic-card-glow') as HTMLElement;
+	if (magicCards) {
+		magicCards.forEach((card) => {
+			const glowElement = card.querySelector('.magic-card-glow') as HTMLElement;
 
-		card.addEventListener('mousemove', (e: MouseEvent) => {
-			const rect = card.getBoundingClientRect();
-			const x = e.clientX - rect.left;
-			const y = e.clientY - rect.top;
+			card.addEventListener('mousemove', (e: MouseEvent) => {
+				const rect = card.getBoundingClientRect();
+				const x = e.clientX - rect.left;
+				const y = e.clientY - rect.top;
 
-			glowElement.style.background = `radial-gradient(300px at ${x}px ${y}px, rgba(255, 0, 255, 0.15), transparent 80%)`;
-			glowElement.style.opacity = '0.8';
+				glowElement.style.background = `radial-gradient(400px at ${x}px ${y}px, rgba(255, 0, 255, 0.15), transparent 80%)`;
+				glowElement.style.opacity = '0.8';
+			});
+
+			card.addEventListener('mouseleave', () => {
+				glowElement.style.opacity = '0';
+			});
 		});
-
-		card.addEventListener('mouseleave', () => {
-			glowElement.style.opacity = '0';
-		});
-	});
+	}
 </script>
