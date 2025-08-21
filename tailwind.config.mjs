@@ -11,6 +11,18 @@ export default {
                 'grid-white':
                     'url("data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27 width=%27100%27 height=%27100%27 fill=%27none%27 stroke=%27rgb(255 255 255 / 0.02)%27%3e%3cpath d=%27M0 .5H31.5V32%27/%3e%3c/svg%3e")',
                 'black-gradient': 'linear-gradient(90deg, #170d37,#06091f)'
+            },
+
+            animation: {
+                'glow-pulse': 'glow-pulse 12s ease-in-out infinite'
+            },
+
+            keyframes: {
+                'glow-pulse': {
+                    '0%, 100%': { transform: 'scale(1) translate(0px, 0px)' },
+                    '33%': { transform: 'scale(1.1) translate(30px, -20px)' },
+                    '66%': { transform: 'scale(0.9) translate(-20px, 20px)' }
+                }
             }
         }
     },
@@ -27,5 +39,7 @@ export default {
     plugins: [
         require('@tailwindcss/typography'),
         require('@tailwindcss/aspect-ratio'),
+        require('tailwind-scrollbar')({ nocompatible: true }),
+        require('daisyui')
     ]
 };
