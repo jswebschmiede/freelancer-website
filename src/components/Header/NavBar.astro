@@ -6,22 +6,22 @@ const navLinks = SITE.links;
 ---
 
 <div
-	class="navbar mx-auto h-[--fixed-header-height] max-w-screen-xl border-b border-b-white/0 px-4"
+	class="h-[--fixed-header-height] mx-auto px-4 border-b border-b-white/0 max-w-screen-xl navbar"
 >
-	<div class="navbar-start translate-x-0 opacity-100">
+	<div class="opacity-100 translate-x-0 navbar-start">
 		<a
-			class="btn btn-circle btn-outline btn-primary flex aspect-1 items-center justify-center text-xl font-bold shadow-2xl lg:h-16 lg:w-16 lg:text-4xl"
+			class="flex justify-center items-center shadow-2xl btn-outline lg:w-16 lg:h-16 aspect-1 font-bold text-xl lg:text-4xl btn btn-circle btn-primary"
 			href="/"
 		>
 			JS
 		</a>
 	</div>
-	<div class="navbar-center hidden lg:flex">
-		<ul class="menu menu-horizontal items-center gap-8 rounded-btn border border-transparent">
+	<div class="hidden lg:flex navbar-center">
+		<ul class="items-center gap-8 border border-transparent rounded-btn menu menu-horizontal">
 			{
 				navLinks.map((item) => (
 					<li>
-						<a class="btn btn-ghost inline-flex flex-nowrap py-0 text-base" href={item.href}>
+						<a class="inline-flex flex-nowrap py-0 text-base btn btn-ghost" href={item.href}>
 							{item.name}
 						</a>
 					</li>
@@ -31,12 +31,11 @@ const navLinks = SITE.links;
 	</div>
 	<div class="navbar-end">
 		<div class="dropdown dropdown-end">
-			<div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+			<div tabindex="0" role="button" class="lg:hidden btn btn-ghost">
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
-					class="h- fill=
-					w-6"
-					none"
+					class="w-6 h-6"
+					fill="none"
 					viewBox="0 0 24 24"
 					stroke="currentColor"
 				>
@@ -48,14 +47,14 @@ const navLinks = SITE.links;
 				</svg>
 			</div>
 			<ul
-				class="menu dropdown-content menu-sm z-[1] mt-3 w-52 items-start rounded-box bg-base-100 shadow-lg"
+				class="z-[1] items-start bg-base-100 shadow-lg mt-3 rounded-box w-52 menu dropdown-content menu-sm"
 				tabindex="0"
 			>
 				{
 					navLinks.map((item) => (
 						<li class="flex w-full">
 							<a
-								class="btn btn-ghost inline-flex w-full flex-nowrap justify-start py-0 text-left text-base"
+								class="inline-flex flex-nowrap justify-start py-0 w-full text-base text-left btn btn-ghost"
 								href={item.href}
 							>
 								{item.name}

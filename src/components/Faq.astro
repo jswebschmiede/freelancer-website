@@ -4,12 +4,14 @@ import { SITE } from '../config';
 const { faq } = SITE;
 ---
 
-<div class="join join-vertical w-full rounded-lg border-white/5 shadow-2xl">
+<div
+	class="shadow-xl hover:shadow-2xl border-white/5 rounded-lg w-full transition-shadow duration-300 join join-vertical"
+>
 	{
 		faq.map((item, index) => (
-			<div class="collapse join-item collapse-arrow border-2 border-white/5">
+			<div class="collapse collapse-arrow bg-base-100/75 backdrop-blur border-2 border-white/5 join-item">
 				<input type="radio" name="my-accordion-4" />
-				<div class="collapse-title text-xl font-medium">{item.question}</div>
+				<div class="collapse-title font-medium text-xl">{item.question}</div>
 				<div class="collapse-content">
 					<p>{item.answer}</p>
 				</div>
