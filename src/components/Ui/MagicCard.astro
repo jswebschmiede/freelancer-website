@@ -1,0 +1,72 @@
+---
+import { Image } from 'astro:assets';
+import { twMerge } from 'tailwind-merge';
+
+const { title, className, image, href } = Astro.props;
+---
+
+{
+	href ? (
+		<a
+			href={href}
+			class={twMerge(
+				'magic-card group card relative overflow-hidden border-2 border-white/5 bg-base-100/75 shadow-xl backdrop-blur transition-all duration-300 will-change-transform hover:-translate-y-2 hover:shadow-2xl',
+				className
+			)}
+		>
+			<div class="magic-card-glow pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+			{image && (
+				<figure class="h-[220px]">
+					<Image src={image} class="card-image h-full w-full object-cover" alt={title} />
+				</figure>
+			)}
+			<div class="card-body">
+				{title !== undefined ? <h2 class="card-title">{title}</h2> : null}
+				<slot />
+			</div>
+		</a>
+	) : (
+		<div
+			class={twMerge(
+				'magic-card group card relative overflow-hidden border-2 border-white/5 bg-base-100/75 shadow-xl backdrop-blur transition-all duration-300 will-change-transform hover:-translate-y-2 hover:shadow-2xl',
+				className
+			)}
+		>
+			<div class="magic-card-glow pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+			{image && (
+				<figure>
+					<Image src={image} class="card-image" alt={title} />
+				</figure>
+			)}
+			<div class="card-body">
+				{title !== undefined ? <h2 class="card-title">{title}</h2> : null}
+				<slot />
+			</div>
+		</div>
+	)
+}
+
+<script>
+	/**
+	 * Handles the mouse movement over magic cards to create a glow effect
+	 * using a radial gradient that follows the mouse position
+	 */
+	const magicCards = document.querySelectorAll('.magic-card');
+
+	magicCards.forEach((card) => {
+		const glowElement = card.querySelector('.magic-card-glow') as HTMLElement;
+
+		card.addEventListener('mousemove', (e: MouseEvent) => {
+			const rect = card.getBoundingClientRect();
+			const x = e.clientX - rect.left;
+			const y = e.clientY - rect.top;
+
+			glowElement.style.background = `radial-gradient(300px at ${x}px ${y}px, rgba(255, 0, 255, 0.15), transparent 80%)`;
+			glowElement.style.opacity = '0.8';
+		});
+
+		card.addEventListener('mouseleave', () => {
+			glowElement.style.opacity = '0';
+		});
+	});
+</script>
