@@ -1,0 +1,31 @@
+---
+globs: src/scripts/**/*.ts,src/scripts/**/*.js
+---
+
+# Scripts and Interactivity Guide
+
+## Script Organization
+
+- Client-side scripts are located in [src/scripts/](mdc:src/scripts/)
+- Each script handles a specific interactive feature
+- Scripts are organized by functionality
+
+## Key Scripts
+
+- [navLinkManager.ts](mdc:src/scripts/components/navLinkManager.ts): Navigation link management
+- [preloader.ts](mdc:src/scripts/components/preloader.ts): Page preloader functionality
+- [mouse-cursor.ts](mdc:src/scripts/components/mouse-cursor.ts): Custom mouse cursor effects
+- [totop-button.ts](mdc:src/scripts/components/totop-button.ts): Scroll to top button
+- [obfuscateEmail.ts](mdc:src/scripts/components/obfuscateEmail.ts): Email obfuscation
+
+## Script Integration
+
+- Scripts are loaded via [BasicScripts.astro](mdc:src/components/BasicScripts.astro)
+- Use TypeScript for type safety
+- Follow existing patterns for DOM manipulation and event handling
+
+## Performance Considerations
+
+- Keep scripts lightweight and focused
+- Use event delegation where appropriate
+- Minimize DOM queries and manipulations

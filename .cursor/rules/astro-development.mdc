@@ -1,0 +1,35 @@
+---
+globs: *.astro,*.ts,*.tsx,*.js,*.jsx
+---
+
+# Astro Development Guidelines
+
+## Component Structure
+
+- Use `.astro` extension for Astro components
+- Place reusable components in [src/components/](mdc:src/components/)
+- Organize components by feature (Header, Project, Ui, etc.)
+
+## TypeScript
+
+- Use TypeScript for scripts in [src/scripts/](mdc:src/scripts/)
+- Define types in [src/types.ts](mdc:src/types.ts)
+- Use strict TypeScript configuration from [tsconfig.json](mdc:tsconfig.json)
+
+## Styling
+
+- Use Tailwind CSS classes for styling
+- Component-specific styles go in [src/styles/components/](mdc:src/styles/components/)
+- Global styles in [src/styles/global.css](mdc:src/styles/global.css)
+
+## Content
+
+- Store project data as MDX files in [src/content/projects/](mdc:src/content/projects/)
+- Use [src/content/config.ts](mdc:src/content/config.ts) for content schema
+- Follow the existing project structure for new content
+
+## Scripts
+
+- Interactive functionality in [src/scripts/](mdc:src/scripts/)
+- Use vanilla JavaScript/TypeScript for client-side interactions
+- Follow the existing patterns for navigation, preloader, and effects

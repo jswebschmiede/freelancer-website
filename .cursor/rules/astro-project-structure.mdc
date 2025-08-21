@@ -1,0 +1,29 @@
+---
+alwaysApply: true
+---
+
+# Astro Project Structure Guide
+
+This is a freelancer website built with Astro. The main entry point is [index.astro](mdc:src/pages/index.astro), which uses the [BaseLayout.astro](mdc:src/layouts/BaseLayout.astro) layout.
+
+## Key Components
+
+- **Header**: [Header.astro](mdc:src/components/Header/Header.astro) with [NavBar.astro](mdc:src/components/Header/NavBar.astro)
+- **Hero**: [Hero.astro](mdc:src/components/Hero.astro) for the main landing section
+- **Projects**: [Project.astro](mdc:src/components/Project/Project.astro) components for displaying portfolio items
+- **UI Components**: Reusable components in [src/components/Ui/](mdc:src/components/Ui/) including [Button.astro](mdc:src/components/Ui/Button.astro), [Card.astro](mdc:src/components/Ui/Card.astro), and [Glow.astro](mdc:src/components/Ui/Glow.astro)
+
+## Content Management
+
+- Projects are stored as MDX files in [src/content/projects/](mdc:src/content/projects/)
+- Content configuration is handled by [src/content/config.ts](mdc:src/content/config.ts)
+
+## Styling
+
+- Global styles in [src/styles/global.css](mdc:src/styles/global.css)
+- Component-specific styles in [src/styles/components/](mdc:src/styles/components/)
+- Tailwind CSS configuration in [tailwind.config.mjs](mdc:tailwind.config.mjs)
+
+## Scripts
+
+- Interactive functionality in [src/scripts/](mdc:src/scripts/) including navigation, preloader, and mouse effects

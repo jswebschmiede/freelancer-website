@@ -1,0 +1,29 @@
+---
+globs: src/content/**/*.mdx,src/content/**/*.ts
+---
+
+# Content Management Guide
+
+## Project Content Structure
+
+- Projects are stored as MDX files in [src/content/projects/](mdc:src/content/projects/)
+- Each project has its own MDX file (e.g., [bea.mdx](mdc:src/content/projects/bea.mdx))
+- Project images are stored in [src/content/projects/images/](mdc:src/content/projects/images/)
+
+## Content Schema
+
+- Content configuration is defined in [src/content/config.ts](mdc:src/content/config.ts)
+- Follow the existing MDX structure for new projects
+- Include project metadata, description, and technology stack
+
+## MDX Files
+
+- Use frontmatter for project metadata
+- Include project images with proper alt text
+- Follow the existing project format for consistency
+
+## Content Rendering
+
+- Projects are displayed using [Project.astro](mdc:src/components/Project/Project.astro)
+- Project details are shown in [ProjectDetails.astro](mdc:src/components/Project/ProjectDetails.astro)
+- Technology information is displayed in [ProjektTech.astro](mdc:src/components/Project/ProjektTech.astro)

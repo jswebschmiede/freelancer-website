@@ -1,0 +1,29 @@
+---
+description: Coding standards for the freelancer website project
+---
+
+# Coding Standards
+
+## Allgemeine Richtlinien
+
+- Antworte immer auf Deutsch
+- Kommentare und Commit-Nachrichten immer in Englisch
+- Keine Kommentare für einfache Strukturen und Code
+
+## JavaScript/TypeScript
+
+- Füge bei JavaScript-Funktionen und Methoden immer JSDocs in Englisch ein
+- Nutze TypeScript für neue Skripte
+- Folge den bestehenden Mustern für DOM-Manipulation
+
+## PHP
+
+- Füge bei PHP-Funktionen und Methoden immer PHPDocs in Englisch ein
+- Nutze strict types in PHP
+- Folge den bestehenden Codierungsstandards
+
+## Astro-Komponenten
+
+- Verwende Tailwind CSS für Styling
+- Halte Komponenten fokussiert und wiederverwendbar
+- Folge den bestehenden Namenskonventionen

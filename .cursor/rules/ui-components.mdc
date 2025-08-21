@@ -1,0 +1,30 @@
+---
+globs: src/components/Ui/*.astro,src/components/Project/*.astro,src/components/Header/*.astro
+---
+
+# UI Components Guide
+
+## Component Organization
+
+- **Ui Components**: Reusable UI elements in [src/components/Ui/](mdc:src/components/Ui/)
+- **Project Components**: Project-specific components in [src/components/Project/](mdc:src/components/Project/)
+- **Header Components**: Navigation components in [src/components/Header/](mdc:src/components/Header/)
+
+## Key UI Components
+
+- [Button.astro](mdc:src/components/Ui/Button.astro): Reusable button component
+- [Card.astro](mdc:src/components/Ui/Card.astro): Card layout component
+- [Glow.astro](mdc:src/components/Ui/Glow.astro): Glow effect component
+- [Section.astro](mdc:src/components/Ui/Section.astro): Section wrapper component
+
+## Styling Patterns
+
+- Use Tailwind CSS classes consistently
+- Component-specific styles in [src/styles/components/](mdc:src/styles/components/)
+- Follow existing design patterns for consistency
+
+## Component Props
+
+- Use TypeScript interfaces for component props
+- Keep components focused and single-purpose
+- Follow the existing prop patterns in the codebase

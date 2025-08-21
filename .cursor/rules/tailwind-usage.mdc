@@ -1,0 +1,29 @@
+---
+globs: *.astro,*.tsx,*.jsx,*.css
+---
+
+# Tailwind CSS Usage Guide
+
+## Grundlegende Verwendung
+
+- Verwende Tailwind-Klassen für Styling
+- Nutze die Konfiguration in [tailwind.config.mjs](mdc:tailwind.config.mjs)
+- Folge den bestehenden Design-Patterns
+
+## Komponenten-Styling
+
+- Verwende Tailwind-Klassen direkt in Komponenten
+- Für komplexere Stile nutze die CSS-Dateien in [src/styles/components/](mdc:src/styles/components/)
+- Halte die Styling-Konventionen konsistent
+
+## Responsive Design
+
+- Nutze die Tailwind-Breakpoints für responsive Designs
+- Folge dem Mobile-First-Ansatz
+- Verwende die bestehenden Responsive-Patterns
+
+## Anpassungen
+
+- Tailwind-Anpassungen werden in [tailwind.config.mjs](mdc:tailwind.config.mjs) definiert
+- Verwende die bestehenden Farben und Schriftarten
+- Halte dich an die definierte Design-Sprache
