@@ -1,4 +1,5 @@
 ---
+import { twMerge } from 'tailwind-merge';
 import { getImage } from 'astro:assets';
 
 interface Props {
@@ -6,9 +7,10 @@ interface Props {
 	height?: string;
 	alt: string;
 	scrollSensitivity?: number;
+	className?: string;
 }
 
-const { imageUrl, height = '600px', alt, scrollSensitivity = 1.0 } = Astro.props;
+const { imageUrl, height = '600px', alt, scrollSensitivity = 1.0, className } = Astro.props;
 const optimizedBackground = await getImage({
 	src: imageUrl,
 	loading: 'eager',
@@ -17,7 +19,10 @@ const optimizedBackground = await getImage({
 ---
 
 <div
-	class="relative w-full h-[300px] sm:h-[400px] lg:h-[var(--scrollable-background-height)] overflow-hidden touch-none cursor-grab active:cursor-grabbing scrollable-background-container"
+	class:list={twMerge(
+		'group relative w-full h-[300px] md:h-[400px] lg:h-[var(--scrollable-background-height)] overflow-hidden touch-none cursor-none scrollable-background-container',
+		className
+	)}
 	style={`--scrollable-background-height: ${height};`}
 	role="img"
 	aria-label={alt}
@@ -26,7 +31,7 @@ const optimizedBackground = await getImage({
 >
 	<!-- Custom Cursor - Always visible when mouse is over container -->
 	<div
-		class="z-50 fixed opacity-0 transition-opacity duration-200 pointer-events-none custom-cursor"
+		class="hidden md:block z-50 fixed md:group-hover:opacity-100 md:opacity-0 -translate-x-1/2 -translate-y-1/2 pointer-events-none custom-cursor"
 		data-custom-cursor
 		style="left: -100px; top: -100px;"
 	>
@@ -35,12 +40,35 @@ const optimizedBackground = await getImage({
 			data-cursor-circle
 		>
 			<svg
-				class="w-5 h-5 transition-transform duration-300"
-				viewBox="0 0 24 24"
-				fill="currentColor"
-				data-cursor-arrow
+				class="w-5 h-5 -rotate-180"
+				width="52"
+				height="61"
+				viewBox="0 0 52 61"
+				fill="none"
+				data-arrow-up
 			>
-				<path d="M12 20l-1.41-1.41L16.17 13H4v-2h12.17l-5.58-5.59L12 4l8 8z"></path>
+				<path
+					d="M23.5251 59.4749C24.892 60.8417 27.108 60.8417 28.4749 59.4749L50.7487 37.201C52.1156 35.8342 52.1156 33.6181 50.7487 32.2513C49.3819 30.8844 47.1658 30.8844 45.799 32.2513L26 52.0503L6.20101 32.2513C4.83418 30.8844 2.6181 30.8844 1.25126 32.2513C-0.115571 33.6181 -0.115571 35.8342 1.25126 37.201L23.5251 59.4749ZM22.5 1.5299e-07L22.5 57L29.5 57L29.5 -1.5299e-07L22.5 1.5299e-07Z"
+					fill="currentColor"
+				>
+				</path>
+			</svg>
+
+			<svg class="w-2 h-2" viewBox="0 0 24 24" fill="none" data-cursor-arrow>
+				<circle cx="12" cy="12" r="12" fill="currentColor"></circle>
+			</svg>
+
+			<svg
+				class="w-5 h-5 rotate-0"
+				width="52"
+				height="61"
+				viewBox="0 0 52 61"
+				fill="none"
+				data-arrow-down
+			>
+				<path
+					d="M23.5251 59.4749C24.892 60.8417 27.108 60.8417 28.4749 59.4749L50.7487 37.201C52.1156 35.8342 52.1156 33.6181 50.7487 32.2513C49.3819 30.8844 47.1658 30.8844 45.799 32.2513L26 52.0503L6.20101 32.2513C4.83418 30.8844 2.6181 30.8844 1.25126 32.2513C-0.115571 33.6181 -0.115571 35.8342 1.25126 37.201L23.5251 59.4749ZM22.5 1.5299e-07L22.5 57L29.5 57L29.5 -1.5299e-07L22.5 1.5299e-07Z"
+					fill="currentColor"></path>
 			</svg>
 		</div>
 	</div>
@@ -54,45 +82,3 @@ const optimizedBackground = await getImage({
 	>
 	</div>
 </div>
-
-<style>
-	:root {
-		--scrollable-background-height: 600px;
-	}
-
-	.scrollable-background-container:hover .custom-cursor {
-		opacity: 1 !important;
-	}
-
-	.custom-cursor {
-		pointer-events: none;
-		transform: translate(-50%, -50%);
-		transition: opacity 0.2s ease-out;
-	}
-
-	.scrollable-background-container {
-		cursor: none;
-	}
-
-	/* Ensure cursor is always on top */
-	.custom-cursor {
-		z-index: 9999;
-	}
-
-	/* Add subtle pulse animation to the cursor */
-	@keyframes cursorPulse {
-		0% {
-			transform: translate(-50%, -50%) scale(1);
-		}
-		50% {
-			transform: translate(-50%, -50%) scale(1.05);
-		}
-		100% {
-			transform: translate(-50%, -50%) scale(1);
-		}
-	}
-
-	.scrollable-background-container:hover .custom-cursor {
-		animation: cursorPulse 2s infinite;
-	}
-</style>

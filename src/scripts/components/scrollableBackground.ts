@@ -1,43 +1,73 @@
 /**
  * A class that enables scrollable background functionality based on mouse position.
  * The background scrolls up when mouse is in upper area, down when in lower area.
- * Includes smooth transitions and custom cursor with directional arrows.
+ * Scroll speed dynamically adjusts based on mouse distance from scroll zones.
  */
 class ScrollableBackground {
+	/** Array of all active ScrollableBackground instances for cleanup */
 	static instances: ScrollableBackground[] = [];
 
+	/** The container element that holds the scrollable background */
 	container: HTMLElement;
+	/** The background element that will be transformed during scrolling */
 	background: HTMLElement | null;
+	/** The custom cursor element that follows mouse movement */
 	customCursor: HTMLElement | null;
+	/** The cursor circle element */
 	cursorCircle: HTMLElement | null;
+	/** The cursor arrow element for directional indication */
 	cursorArrow: HTMLElement | null;
+	/** The up arrow element */
+	arrowUp: HTMLElement | null;
+	/** The neutral/both arrows element */
+	arrowNeutral: HTMLElement | null;
+	/** The down arrow element */
+	arrowDown: HTMLElement | null;
+	/** The scroll hint element */
 	scrollHint: HTMLElement | null;
 
+	/** Flag indicating if the component is active */
 	isActive = false;
+	/** Current Y position of the background element */
 	currentY = 0;
+	/** Target Y position for smooth animation */
 	targetY = 0;
+	/** Maximum scroll distance (negative value) */
 	maxScroll = 0;
+	/** Animation frame ID for the render loop */
 	animationFrame = requestAnimationFrame(() => {});
+	/** ResizeObserver to handle container size changes */
 	resizeObserver = new ResizeObserver(() => this.updateDimensions());
 
-	// Scroll configuration
+	/** Scroll sensitivity multiplier (0.5-2.0) */
 	scrollSensitivity = 1.0;
-	scrollSpeed = 8.0; // pixels per frame - increased for better responsiveness
-	lastMouseX = 0;
+	/** Base scroll speed in pixels per frame */
+	baseScrollSpeed = 8.0;
+	/** Previous mouse Y position */
 	lastMouseY = 0;
-	mouseX = 0;
+	/** Current mouse Y position */
 	mouseY = 0;
 
-	// Scroll state
+	/** Flag indicating if currently scrolling up */
 	isScrollingUp = false;
+	/** Flag indicating if currently scrolling down */
 	isScrollingDown = false;
+	/** Dynamic scroll speed based on mouse position */
+	scrollSpeed = 0;
 
+	/**
+	 * Creates a new ScrollableBackground instance.
+	 * @param container - The container element that should contain the scrollable background
+	 */
 	constructor(container: HTMLElement) {
 		this.container = container;
-		this.background = container.querySelector('[data-scrollable-element]') as HTMLElement | null;
+		this.background = container.querySelector('[data-scrollable-element]');
 		this.customCursor = document.querySelector('[data-custom-cursor]');
 		this.cursorCircle = container.querySelector('[data-cursor-circle]');
 		this.cursorArrow = container.querySelector('[data-cursor-arrow]');
+		this.arrowUp = container.querySelector('[data-arrow-up]');
+		this.arrowNeutral = container.querySelector('[data-cursor-arrow]');
+		this.arrowDown = container.querySelector('[data-arrow-down]');
 		this.scrollHint = container.querySelector('[data-scroll-hint]');
 
 		if (!this.background) return;
@@ -56,22 +86,21 @@ class ScrollableBackground {
 	}
 
 	/**
-	 * Initializes all event listeners for mouse movement and container interaction.
+	 * Initializes all event listeners for mouse and touch interactions.
 	 */
 	initEvents() {
-		// Mouse movement tracking
 		this.container.addEventListener('mousemove', (e) => this.handleMouseMove(e as MouseEvent));
 		this.container.addEventListener('mouseenter', () => this.handleMouseEnter());
 		this.container.addEventListener('mouseleave', () => this.handleMouseLeave());
 
-		// Touch support
 		this.container.addEventListener('touchmove', (e) => this.handleTouchMove(e as TouchEvent));
 		this.container.addEventListener('touchstart', (e) => this.handleTouchStart(e as TouchEvent));
 		this.container.addEventListener('touchend', () => this.handleTouchEnd());
 	}
 
 	/**
-	 * Handles mouse movement within the container to determine scroll direction.
+	 * Handles mouse movement within the container to determine scroll direction and speed.
+	 * Calculates dynamic scroll speed based on mouse distance from scroll zones.
 	 * @param e - The mouse event
 	 */
 	handleMouseMove(e: MouseEvent) {
@@ -79,130 +108,168 @@ class ScrollableBackground {
 
 		const rect = this.container.getBoundingClientRect();
 		const mouseY = e.clientY - rect.top;
-		const mouseX = e.clientX - rect.left;
 		const containerHeight = rect.height;
-		const containerWidth = rect.width;
 
-		// Update mouse position for cursor tracking
-		this.lastMouseX = this.mouseX;
+		// Track mouse position for smooth movement
 		this.lastMouseY = this.mouseY;
-		this.mouseX = mouseX;
 		this.mouseY = mouseY;
 
-		// Position the custom cursor
+		// Position custom cursor at mouse location
 		this.customCursor.style.left = `${e.clientX}px`;
 		this.customCursor.style.top = `${e.clientY}px`;
 
-		// Calculate normalized position (0 to 1)
+		// Normalize mouse position (0.0 to 1.0)
 		const normalizedY = mouseY / containerHeight;
-		const normalizedX = mouseX / containerWidth;
-
-		// Determine scroll direction based on vertical position
 		const wasScrollingUp = this.isScrollingUp;
 		const wasScrollingDown = this.isScrollingDown;
-		let rotation = 0;
+		let scrollDirection: 'up' | 'down' | 'neutral' = 'neutral';
 
+		// Determine scroll direction and calculate speed based on mouse position
 		if (normalizedY < 0.4) {
-			// Upper area - scroll up
+			// Upper scroll zone: closer to top = faster scrolling
 			this.isScrollingUp = true;
 			this.isScrollingDown = false;
-			rotation = -90; // Arrow points up
+			scrollDirection = 'up';
+
+			// Speed calculation: (0.4 - normalizedY) / 0.4 creates factor 0.0-1.0
+			// Example: at 0% height → factor = 1.0 (max speed)
+			//         at 40% height → factor = 0.0 (min speed)
+			const speedFactor = (0.4 - normalizedY) / 0.4;
+			this.scrollSpeed = speedFactor * this.baseScrollSpeed * this.scrollSensitivity;
 		} else if (normalizedY > 0.6) {
-			// Lower area - scroll down
+			// Lower scroll zone: closer to bottom = faster scrolling
 			this.isScrollingUp = false;
 			this.isScrollingDown = true;
-			rotation = 90; // Arrow points down
+			scrollDirection = 'down';
+
+			// Speed calculation: (normalizedY - 0.6) / 0.4 creates factor 0.0-1.0
+			// Example: at 60% height → factor = 0.0 (min speed)
+			//         at 100% height → factor = 1.0 (max speed)
+			const speedFactor = (normalizedY - 0.6) / 0.4;
+			this.scrollSpeed = speedFactor * this.baseScrollSpeed * this.scrollSensitivity;
 		} else {
-			// Neutral area - stop scrolling
+			// Neutral zone: stop scrolling
 			this.isScrollingUp = false;
 			this.isScrollingDown = false;
+			this.scrollSpeed = 0;
+			scrollDirection = 'neutral';
 		}
 
-		// Update cursor appearance only if scroll state changed
 		if (this.isScrollingUp !== wasScrollingUp || this.isScrollingDown !== wasScrollingDown) {
-			this.updateCursorAppearance(rotation);
+			this.updateCursorAppearance(scrollDirection);
+		}
+
+		if (!this.isScrollingUp && !this.isScrollingDown) {
+			this.updateCursorAppearance('neutral');
 		}
 	}
 
 	/**
 	 * Handles touch start for mobile devices.
+	 * Resets scroll states when user begins touching.
 	 * @param e - The touch event
 	 */
 	handleTouchStart(e: TouchEvent) {
 		this.isActive = true;
-		// Reset scroll flags on touch start
 		this.isScrollingUp = false;
 		this.isScrollingDown = false;
+		this.scrollSpeed = 0;
+		// Show neutral cursor state (both arrows) when touching
+		this.updateCursorAppearance('neutral');
 	}
 
 	/**
 	 * Handles touch end for mobile devices.
+	 * Resets all scroll states when user stops touching.
 	 */
 	handleTouchEnd() {
 		this.isActive = false;
 		this.isScrollingUp = false;
 		this.isScrollingDown = false;
+		this.scrollSpeed = 0;
 	}
 
 	/**
 	 * Handles touch movement for mobile devices.
+	 * Touch behavior is inverted compared to mouse movement for natural swipe gestures.
+	 * Swiping up should scroll the image down, swiping down should scroll the image up.
 	 * @param e - The touch event
 	 */
 	handleTouchMove(e: TouchEvent) {
 		if (!this.background || !e.touches[0]) return;
 
 		const rect = this.container.getBoundingClientRect();
-		const touch = e.touches[0];
-		const touchY = touch.clientY - rect.top;
+		const touchY = e.touches[0].clientY - rect.top;
 		const containerHeight = rect.height;
-
-		// Calculate normalized position (0 to 1)
 		const normalizedY = touchY / containerHeight;
+		let scrollDirection: 'up' | 'down' | 'neutral' = 'neutral';
 
-		// Determine scroll direction based on vertical position
+		// Inverted logic for touch: swiping up (touch in upper area) scrolls image down
 		if (normalizedY < 0.4) {
-			// Upper area - scroll up
-			this.isScrollingUp = true;
-			this.isScrollingDown = false;
-		} else if (normalizedY > 0.6) {
-			// Lower area - scroll down
 			this.isScrollingUp = false;
 			this.isScrollingDown = true;
+			scrollDirection = 'down';
+			const speedFactor = (0.4 - normalizedY) / 0.4;
+			this.scrollSpeed = speedFactor * this.baseScrollSpeed * this.scrollSensitivity;
+		} else if (normalizedY > 0.6) {
+			// Swiping down (touch in lower area) scrolls image up
+			this.isScrollingUp = true;
+			this.isScrollingDown = false;
+			scrollDirection = 'up';
+			const speedFactor = (normalizedY - 0.6) / 0.4;
+			this.scrollSpeed = speedFactor * this.baseScrollSpeed * this.scrollSensitivity;
 		} else {
-			// Neutral area - stop scrolling
 			this.isScrollingUp = false;
 			this.isScrollingDown = false;
+			this.scrollSpeed = 0;
+			scrollDirection = 'neutral';
+		}
+
+		this.updateCursorAppearance(scrollDirection);
+	}
+
+	/**
+	 * Updates the custom cursor appearance based on scroll direction.
+	 * Shows different SVG icons for different states.
+	 * @param scrollDirection - The scroll direction ('up', 'down', or 'neutral')
+	 */
+	updateCursorAppearance(scrollDirection: 'up' | 'down' | 'neutral') {
+		if (!this.customCursor || !this.arrowUp || !this.arrowNeutral || !this.arrowDown) return;
+
+		this.customCursor.style.opacity = '1';
+
+		// Hide all arrows first
+		this.arrowUp.style.display = 'none';
+		this.arrowNeutral.style.display = 'none';
+		this.arrowDown.style.display = 'none';
+
+		if (scrollDirection === 'up') {
+			this.arrowUp.style.display = 'block';
+		} else if (scrollDirection === 'down') {
+			this.arrowDown.style.display = 'block';
+		} else {
+			this.arrowNeutral.style.display = 'block';
 		}
 	}
 
 	/**
-	 * Updates the custom cursor appearance and rotation.
-	 * @param rotation - Rotation angle in degrees
-	 */
-	updateCursorAppearance(rotation: number) {
-		if (!this.customCursor || !this.cursorArrow) return;
-
-		// Always show custom cursor when mouse is over container
-		this.customCursor.style.opacity = '1';
-
-		// Rotate arrow based on direction
-		this.cursorArrow.style.transform = `rotate(${rotation}deg)`;
-	}
-
-	/**
 	 * Handles mouse entering the container area.
+	 * Activates the component for interaction and shows neutral cursor state.
 	 */
 	handleMouseEnter() {
 		this.isActive = true;
+		this.updateCursorAppearance('neutral');
 	}
 
 	/**
 	 * Handles mouse leaving the container area.
+	 * Deactivates scrolling and hides the custom cursor.
 	 */
 	handleMouseLeave() {
 		this.isActive = false;
 		this.isScrollingUp = false;
 		this.isScrollingDown = false;
+		this.scrollSpeed = 0;
 
 		if (this.customCursor) {
 			this.customCursor.style.opacity = '0';
@@ -210,27 +277,22 @@ class ScrollableBackground {
 	}
 
 	/**
-	 * The main render loop that smoothly interpolates between current and target positions.
+	 * The main render loop that handles continuous scrolling and smooth animation.
+	 * Runs at 60fps using requestAnimationFrame for optimal performance.
 	 */
 	render() {
-		// Handle continuous scrolling based on scroll state
 		if (this.isScrollingUp || this.isScrollingDown) {
-			// Calculate scroll amount for this frame
-			const scrollAmount = this.scrollSpeed * this.scrollSensitivity;
+			const scrollAmount = this.scrollSpeed;
 
 			if (this.isScrollingUp) {
-				// Scroll up (towards 0)
 				this.targetY = Math.min(0, this.currentY + scrollAmount);
 			} else if (this.isScrollingDown) {
-				// Scroll down (towards maxScroll)
 				this.targetY = Math.max(this.maxScroll, this.currentY - scrollAmount);
 			}
 		}
 
-		// Smooth interpolation - lower factor = smoother animation
 		this.currentY = this.lerp(this.currentY, this.targetY, 0.08);
 
-		// Round to 2 decimal places for better performance
 		this.currentY = Math.round(this.currentY * 100) / 100;
 
 		if (this.background) {
@@ -242,7 +304,7 @@ class ScrollableBackground {
 
 	/**
 	 * Performs linear interpolation between two values.
-	 * Lower factor values create smoother, slower animations.
+	 * Used for smooth animation transitions.
 	 * @param start - The starting value
 	 * @param end - The target value
 	 * @param factor - The interpolation factor (0-1). Lower = smoother animation
@@ -253,24 +315,25 @@ class ScrollableBackground {
 	}
 
 	/**
-	 * Updates the dimensions and constraints based on container size and image aspect ratio.
+	 * Updates the dimensions and scroll constraints based on container size and image aspect ratio.
+	 * Recalculates the maximum scroll distance when the container is resized.
 	 */
 	updateDimensions() {
 		if (!this.background) return;
 
+		// Calculate dimensions maintaining aspect ratio
 		const containerWidth = this.container.clientWidth;
-		const originalWidth = parseInt(this.background?.dataset.imageWidth || '0');
-		const originalHeight = parseInt(this.background?.dataset.imageHeight || '0');
+		const originalWidth = parseInt(this.background.dataset.imageWidth || '0');
+		const originalHeight = parseInt(this.background.dataset.imageHeight || '0');
 		const aspectRatio = originalWidth / originalHeight;
 
-		// Calculate the actual image height based on container width and aspect ratio
 		const actualImageHeight = containerWidth / aspectRatio;
 		const containerHeight = this.container.clientHeight;
 
 		this.maxScroll = -(actualImageHeight - containerHeight);
 		this.background.style.height = `${actualImageHeight}px`;
 
-		// Ensure current position is within new boundaries
+		// Ensure current position is within valid boundaries
 		this.targetY = Math.min(0, Math.max(this.maxScroll, this.targetY));
 		this.currentY = this.targetY;
 	}
@@ -278,22 +341,24 @@ class ScrollableBackground {
 	/**
 	 * Cleans up the ScrollableBackground instance by removing event listeners,
 	 * canceling animation frames, and disconnecting the ResizeObserver.
+	 * Should be called when the instance is no longer needed to prevent memory leaks.
 	 */
 	destroy() {
 		cancelAnimationFrame(this.animationFrame);
 		this.resizeObserver.disconnect();
 
-		// Remove event listeners
 		this.container.removeEventListener('mousemove', this.handleMouseMove);
 		this.container.removeEventListener('mouseenter', this.handleMouseEnter);
 		this.container.removeEventListener('mouseleave', this.handleMouseLeave);
 		this.container.removeEventListener('touchmove', this.handleTouchMove);
-		this.container.removeEventListener('touchstart', this.handleMouseEnter);
-		this.container.removeEventListener('touchend', this.handleMouseLeave);
+		this.container.removeEventListener('touchstart', this.handleTouchStart);
+		this.container.removeEventListener('touchend', this.handleTouchEnd);
 	}
 
 	/**
 	 * Static method to clean up all active ScrollableBackground instances.
+	 * Calls destroy() on each instance and clears the instances array.
+	 * Useful for cleanup before page navigation or when components are unmounted.
 	 */
 	static cleanupAll() {
 		ScrollableBackground.instances.forEach((instance) => instance.destroy());
