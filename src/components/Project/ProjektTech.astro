@@ -1,16 +1,16 @@
 ---
 interface Props {
-	services?: string[];
+	tags?: string[];
 }
 
-const { services } = Astro.props;
+const { tags } = Astro.props;
 ---
 
-<div class="avatar-group my-4 flex items-center -space-x-3">
+<div class="avatar-group flex items-center -space-x-3 my-4">
 	{
-		services.map((tag) => (
-			<div class="bg-black-gradient avatar flex h-8 w-8 items-center justify-center rounded-full border-2 border-white/10 lg:h-10 lg:w-10">
-				<img src={'/' + tag + '.svg'} alt="icon5" class="!object-contain p-2" title={tag} />
+		tags.map((tag) => (
+			<div class="flex justify-center items-center bg-black-gradient border-2 border-white/10 rounded-full w-8 lg:w-10 h-8 lg:h-10 avatar">
+				<img src={'/' + tag + '.svg'} alt="icon5" class="p-2 !object-contain" title={tag} />
 			</div>
 		))
 	}

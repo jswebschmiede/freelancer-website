@@ -8,6 +8,7 @@ import { SITE } from '../config';
 	import { ObfuscateEmail } from '@scripts/obfuscateEmail';
 	import { ChangeUrl } from '@scripts/changeUrl';
 	import { FakeLoadMore } from '@scripts/fakeLoadMore';
+	import DraggableBackground from '@scripts/draggableBackground';
 	import '@scripts/preloader';
 
 	(() => {
@@ -27,6 +28,12 @@ import { SITE } from '../config';
 		const loadMore = document.querySelector('.projects') as HTMLElement | null;
 		if (loadMore) {
 			new FakeLoadMore();
+		}
+
+		// init draggable background
+		const draggableBackgrounds = document.querySelector('[data-draggable]') as HTMLElement | null;
+		if (draggableBackgrounds) {
+			new DraggableBackground(draggableBackgrounds);
 		}
 	})();
 </script>

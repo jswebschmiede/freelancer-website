@@ -1,37 +1,40 @@
 ---
 import ProjektTech from './ProjektTech.astro';
+import { extractDomain } from '../../scripts/utils';
 
 interface Props {
 	client: string;
 	handover: string;
-	services: string[];
+	tags: string;
 	website: string;
 }
 
-const { client, handover, services, website } = Astro.props;
+const { client, handover, tags, website } = Astro.props;
+
+const tagsArray = tags.split(',').map((tag) => tag.trim());
 ---
 
-<div class="mt-8 grid-cols-12 gap-16 border-t-2 md:grid">
+<div class="gap-16 md:grid grid-cols-12 mt-8 border-t-2">
 	<div class="col-span-3">
-		<h3 class="mb-0 text-2xl font-black">Kunde:</h3>
-		<p class="font-heading text-lg font-bold text-accent">{client}</p>
+		<h3 class="mb-0 font-bold text-2xl">Kunde:</h3>
+		<p class="font-heading font-bold text-accent text-lg">{client}</p>
 	</div>
 	<div class="col-span-3">
-		<h3 class="mb-0 text-2xl font-black">Fertiggestellt:</h3>
-		<p class="font-heading text-lg font-bold text-accent">{handover}</p>
+		<h3 class="mb-0 font-bold text-2xl">Fertiggestellt:</h3>
+		<p class="font-heading font-bold text-accent text-lg">{handover}</p>
 	</div>
 	<div class="col-span-3">
-		<h3 class="mb-0 text-2xl font-black">Technologien:</h3>
-		<ProjektTech services={services} />
+		<h3 class="mb-0 font-bold text-2xl">Technologien:</h3>
+		<ProjektTech tags={tagsArray} />
 	</div>
 	<div class="col-span-3">
-		<h3 class="mb-0 text-2xl font-black">Webseite:</h3>
+		<h3 class="mb-0 font-bold text-2xl">Webseite:</h3>
 		<p>
 			<a
-				class="font-heading text-lg font-bold text-accent no-underline"
+				class="font-heading font-semibold text-accent no-underline"
 				href={website}
 				target="_blank"
-				rel="nofollow">{website}</a
+				rel="nofollow">{extractDomain(website)}</a
 			>
 		</p>
 	</div>

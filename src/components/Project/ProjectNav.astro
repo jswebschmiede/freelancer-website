@@ -1,0 +1,75 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+	nextProject: CollectionEntry<'projects'>;
+	prevProject: CollectionEntry<'projects'>;
+}
+
+const { prevProject, nextProject } = Astro.props;
+---
+
+<div class="hidden relative sm:flex gap-4 mx-auto max-w-6xl">
+	<div class="flex justify-between items-center gap-4 pb-4 w-full">
+		<div>
+			<a
+				href="/#portfolio"
+				class="group flex items-center gap-2 text-white btn btn-ghost"
+				title="zurück zur Übersicht"
+			>
+				<svg
+					class="w-4 h-4 rotate-90 transition-all group-hover:-translate-x-1 duration-300 will-change-transform"
+					width="52"
+					height="61"
+					viewBox="0 0 52 61"
+					fill="none"
+				>
+					<path
+						d="M23.5251 59.4749C24.892 60.8417 27.108 60.8417 28.4749 59.4749L50.7487 37.201C52.1156 35.8342 52.1156 33.6181 50.7487 32.2513C49.3819 30.8844 47.1658 30.8844 45.799 32.2513L26 52.0503L6.20101 32.2513C4.83418 30.8844 2.6181 30.8844 1.25126 32.2513C-0.115571 33.6181 -0.115571 35.8342 1.25126 37.201L23.5251 59.4749ZM22.5 1.5299e-07L22.5 57L29.5 57L29.5 -1.5299e-07L22.5 1.5299e-07Z"
+						fill="currentColor"></path>
+				</svg>
+				zurück zur Übersicht
+			</a>
+		</div>
+
+		<div class="flex gap-4">
+			<a
+				href={`/projekte/${prevProject.slug}`}
+				class="flex items-center gap-2 text-white btn btn-circle btn-ghost"
+				title="vorheriges Projekt"
+			>
+				<span class="sr-only">vorheriges Projekt</span>
+				<svg
+					class="w-4 h-4 rotate-90 transition-all group-hover:-translate-x-1 duration-300 will-change-transform"
+					width="52"
+					height="61"
+					viewBox="0 0 52 61"
+					fill="none"
+				>
+					<path
+						d="M23.5251 59.4749C24.892 60.8417 27.108 60.8417 28.4749 59.4749L50.7487 37.201C52.1156 35.8342 52.1156 33.6181 50.7487 32.2513C49.3819 30.8844 47.1658 30.8844 45.799 32.2513L26 52.0503L6.20101 32.2513C4.83418 30.8844 2.6181 30.8844 1.25126 32.2513C-0.115571 33.6181 -0.115571 35.8342 1.25126 37.201L23.5251 59.4749ZM22.5 1.5299e-07L22.5 57L29.5 57L29.5 -1.5299e-07L22.5 1.5299e-07Z"
+						fill="currentColor"></path>
+				</svg>
+			</a>
+
+			<a
+				href={`/projekte/${nextProject.slug}`}
+				class="flex items-center gap-2 text-white btn btn-circle btn-ghost"
+				title="nächstes Projekt"
+			>
+				<span class="sr-only">nächstes Projekt</span>
+				<svg
+					class="w-4 h-4 -rotate-90 transition-all group-hover:-translate-x-1 duration-300 will-change-transform"
+					width="52"
+					height="61"
+					viewBox="0 0 52 61"
+					fill="none"
+				>
+					<path
+						d="M23.5251 59.4749C24.892 60.8417 27.108 60.8417 28.4749 59.4749L50.7487 37.201C52.1156 35.8342 52.1156 33.6181 50.7487 32.2513C49.3819 30.8844 47.1658 30.8844 45.799 32.2513L26 52.0503L6.20101 32.2513C4.83418 30.8844 2.6181 30.8844 1.25126 32.2513C-0.115571 33.6181 -0.115571 35.8342 1.25126 37.201L23.5251 59.4749ZM22.5 1.5299e-07L22.5 57L29.5 57L29.5 -1.5299e-07L22.5 1.5299e-07Z"
+						fill="currentColor"></path>
+				</svg>
+			</a>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,59 @@
+---
+import { getImage } from "astro:assets";
+
+interface Props {
+  imageUrl: ImageMetadata;
+  height?: string;
+  alt: string;
+}
+
+const { imageUrl, height = "600px", alt } = Astro.props;
+const optimizedBackground = await getImage({
+  src: imageUrl,
+  loading: "eager",
+  format: "webp",
+});
+---
+
+<div
+  class="draggable-background-container overflow-hidden relative cursor-grab active:cursor-grabbing w-full touch-none h-[300px] sm:h-[400px] lg:h-[var(--draggable-background-height)]"
+  style={`--draggable-background-height: ${height};`}
+  role="img"
+  aria-label={alt}
+  data-draggable
+>
+  <!-- Scroll Indikator -->
+  <div
+    class="scroll-indicator flex animate-scrollPulse absolute bottom-4 left-12 z-10 flex-col items-center gap-1"
+    data-scroll-indicator
+    aria-hidden="true"
+  >
+    <div class="relative">
+      <span
+        class="text-[length:0.6rem] font-medium text-whitegreen-500 bg-orange-500/90 px-3 py-1 rounded-full shadow-md"
+      >
+        Scroll mich
+      </span>
+    </div>
+    <svg class="w-5 h-5 text-orange-500" viewBox="0 0 24 24" fill="currentColor">
+      <path
+        d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"
+        transform="rotate(90 12 12)"></path>
+    </svg>
+  </div>
+
+  <div
+    class="draggable-background absolute w-full bg-[length:100%_auto] bg-center transition-transform duration-100 ease-in-out"
+    style={`background-image: url(${optimizedBackground.src});`}
+    data-image-height={optimizedBackground.attributes.height}
+    data-image-width={optimizedBackground.attributes.width}
+    data-draggable-element
+  >
+  </div>
+</div>
+
+<style>
+  :root {
+    --draggable-background-height: 600px;
+  }
+</style>

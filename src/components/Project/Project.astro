@@ -1,9 +1,8 @@
 ---
 import type { CollectionEntry } from 'astro:content';
-import Card from '@components/Ui/Card.astro';
 import ProjektTech from '@components/Project/ProjektTech.astro';
 import { Icon } from 'astro-icon/components';
-import MagicCard from '@components/Ui/MagicCard.astro';
+import Card from '@components/Ui/Card.astro';
 
 interface Props {
 	project: CollectionEntry<'projects'>;
@@ -12,7 +11,7 @@ interface Props {
 const { project } = Astro.props;
 ---
 
-<MagicCard
+<Card
 	title={project.data.title}
 	image={project.data.thumbnail}
 	image_alt={project.data.image_alt}
@@ -25,4 +24,4 @@ const { project } = Astro.props;
 		Projekt Details
 		<Icon name="mdi:arrow-top-right" class="-top-1 relative w-5 h-5" />
 	</div>
-</MagicCard>
+</Card>

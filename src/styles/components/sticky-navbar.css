@@ -8,11 +8,11 @@
 	}
 
 	.navbar-start {
-		@apply lg:-translate-x-4 lg:opacity-0;
+		@apply lg:pointer-events-none lg:-translate-x-4 lg:opacity-0;
 	}
 
 	.navbar-end {
-		@apply lg:translate-x-4 lg:opacity-0;
+		@apply lg:pointer-events-none lg:translate-x-4 lg:opacity-0;
 	}
 
 	.menu:not(.menu-sm) {
