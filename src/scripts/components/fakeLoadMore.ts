@@ -1,45 +1,63 @@
-class FakeLoadMore {
-	private element: HTMLElement;
-	private elementItems: NodeListOf<HTMLElement>;
-	private loadmoreBtn: HTMLElement | null;
-	private k = 3;
-	private j = 9;
+export class FakeLoadMore {
+	private button: HTMLElement | null;
+	private itemsToShow: number = 6;
+	private items: NodeListOf<Element>;
+	private container: HTMLElement | null;
 
-	constructor(element: HTMLElement) {
-		this.element = element;
-		this.elementItems = this.element.querySelectorAll('a.card') || null;
-		this.loadmoreBtn = document.querySelector('.ajax-load-more') || null;
+	constructor() {
+		this.button = document.querySelector('.ajax-load-more')?.parentElement;
+		this.container = document.querySelector('.projects');
+		this.items = document.querySelectorAll('.projects > a');
 
-		console.log(this.elementItems);
 		this.init();
 	}
 
 	private init(): void {
-		if (!this.loadmoreBtn) {
-			console.error('No loadmore button found');
-			return;
-		}
+		if (!this.button) return;
 
-		this.loadmoreBtn.addEventListener('click', this.handleClick);
-	}
-
-	private handleClick = (event: Event): void => {
-		event.preventDefault();
-		event.stopPropagation();
-
-		const range = `a:nth-child(n+${this.k}):nth-child(-n+${this.j})`;
-
-		this.element.querySelectorAll(range).forEach((item) => {
-			item.setAttribute('style', 'display: block');
+		this.button.addEventListener('click', (e: Event) => {
+			e.preventDefault();
+			this.loadMore();
 		});
 
-		if (this.elementItems.length <= this.j) {
-			this.loadmoreBtn?.parentElement.parentElement.classList.add('hidden');
-		} else {
-			this.k += 3;
-			this.j += 3;
+		if (this.getHiddenItems().length === 0) {
+			this.button.style.display = 'none';
 		}
-	};
-}
+	}
 
-export { FakeLoadMore };
+	private getHiddenItems(): Element[] {
+		return Array.from(this.items).filter(
+			(item) => window.getComputedStyle(item).display === 'none'
+		);
+	}
+
+	private loadMore(): void {
+		if (!this.container) return;
+
+		const hiddenItems = this.getHiddenItems();
+		const itemsToReveal = hiddenItems.slice(0, this.itemsToShow);
+
+		if (itemsToReveal.length === 0) return;
+
+		// Aktuelle Scroll-Position speichern
+		const scrollPosition = window.scrollY;
+
+		// Container-Höhe fixieren
+		const currentHeight = this.container.offsetHeight;
+		this.container.style.height = `${currentHeight}px`;
+
+		itemsToReveal.forEach((item) => {
+			(item as HTMLElement).style.display = 'flex';
+			item.classList.add('fade-in');
+		});
+
+		// Container-Höhe nach Animation wieder freigeben
+
+		this.container!.style.height = 'auto';
+		window.scrollTo(0, scrollPosition);
+
+		if (this.getHiddenItems().length === 0) {
+			this.button!.style.display = 'none';
+		}
+	}
+}
