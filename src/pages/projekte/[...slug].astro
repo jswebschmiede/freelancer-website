@@ -7,6 +7,7 @@ import Layout from '@layouts/PageLayout.astro';
 import Glow from '@components/Ui/Glow.astro';
 import ProjectNav from '@components/Project/ProjectNav.astro';
 import DraggableBackground from '@components/Project/DraggableBackground.astro';
+import ScrollableBackground from '@components/Project/ScrollableBackground.astro';
 
 interface Props {
 	project: CollectionEntry<'projects'>;
@@ -47,10 +48,11 @@ const meta = {
 
 		<ProjectNav nextProject={nextProject} prevProject={prevProject} />
 
-		<DraggableBackground
+		<ScrollableBackground
 			imageUrl={project.data.image as ImageMetadata}
 			height="600px"
 			alt={project.data.image_alt}
+			scrollSensitivity={6.5}
 		/>
 
 		<div class="mx-auto pt-10 md:pt-20 max-w-6xl">

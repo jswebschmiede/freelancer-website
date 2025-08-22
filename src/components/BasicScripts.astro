@@ -9,6 +9,7 @@ import { SITE } from '../config';
 	import { ChangeUrl } from '@scripts/changeUrl';
 	import { FakeLoadMore } from '@scripts/fakeLoadMore';
 	import DraggableBackground from '@scripts/draggableBackground';
+	import ScrollableBackground from '@scripts/scrollableBackground';
 	import '@scripts/preloader';
 
 	(() => {
@@ -34,6 +35,12 @@ import { SITE } from '../config';
 		const draggableBackgrounds = document.querySelector('[data-draggable]') as HTMLElement | null;
 		if (draggableBackgrounds) {
 			new DraggableBackground(draggableBackgrounds);
+		}
+
+		// init scrollable background
+		const scrollableBackgrounds = document.querySelector('[data-scrollable]') as HTMLElement | null;
+		if (scrollableBackgrounds) {
+			new ScrollableBackground(scrollableBackgrounds);
 		}
 	})();
 </script>
