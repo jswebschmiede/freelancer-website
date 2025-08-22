@@ -49,12 +49,20 @@ const meta = {
 		<div class="flex flex-col">
 			<ProjectNav nextProject={nextProject} prevProject={prevProject} />
 
-			<ScrollableBackground
-				imageUrl={project.data.image as ImageMetadata}
-				height="600px"
-				alt={project.data.image_alt}
-				scrollSensitivity={20}
-			/>
+			<div class="bg-base-300/85 border border-base-300 w-full mockup-browser">
+				<div class="mockup-browser-toolbar">
+					<div class="!flex items-center !bg-base-100 text-xs input">
+						{project.data.website || project.data.title}
+					</div>
+				</div>
+
+				<ScrollableBackground
+					imageUrl={project.data.image as ImageMetadata}
+					height="600px"
+					alt={project.data.image_alt}
+					scrollSensitivity={20}
+				/>
+			</div>
 		</div>
 
 		<div class="mx-auto pt-10 md:pt-20 max-w-6xl">

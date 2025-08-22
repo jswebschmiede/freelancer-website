@@ -11,6 +11,7 @@ const projectsCollection = defineCollection({
 			thumbnail: image().optional(),
 			image_alt: z.string(),
 			isFeatured: z.boolean(),
+			website: z.string().optional(),
 			date: z.string()
 		})
 });
