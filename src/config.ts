@@ -13,7 +13,7 @@ const SiteConfig = {
 			href: '#prozess'
 		},
 		{
-			name: 'Mein Portfolio',
+			name: 'Portfolio',
 			href: '#portfolio'
 		},
 		{
