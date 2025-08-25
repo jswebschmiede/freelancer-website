@@ -45,11 +45,13 @@ const meta = {
 ---
 
 <Layout {meta}>
-	<div class="z-10 relative mx-auto px-4 pt-16 lg:pt-28 max-w-screen-xl">
+	<div class="z-10 relative mx-auto px-4 pt-12 lg:pt-28 max-w-screen-xl">
 		<Glow />
 
 		<div class="flex flex-col">
-			<div class="mx-auto pt-10 md:pt-20 max-w-6xl">
+			<div
+				class="opacity-0 mx-auto pt-10 md:pt-20 max-w-6xl transition-all translate-y-2 duration-700 js-fade-on-ready"
+			>
 				<h1 class="pb-14 font-bold text-4xl sm:text-5xl md:text-7xl">{project.data.title}</h1>
 				<div class="relative max-w-none prose-a:break-words prose lg:prose-lg">
 					<ProjectDetails
@@ -62,7 +64,7 @@ const meta = {
 			</div>
 
 			<div
-				class="bg-base-300/85 shadow-lg hover:shadow-xl border border-base-300 w-full transition-shadow duration-300 mockup-browser"
+				class="bg-base-300/85 shadow-lg hover:shadow-xl border border-base-300 w-full transition-all reveal-fx--translate-up duration-300 reveal-fx mockup-browser"
 			>
 				<div class="mockup-browser-toolbar">
 					<div class="!flex items-center !bg-base-100 text-xs input">
@@ -80,12 +82,14 @@ const meta = {
 		</div>
 
 		<div class="mx-auto pt-10 md:pt-20 max-w-6xl">
-			<div class="relative max-w-none prose-a:break-words prose lg:prose-lg">
+			<div
+				class="relative max-w-none prose-a:break-words reveal-fx--translate-up reveal-fx prose lg:prose-lg"
+			>
 				<Content />
 			</div>
 
 			<ProjectNav
-				className="mt-16 pt-16 border-t-2 border-base-300"
+				className="mt-16 pt-16 border-t-2 border-base-300 reveal-fx--translate-up reveal-fx"
 				nextProject={nextProject}
 				prevProject={prevProject}
 			/>

@@ -28,7 +28,9 @@ const meta = {
 	<Hero slot="hero" />
 
 	<Section id="leistungen">
-		<div class="mx-auto px-4 max-w-screen-lg text-center prose lg:prose-lg">
+		<div
+			class="mx-auto px-4 max-w-screen-lg text-center reveal-fx--translate-up reveal-fx prose lg:prose-lg"
+		>
 			<h2 class="font-bold text-3xl md:text-5xl"><Dots />Meine Leistungen</h2>
 			<p>
 				Ich biete Ihnen maßgeschneiderte Web-Lösungen für Ihr Projekt. Egal ob Website, CMS oder ein
@@ -37,7 +39,7 @@ const meta = {
 		</div>
 
 		<div
-			class="z-10 relative gap-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mx-auto mt-24 mb-6 px-4 max-w-screen-xl cards-wrap"
+			class="z-10 relative gap-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mx-auto mt-24 mb-6 px-4 max-w-screen-xl reveal-fx--translate-up cards-wrap reveal-fx"
 		>
 			<Glow className="top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
 			<MagicCard title="Card title!">
@@ -62,7 +64,9 @@ const meta = {
 	</Section>
 
 	<Section id="prozess">
-		<div class="z-10 relative gap-20 grid grid-cols-1 lg:grid-cols-12 mx-auto px-4 max-w-screen-xl">
+		<div
+			class="z-10 relative gap-20 grid grid-cols-1 lg:grid-cols-12 mx-auto px-4 max-w-screen-xl reveal-fx--translate-up reveal-fx"
+		>
 			<div class="lg:col-span-5">
 				<div class="top-24 sticky prose lg:prose-lg">
 					<h3 class="font-bold text-3xl md:text-5xl"><Dots className="mx-0" />Workflow</h3>
@@ -180,7 +184,9 @@ const meta = {
 	</Section>
 
 	<Section id="portfolio">
-		<div class="mx-auto px-4 max-w-screen-lg text-center prose lg:prose-lg">
+		<div
+			class="mx-auto px-4 max-w-screen-lg text-center reveal-fx--translate-up reveal-fx prose lg:prose-lg"
+		>
 			<h2 class="font-bold text-3xl md:text-3xl lg:text-5xl"><Dots />Meine Projekte</h2>
 			<p class="text-lg">
 				Ich habe bereits an vielen spannenden Projekten gearbeitet. <br /> Hier finden Sie eine Auswahl
@@ -188,19 +194,21 @@ const meta = {
 			</p>
 		</div>
 
-		<div class="z-10 relative mx-auto mt-24 px-4 max-w-screen-xl">
+		<div class="z-10 relative mx-auto mt-24 px-4 max-w-screen-xl reveal-fx--translate-up reveal-fx">
 			<Glow className="top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
 			<div class="gap-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 projects">
 				{allProjects.map((project) => <Project project={project} />)}
 			</div>
 		</div>
-		<nav class="flex justify-center pt-16">
+		<nav class="flex justify-center px-4 pt-16 reveal-fx--translate-up reveal-fx">
 			<Button className="ajax-load-more" href="#">Mehr Projekte</Button>
 		</nav>
 	</Section>
 
 	<Section id="fragen">
-		<div class="mx-auto px-4 max-w-screen-lg text-center prose">
+		<div
+			class="mx-auto px-4 max-w-screen-lg text-center reveal-fx--translate-up reveal-fx prose lg:prose-lg"
+		>
 			<h2 class="font-bold text-3xl md:text-5xl"><Dots />Fragen?</h2>
 			<p class="text-lg">
 				Haben Sie Fragen oder möchten Sie mehr über meine Leistungen erfahren? <br /> Kontaktieren Sie
@@ -215,7 +223,9 @@ const meta = {
 	</Section>
 
 	<Section id="kontakt">
-		<div class="mx-auto px-4 max-w-screen-lg text-center prose lg:prose-lg">
+		<div
+			class="mx-auto px-4 max-w-screen-lg text-center reveal-fx--translate-up reveal-fx prose lg:prose-lg"
+		>
 			<h2 class="font-bold text-3xl md:text-3xl lg:text-5xl"><Dots />Kontakt</h2>
 			<p class="text-lg">
 				Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quibusdam aspernatur error nobis
@@ -224,7 +234,7 @@ const meta = {
 			</p>
 		</div>
 		<div
-			class="z-10 relative place-items-center gap-8 grid grid-cols-1 lg:grid-cols-2 mx-auto mt-24 mb-6 px-4 max-w-screen-xl"
+			class="z-10 relative place-items-center gap-8 grid grid-cols-1 lg:grid-cols-2 mx-auto mt-24 mb-6 px-4 max-w-screen-xl reveal-fx--translate-up reveal-fx"
 		>
 			<div>
 				<ul>

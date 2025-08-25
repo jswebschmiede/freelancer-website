@@ -3,24 +3,30 @@ import Button from '@components/Ui/Button.astro';
 import Glow from '@components/Ui/Glow.astro';
 ---
 
-<div class="hero h-full px-8 pb-24 pt-36">
-	<div class="hero-content relative z-10 text-center">
+<div class="px-8 pt-12 lg:pt-36 pb-24 h-full hero">
+	<div class="z-10 relative text-center hero-content">
 		<Glow />
 		<div class="max-w-[1024px]">
-			<h1 class="text-[clamp(1.75rem,-0.3765rem_+_7.2289vw,4.25rem)] font-bold leading-tight">
+			<h1
+				class="opacity-0 font-bold text-[clamp(1.75rem,-0.3765rem_+_7.2289vw,4.25rem)] leading-tight transition-all translate-y-2 duration-700 js-fade-on-ready"
+			>
 				Umwandlung Ihrer Designs in
 				<span
-					class="bg-gradient-to-l from-primary from-20% to-accent bg-clip-text text-transparent"
+					class="bg-clip-text bg-gradient-to-l from-20% from-primary to-accent text-transparent"
 				>
 					benutzerfreundliche Webseiten
 				</span>
 			</h1>
-			<p class="pb-12 pt-6 text-[clamp(1rem,0.8319rem_+_0.7470vw,1.5rem)]">
+			<p
+				class="opacity-0 pt-6 pb-12 text-[clamp(1rem,0.8319rem_+_0.7470vw,1.5rem)] transition-all translate-y-2 duration-700 js-fade-on-ready"
+			>
 				Ich biete Ihnen eine schnelle und zuverlässige Umsetzung Ihrer Designs, als statische
 				Webseite oder als Theme für aktuelle CMS-Systeme.
 			</p>
 
-			<div class="flex flex-col items-center justify-center gap-8 sm:flex-row">
+			<div
+				class="flex sm:flex-row flex-col justify-center items-center gap-8 opacity-0 transition-all translate-y-2 duration-700 js-fade-on-ready"
+			>
 				<Button href="#prozess" variant="outline"> Zeig mir wie das geht </Button>
 				<Button href="#leistungen" variant="neutral"> Was bietest du noch an? </Button>
 			</div>

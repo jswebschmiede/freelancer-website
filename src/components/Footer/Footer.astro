@@ -5,14 +5,14 @@ const { footerLinks } = SITE;
 ---
 
 <div class="bg-base-200/60 backdrop-blur mt-24 border-white/5 border-t-2"></div>
-<footer class="justify-between items-center mx-auto p-10 max-w-screen-xl text-lg footer">
-	<aside>
-		<p class="mb-4 md:mb-0 font-bold md:text-left text-center">
+<footer class="md:justify-between items-center mx-auto p-10 max-w-screen-xl text-lg footer">
+	<aside class="order-last md:order-first w-full">
+		<p class="mb-4 md:mb-0 w-full font-bold md:text-left text-center">
 			Built with <span class="px-1 text-primary text-2xl">♡</span>
 			by&nbsp;Jörg Schöneburg
 		</p>
 	</aside>
-	<nav class="gap-6 grid grid-flow-col">
+	<nav class="place-items-center gap-6 grid grid-cols-1 md:grid-flow-col w-full">
 		<a
 			class="flex items-center gap-2 link-hover link"
 			href="https://github.com/jswebschmiede"

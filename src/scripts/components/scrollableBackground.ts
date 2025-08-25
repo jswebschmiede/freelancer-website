@@ -107,16 +107,22 @@ class ScrollableBackground {
 		if (!this.background || !this.customCursor) return;
 
 		const rect = this.container.getBoundingClientRect();
+		const mouseX = e.clientX - rect.left;
 		const mouseY = e.clientY - rect.top;
+		const containerWidth = rect.width;
 		const containerHeight = rect.height;
 
 		// Track mouse position for smooth movement
 		this.lastMouseY = this.mouseY;
 		this.mouseY = mouseY;
 
-		// Position custom cursor at mouse location
-		this.customCursor.style.left = `${e.clientX}px`;
-		this.customCursor.style.top = `${e.clientY}px`;
+		// Position custom cursor relative to container, constrained within container bounds
+		const cursorSize = 25; // Approximate cursor size with padding
+		const constrainedX = Math.max(cursorSize, Math.min(containerWidth - cursorSize, mouseX));
+		const constrainedY = Math.max(cursorSize, Math.min(containerHeight - cursorSize, mouseY));
+
+		this.customCursor.style.left = `${constrainedX}px`;
+		this.customCursor.style.top = `${constrainedY}px`;
 
 		// Normalize mouse position (0.0 to 1.0)
 		const normalizedY = mouseY / containerHeight;
@@ -199,7 +205,9 @@ class ScrollableBackground {
 		if (!this.background || !e.touches[0]) return;
 
 		const rect = this.container.getBoundingClientRect();
+		const touchX = e.touches[0].clientX - rect.left;
 		const touchY = e.touches[0].clientY - rect.top;
+		const containerWidth = rect.width;
 		const containerHeight = rect.height;
 		const normalizedY = touchY / containerHeight;
 		let scrollDirection: 'up' | 'down' | 'neutral' = 'neutral';

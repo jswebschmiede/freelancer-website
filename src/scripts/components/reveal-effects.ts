@@ -82,11 +82,14 @@ class RevealEffects {
 			return;
 		}
 
+		const elements = Array.from(fxElements) as Element[];
+		const revealDelta = 120; // amount (in pixel) the element needs to enter the viewport to be revealed
+
 		this.config = {
-			revealDelta: 120, // amount (in pixel) the element needs to enter the viewport to be revealed
-			elements: Array.from(fxElements) as Element[],
-			delays: this.getDelays(),
-			deltas: this.getDeltas()
+			revealDelta: revealDelta,
+			elements: elements,
+			delays: this.getDelays(elements),
+			deltas: this.getDeltas(elements, revealDelta)
 		};
 
 		this.state = {
@@ -217,13 +220,14 @@ class RevealEffects {
 
 	/**
 	 * Get animation delays from data attributes
+	 * @param elements - Array of elements to get delays for
 	 * @returns Array of delay values for each element
 	 */
-	private getDelays(): number[] {
+	private getDelays(elements: Element[]): number[] {
 		const delays: number[] = [];
 
-		for (let i = 0; i < this.config.elements.length; i++) {
-			const delayAttr = this.config.elements[i].getAttribute('data-reveal-fx-delay');
+		for (let i = 0; i < elements.length; i++) {
+			const delayAttr = elements[i].getAttribute('data-reveal-fx-delay');
 			delays.push(delayAttr ? parseInt(delayAttr, 10) : 0);
 		}
 
@@ -232,14 +236,16 @@ class RevealEffects {
 
 	/**
 	 * Get reveal delta values from data attributes
+	 * @param elements - Array of elements to get deltas for
+	 * @param revealDelta - Default delta value to use if no data attribute is found
 	 * @returns Array of delta values for each element
 	 */
-	private getDeltas(): number[] {
+	private getDeltas(elements: Element[], revealDelta: number): number[] {
 		const deltas: number[] = [];
 
-		for (let i = 0; i < this.config.elements.length; i++) {
-			const deltaAttr = this.config.elements[i].getAttribute('data-reveal-fx-delta');
-			deltas.push(deltaAttr ? parseInt(deltaAttr, 10) : this.config.revealDelta);
+		for (let i = 0; i < elements.length; i++) {
+			const deltaAttr = elements[i].getAttribute('data-reveal-fx-delta');
+			deltas.push(deltaAttr ? parseInt(deltaAttr, 10) : revealDelta);
 		}
 
 		return deltas;

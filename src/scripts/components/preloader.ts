@@ -22,6 +22,16 @@ class Preloader {
 		}, this.INITIAL_DELAY);
 	}
 
+	private static triggerReadyAnimation(): void {
+		const elements = document.querySelectorAll('.js-fade-on-ready');
+		elements.forEach((el) => {
+			el.classList.remove('opacity-0');
+			el.classList.add('opacity-100');
+			el.classList.remove('translate-y-2');
+			el.classList.add('translate-y-0');
+		});
+	}
+
 	/**
 	 * Show the main content and remove preloader
 	 */
@@ -39,6 +49,11 @@ class Preloader {
 		// Remove preloader after fade out animation completes
 		setTimeout(() => {
 			preloader.remove();
+
+			// Wait 300ms after preloader removal before triggering ready animation
+			setTimeout(() => {
+				this.triggerReadyAnimation();
+			}, 100);
 		}, this.FADE_OUT_DELAY);
 	}
 }
