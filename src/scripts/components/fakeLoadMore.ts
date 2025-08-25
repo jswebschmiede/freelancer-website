@@ -48,7 +48,7 @@ export class FakeLoadMore {
 
 		itemsToReveal.forEach((item) => {
 			(item as HTMLElement).style.display = 'flex';
-			item.classList.add('fade-in');
+			item.classList.add('animate-scale-in');
 		});
 
 		// Container-Höhe nach Animation wieder freigeben
