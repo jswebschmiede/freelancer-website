@@ -49,3 +49,15 @@ export function extractRootDomain(url: string): string {
 
 	return domain;
 }
+
+/**
+ * Formats a date string from 'YYYY-MM-DD' to 'MM/YYYY' format
+ * @param dateString - The date string in 'YYYY-MM-DD' format
+ * @returns The formatted date string in 'MM/YYYY' format
+ */
+export function formatDateForDisplay(dateString: string): string {
+	const date = new Date(dateString);
+	const month = (date.getMonth() + 1).toString().padStart(2, '0');
+	const year = date.getFullYear();
+	return `${month}/${year}`;
+}

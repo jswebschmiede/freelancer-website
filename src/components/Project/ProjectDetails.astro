@@ -14,28 +14,32 @@ const { client, handover, tags, website } = Astro.props;
 const tagsArray = tags.split(',').map((tag) => tag.trim());
 ---
 
-<div class="gap-16 md:grid grid-cols-12 mt-8 border-t-2">
-	<div class="col-span-3">
+<div class="gap-0 xl:gap-16 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 pb-16">
+	<div>
 		<h3 class="mb-0 font-bold text-2xl">Kunde:</h3>
 		<p class="font-heading font-bold text-accent text-lg">{client}</p>
 	</div>
-	<div class="col-span-3">
+	<div>
 		<h3 class="mb-0 font-bold text-2xl">Fertiggestellt:</h3>
 		<p class="font-heading font-bold text-accent text-lg">{handover}</p>
 	</div>
-	<div class="col-span-3">
+	<div>
 		<h3 class="mb-0 font-bold text-2xl">Technologien:</h3>
 		<ProjektTech tags={tagsArray} />
 	</div>
-	<div class="col-span-3">
+	<div>
 		<h3 class="mb-0 font-bold text-2xl">Webseite:</h3>
 		<p>
 			<a
-				class="font-heading font-semibold text-accent no-underline"
+				class="font-heading font-semibold text-accent hover:underline no-underline"
 				href={website}
 				target="_blank"
-				rel="nofollow">{extractDomain(website)}</a
+				rel="nofollow"
+				aria-label="Öffnet die Webseite in einem neuen Tab"
+				title="Webseite öffnen"
 			>
+				{extractDomain(website)}
+			</a>
 		</p>
 	</div>
 </div>

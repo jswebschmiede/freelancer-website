@@ -8,6 +8,8 @@ import Glow from '@components/Ui/Glow.astro';
 import ProjectNav from '@components/Project/ProjectNav.astro';
 import DraggableBackground from '@components/Project/DraggableBackground.astro';
 import ScrollableBackground from '@components/Project/ScrollableBackground.astro';
+import ProjectDetails from '@components/Project/ProjectDetails.astro';
+import { formatDateForDisplay } from '../../scripts/utils';
 
 interface Props {
 	project: CollectionEntry<'projects'>;
@@ -43,11 +45,21 @@ const meta = {
 ---
 
 <Layout {meta}>
-	<div class="z-10 relative mx-auto px-4 pt-20 lg:pt-36 max-w-screen-xl">
+	<div class="z-10 relative mx-auto px-4 pt-16 lg:pt-28 max-w-screen-xl">
 		<Glow />
 
 		<div class="flex flex-col">
-			<ProjectNav nextProject={nextProject} prevProject={prevProject} />
+			<div class="mx-auto pt-10 md:pt-20 max-w-6xl">
+				<h1 class="pb-14 font-bold text-4xl sm:text-5xl md:text-7xl">{project.data.title}</h1>
+				<div class="relative max-w-none prose-a:break-words prose lg:prose-lg">
+					<ProjectDetails
+						client={project.data.title}
+						handover={formatDateForDisplay(project.data.date as string)}
+						tags={project.data.tags.join(', ')}
+						website={project.data.website}
+					/>
+				</div>
+			</div>
 
 			<div
 				class="bg-base-300/85 shadow-lg hover:shadow-xl border border-base-300 w-full transition-shadow duration-300 mockup-browser"
@@ -68,11 +80,15 @@ const meta = {
 		</div>
 
 		<div class="mx-auto pt-10 md:pt-20 max-w-6xl">
-			<h1 class="pb-6 font-bold text-4xl sm:text-5xl md:text-7xl">{project.data.title}</h1>
-
 			<div class="relative max-w-none prose-a:break-words prose lg:prose-lg">
 				<Content />
 			</div>
+
+			<ProjectNav
+				className="mt-16 pt-16 border-t-2 border-base-300"
+				nextProject={nextProject}
+				prevProject={prevProject}
+			/>
 		</div>
 	</div>
 </Layout>
