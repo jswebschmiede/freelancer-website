@@ -11,34 +11,37 @@ interface Props {
 
 const { icon, title, text, isMail = false, isPhone = false } = Astro.props;
 
-// split text at @ to get the username and domain
-const [username, domain] = text.split('@');
+// E-Mail-Verschleierung mit Base64 für bessere Sicherheit
+const encodeEmail = (email: string) => btoa(email);
+const encodedEmail = isMail ? encodeEmail(text) : '';
 ---
 
 <li class="group mb-8">
 	<div class="flex items-center">
 		<div
-			class="font-heading relative flex aspect-1 h-[3.9375rem] w-[3.9375rem] items-center justify-center rounded-full border-2 border-white/5 bg-base-100/60 text-center text-[34px] shadow-xl transition-shadow duration-300 after:absolute after:left-full after:top-1/2 after:mt-[-1px] after:h-[2px] after:w-10 after:bg-white/5 group-hover:shadow-none"
+			class="after:top-1/2 after:left-full after:absolute relative flex justify-center items-center bg-base-100/60 after:bg-white/5 shadow-xl group-hover:shadow-none after:mt-[-1px] border-2 border-white/5 rounded-full w-[3.9375rem] after:w-10 h-[3.9375rem] after:h-[2px] aspect-1 font-heading text-[34px] text-center transition-shadow duration-300"
 		>
-			<Icon class="h-6 w-6" name={icon} />
+			<Icon class="w-6 h-6" name={icon} />
 		</div>
 
 		<div class="pl-16">
-			<h4 class="text-2xl font-semibold">{title}</h4>
+			<h4 class="font-semibold text-2xl">{title}</h4>
 
-			<p class="text-sm text-gray-500">
-				{isMail && <p data-obfuscate-email data-username={username} data-domain={domain} />}
-
+			<div class="text-gray-500 text-sm">
 				{
-					isPhone && (
-						<p>
-							<a href={`tel:+49${text.replace(/^0+|-/g, '')}`}>{text}</a>
-						</p>
+					isMail && (
+						<span
+							data-obfuscate-email
+							data-email-b64={encodedEmail}
+							class="hover:text-white transition-colors cursor-pointer"
+						/>
 					)
 				}
 
-				{!isMail && !isPhone && <p>{text}</p>}
-			</p>
+				{isPhone && <a href={`tel:+49${text.replace(/^0+|-/g, '')}`}>{text}</a>}
+
+				{!isMail && !isPhone && <span>{text}</span>}
+			</div>
 		</div>
 	</div>
 </li>

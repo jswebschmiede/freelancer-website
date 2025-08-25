@@ -1,8 +1,7 @@
 @import 'tailwindcss/base';
 
 @import 'tailwindcss/components';
-@import './components/sticky-navbar.css';
-/* @import './components/card.css'; */
+@import '@styles/reveal-effects.css';
 
 @import 'tailwindcss/utilities';
 

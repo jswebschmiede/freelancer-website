@@ -1,38 +1,57 @@
+/**
+ * ChangeUrl - Handles URL modifications for anchor links
+ * Converts relative anchor links (#anchor) to absolute paths (/#anchor)
+ */
 class ChangeUrl {
 	private element: HTMLElement;
 	private navLinks: NodeListOf<HTMLAnchorElement>;
 
-	constructor(element) {
+	/**
+	 * Create a new ChangeUrl instance
+	 * @param element - The container element containing anchor links to process
+	 */
+	constructor(element: HTMLElement) {
 		this.element = element;
 		this.navLinks = this.element.querySelectorAll("a[href^='#']");
 		this.init();
 	}
 
-	init = () => {
-		this.hasAnker();
-		this.changeUrl();
-	};
+	/**
+	 * Initialize the URL changing functionality
+	 */
+	private init(): void {
+		this.markAnchorLinks();
+		this.updateAnchorUrls();
+	}
 
-	hasAnker = () => {
+	/**
+	 * Mark links that contain anchor references
+	 */
+	private markAnchorLinks(): void {
 		this.navLinks.forEach((link) => {
-			const url = link.getAttribute('href');
-			if (url.includes('#') && !url.match(/\/[^\/]+?\/#/)) {
+			const href = link.getAttribute('href');
+			if (href && href.includes('#') && !href.match(/\/[^\/]+?\/#/)) {
 				link.classList.add('has-anker');
 			}
 		});
-	};
+	}
 
-	changeUrl = () => {
+	/**
+	 * Update anchor URLs to use absolute paths
+	 */
+	private updateAnchorUrls(): void {
 		this.navLinks.forEach((link) => {
 			if (!link.classList.contains('has-anker')) {
 				return;
 			}
-			const url = link.getAttribute('href');
 
-			// change url from #anker to /#anker
-			link.setAttribute('href', `/${url}`);
+			const href = link.getAttribute('href');
+			if (href) {
+				// Change URL from #anchor to /#anchor
+				link.setAttribute('href', `/${href}`);
+			}
 		});
-	};
+	}
 }
 
 export { ChangeUrl };
