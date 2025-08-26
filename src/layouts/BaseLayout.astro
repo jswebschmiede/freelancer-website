@@ -26,15 +26,13 @@ const { textDirection = 'ltr', lang = 'en' } = SITE;
 <html
 	lang={lang}
 	dir={textDirection}
-	class="scrollbar-rounded-lg scrollbar-track-black-500 min-h-full scroll-smooth scrollbar-thin scrollbar-thumb-slate-300 scrollbar-thumb-rounded"
+	class="scrollbar-rounded-lg min-h-full scroll-smooth scrollbar-thin scrollbar-thumb-rounded"
+	data-theme="synthwave"
 >
 	<head>
 		<MetaTags {...meta} />
 	</head>
-	<body
-		class:list={['flex h-full flex-col font-sans antialiased', bodyClass]}
-		data-theme="synthwave"
-	>
+	<body class:list={['flex h-full flex-col font-sans antialiased', bodyClass]}>
 		<div class="overflow-clip">
 			<slot />
 			<ProgressToTopButton />

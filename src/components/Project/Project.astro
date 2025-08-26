@@ -19,9 +19,9 @@ const { project } = Astro.props;
 >
 	<ProjektTech tags={project.data.tags} />
 
-	<p>{project.data.description}</p>
-	<div class="relative justify-end pt-4 card-actions">
+	<p class="text-sm md:text-base">{project.data.description}</p>
+	<div class="card-actions relative justify-end pt-4">
 		Projekt Details
-		<Icon name="mdi:arrow-top-right" class="-top-1 relative w-5 h-5" />
+		<Icon name="mdi:arrow-top-right" class="relative -top-1 h-5 w-5" />
 	</div>
 </Card>

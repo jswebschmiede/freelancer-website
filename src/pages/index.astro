@@ -27,11 +27,13 @@ const meta = {
 <PageLayout {meta} bodyClass="home">
 	<Hero slot="hero" />
 
-	<Section id="leistungen">
+	<Section id="leistungen" className="circuit-pattern">
 		<div
 			class="reveal-fx--translate-up reveal-fx prose mx-auto max-w-screen-lg px-4 text-center lg:prose-lg"
 		>
-			<h2 class="text-3xl font-bold md:text-3xl lg:text-5xl"><Dots />Meine Leistungen</h2>
+			<h2 class="text-3xl font-bold md:text-3xl lg:text-5xl">
+				<Dots />Meine <span class="text-secondary">Leistungen</span>
+			</h2>
 			<p>
 				Ich biete Ihnen maßgeschneiderte Web-Lösungen für Ihr Projekt. Egal ob Website, CMS oder ein
 				individuelles System, ich unterstütze Sie bei der Umsetzung.
@@ -63,7 +65,7 @@ const meta = {
 		</div>
 	</Section>
 
-	<Section id="prozess">
+	<Section id="prozess" className="circuit-pattern">
 		<div
 			class="reveal-fx--translate-up reveal-fx relative z-10 mx-auto grid max-w-screen-xl grid-cols-1 gap-20 px-4 lg:grid-cols-12"
 		>
@@ -185,11 +187,13 @@ const meta = {
 		</div>
 	</Section>
 
-	<Section id="portfolio">
+	<Section id="portfolio" className="circuit-pattern">
 		<div
 			class="reveal-fx--translate-up reveal-fx prose mx-auto max-w-screen-lg px-4 text-center lg:prose-lg"
 		>
-			<h2 class="text-3xl font-bold md:text-3xl lg:text-5xl"><Dots />Meine Projekte</h2>
+			<h2 class="text-3xl font-bold md:text-3xl lg:text-5xl">
+				<Dots />Meine <span class="text-secondary">Projekte</span>
+			</h2>
 			<p class="text-lg">
 				Ich habe bereits an vielen spannenden Projekten gearbeitet. <br /> Hier finden Sie eine Auswahl
 				meiner Arbeiten.
@@ -207,7 +211,7 @@ const meta = {
 		</nav>
 	</Section>
 
-	<Section id="fragen">
+	<Section id="fragen" className="circuit-pattern">
 		<div
 			class="reveal-fx--translate-up reveal-fx prose mx-auto max-w-screen-lg px-4 text-center lg:prose-lg"
 		>
@@ -224,7 +228,7 @@ const meta = {
 		</div>
 	</Section>
 
-	<Section id="kontakt">
+	<Section id="kontakt" className="circuit-pattern">
 		<div
 			class="reveal-fx--translate-up reveal-fx prose mx-auto max-w-screen-lg px-4 text-center lg:prose-lg"
 		>

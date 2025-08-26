@@ -4,17 +4,17 @@ import { SITE } from '../../config';
 const { footerLinks } = SITE;
 ---
 
-<div class="bg-base-200/60 backdrop-blur mt-24 border-white/5 border-t-2"></div>
-<footer class="md:justify-between items-center mx-auto p-10 max-w-screen-xl text-lg footer">
-	<aside class="order-last md:order-first w-full">
-		<p class="mb-4 md:mb-0 w-full font-bold md:text-left text-center">
-			Built with <span class="px-1 text-primary text-2xl">♡</span>
+<div class="border-t-2 border-white/5 bg-base-200/60 backdrop-blur"></div>
+<footer class="footer mx-auto max-w-screen-xl items-center p-10 text-lg md:justify-between">
+	<aside class="order-last w-full md:order-first">
+		<p class="mb-4 w-full text-center font-bold md:mb-0 md:text-left">
+			Built with <span class="px-1 text-2xl text-primary">♡</span>
 			by&nbsp;Jörg Schöneburg
 		</p>
 	</aside>
-	<nav class="place-items-center gap-6 grid grid-cols-1 md:grid-flow-col w-full">
+	<nav class="grid w-full grid-cols-1 place-items-center gap-6 md:grid-flow-col">
 		<a
-			class="flex items-center gap-2 link-hover link"
+			class="link-hover link flex items-center gap-2"
 			href="https://github.com/jswebschmiede"
 			target="_blank"
 		>

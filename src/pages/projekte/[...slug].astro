@@ -9,6 +9,7 @@ import ProjectNav from '@components/Project/ProjectNav.astro';
 import DraggableBackground from '@components/Project/DraggableBackground.astro';
 import ScrollableBackground from '@components/Project/ScrollableBackground.astro';
 import ProjectDetails from '@components/Project/ProjectDetails.astro';
+import Section from '@components/Ui/Section.astro';
 import { formatDateForDisplay } from '../../scripts/utils';
 
 interface Props {
@@ -45,54 +46,62 @@ const meta = {
 ---
 
 <Layout {meta}>
-	<div class="z-10 relative mx-auto px-4 pt-12 lg:pt-28 max-w-screen-xl">
-		<Glow />
+	<Section className="circuit-pattern">
+		<div
+			class="mask-radial pointer-events-none absolute inset-0 flex items-center justify-center bg-base-100"
+		>
+		</div>
+		<div class="relative z-10 mx-auto max-w-screen-xl px-4">
+			<Glow />
 
-		<div class="flex flex-col">
-			<div
-				class="opacity-0 mx-auto pt-10 md:pt-20 max-w-6xl transition-all translate-y-2 duration-700 js-fade-on-ready"
-			>
-				<h1 class="pb-14 font-bold text-4xl sm:text-5xl md:text-7xl">{project.data.title}</h1>
-				<div class="relative max-w-none prose-a:break-words prose lg:prose-lg">
-					<ProjectDetails
-						client={project.data.title}
-						handover={formatDateForDisplay(project.data.date as string)}
-						tags={project.data.tags.join(', ')}
-						website={project.data.website}
+			<div class="flex flex-col">
+				<div
+					class="js-fade-on-ready mx-auto max-w-6xl translate-y-2 pt-10 opacity-0 transition-all duration-700 md:pt-20"
+				>
+					<h1 class="break-words pb-14 text-4xl font-bold sm:text-5xl md:text-7xl">
+						{project.data.title}
+					</h1>
+					<div class="prose relative max-w-none lg:prose-lg prose-a:break-words">
+						<ProjectDetails
+							client={project.data.title}
+							handover={formatDateForDisplay(project.data.date as string)}
+							tags={project.data.tags.join(', ')}
+							website={project.data.website}
+						/>
+					</div>
+				</div>
+
+				<div
+					class="reveal-fx--translate-up reveal-fx mockup-browser w-full border border-base-300 bg-base-300/85 shadow-lg transition-all duration-300 hover:shadow-xl"
+				>
+					<div class="mockup-browser-toolbar">
+						<div class="input !flex items-center !bg-base-100 text-xs">
+							{project.data.website || project.data.title}
+						</div>
+					</div>
+
+					<ScrollableBackground
+						imageUrl={project.data.image as ImageMetadata}
+						height="600px"
+						alt={project.data.image_alt}
+						scrollSensitivity={20}
 					/>
 				</div>
 			</div>
 
-			<div
-				class="bg-base-300/85 shadow-lg hover:shadow-xl border border-base-300 w-full transition-all reveal-fx--translate-up duration-300 reveal-fx mockup-browser"
-			>
-				<div class="mockup-browser-toolbar">
-					<div class="!flex items-center !bg-base-100 text-xs input">
-						{project.data.website || project.data.title}
-					</div>
+			<div class="mx-auto max-w-6xl pt-10 md:pt-20">
+				<div
+					class="reveal-fx--translate-up reveal-fx prose relative max-w-none lg:prose-lg prose-a:break-words"
+				>
+					<Content />
 				</div>
 
-				<ScrollableBackground
-					imageUrl={project.data.image as ImageMetadata}
-					height="600px"
-					alt={project.data.image_alt}
-					scrollSensitivity={20}
+				<ProjectNav
+					className="reveal-fx--translate-up reveal-fx mt-16 border-t-2 border-base-300 pt-16"
+					nextProject={nextProject}
+					prevProject={prevProject}
 				/>
 			</div>
 		</div>
-
-		<div class="mx-auto pt-10 md:pt-20 max-w-6xl">
-			<div
-				class="relative max-w-none prose-a:break-words reveal-fx--translate-up reveal-fx prose lg:prose-lg"
-			>
-				<Content />
-			</div>
-
-			<ProjectNav
-				className="mt-16 pt-16 border-t-2 border-base-300 reveal-fx--translate-up reveal-fx"
-				nextProject={nextProject}
-				prevProject={prevProject}
-			/>
-		</div>
-	</div>
+	</Section>
 </Layout>

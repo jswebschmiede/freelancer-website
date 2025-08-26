@@ -11,16 +11,16 @@ interface Props {
 const { prevProject, nextProject, className } = Astro.props;
 ---
 
-<div class:list={twMerge('hidden relative md:flex gap-4 mx-auto w-full max-w-6xl', className)}>
-	<div class="flex justify-between items-center gap-4 pb-12 w-full">
-		<div class="hidden md:block">
+<div class:list={twMerge('relative mx-auto flex w-full max-w-6xl gap-4', className)}>
+	<div class="flex w-full items-center justify-between gap-4 pb-12">
+		<div class="hidden sm:block">
 			<a
 				href="/#portfolio"
-				class="group flex items-center gap-2 btn btn-secondary"
+				class="group btn btn-secondary flex items-center gap-2"
 				title="zurück zur Übersicht"
 			>
 				<svg
-					class="w-4 h-4 rotate-90 transition-all group-hover:-translate-x-1 duration-300 will-change-transform"
+					class="h-4 w-4 rotate-90 transition-all duration-300 will-change-transform group-hover:-translate-x-1"
 					width="52"
 					height="61"
 					viewBox="0 0 52 61"
@@ -34,15 +34,15 @@ const { prevProject, nextProject, className } = Astro.props;
 			</a>
 		</div>
 
-		<div class="flex justify-between md:justify-start gap-4 mb-4 md:mb-0 w-full md:w-auto">
+		<div class="mb-4 flex w-full justify-between gap-4 sm:mb-0 sm:w-auto sm:justify-start">
 			<a
 				href={`/projekte/${prevProject.slug}`}
-				class="flex items-center gap-2 btn btn-circle btn-secondary max-md:btn-sm"
+				class="btn btn-circle btn-secondary flex items-center gap-2"
 				title="vorheriges Projekt"
 			>
 				<span class="sr-only">vorheriges Projekt</span>
 				<svg
-					class="w-4 h-4 rotate-90 transition-all group-hover:-translate-x-1 duration-300 will-change-transform"
+					class="h-4 w-4 rotate-90 transition-all duration-300 will-change-transform group-hover:-translate-x-1"
 					width="52"
 					height="61"
 					viewBox="0 0 52 61"
@@ -56,12 +56,12 @@ const { prevProject, nextProject, className } = Astro.props;
 
 			<a
 				href={`/projekte/${nextProject.slug}`}
-				class="flex items-center gap-2 btn btn-circle btn-secondary max-md:btn-sm"
+				class="btn btn-circle btn-secondary flex items-center gap-2"
 				title="nächstes Projekt"
 			>
 				<span class="sr-only">nächstes Projekt</span>
 				<svg
-					class="w-4 h-4 -rotate-90 transition-all group-hover:-translate-x-1 duration-300 will-change-transform"
+					class="h-4 w-4 -rotate-90 transition-all duration-300 will-change-transform group-hover:-translate-x-1"
 					width="52"
 					height="61"
 					viewBox="0 0 52 61"

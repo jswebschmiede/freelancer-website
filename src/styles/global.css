@@ -6,9 +6,9 @@
 @import 'tailwindcss/utilities';
 
 :root {
-	--fixed-header-height: 64px;
+	--fixed-header-height: 74px;
 
-	@screen lg {
+	@media (min-width: theme('screens.lg')) {
 		--fixed-header-height: 112px;
 	}
 }

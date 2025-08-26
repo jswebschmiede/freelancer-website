@@ -1,7 +1,13 @@
 ---
-const { id } = Astro.props;
+import { twMerge } from 'tailwind-merge';
+
+const { id, className } = Astro.props;
 ---
 
-<section {id} class="py-12 sm:py-24 lg:py-32">
+<section {id} class={twMerge('relative py-12 sm:py-24 lg:py-32', className)}>
+	<div
+		class="mask-radial pointer-events-none absolute inset-0 flex items-center justify-center bg-base-100"
+	>
+	</div>
 	<slot />
 </section>
