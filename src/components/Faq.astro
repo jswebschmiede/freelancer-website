@@ -5,13 +5,13 @@ const { faq } = SITE;
 ---
 
 <div
-	class="shadow-xl hover:shadow-2xl border-white/5 rounded-lg w-full transition-shadow reveal-fx--translate-up duration-300 reveal-fx join join-vertical"
+	class="reveal-fx--translate-up reveal-fx group join join-vertical w-full rounded-lg shadow-xl transition-shadow duration-300 hover:shadow-2xl"
 >
 	{
 		faq.map((item, index) => (
-			<div class="collapse collapse-arrow bg-base-100/75 backdrop-blur border-2 border-white/5 join-item">
+			<div class="collapse join-item collapse-arrow border-2 border-white/5 bg-base-100/75 backdrop-blur transition-all duration-300 group-hover:border-accent/10 hover:border-accent/10">
 				<input type="radio" name="my-accordion-4" />
-				<div class="collapse-title font-medium text-xl">{item.question}</div>
+				<div class="collapse-title text-xl font-medium">{item.question}</div>
 				<div class="collapse-content">
 					<p>{item.answer}</p>
 				</div>

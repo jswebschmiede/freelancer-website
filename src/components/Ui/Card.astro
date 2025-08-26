@@ -10,7 +10,7 @@ const { title, className, image, image_alt, href } = Astro.props;
 		<a
 			href={href}
 			class={twMerge(
-				'bg-base-100/75 shadow-xl hover:shadow-2xl backdrop-blur border-2 border-white/5 transition-all hover:-translate-y-2 duration-300 will-change-transform card',
+				'card border-2 border-white/5 bg-base-100/75 shadow-xl backdrop-blur transition-all duration-300 will-change-transform hover:-translate-y-2 hover:border-accent/10 hover:shadow-2xl',
 				className
 			)}
 		>
@@ -20,7 +20,7 @@ const { title, className, image, image_alt, href } = Astro.props;
 						src={image}
 						width={350}
 						height={350 / 1.5}
-						class="w-full h-full object-cover card-image"
+						class="card-image h-full w-full object-cover"
 						alt={image_alt}
 					/>
 				</figure>
@@ -33,7 +33,7 @@ const { title, className, image, image_alt, href } = Astro.props;
 	) : (
 		<div
 			class={twMerge(
-				'bg-base-100/75 shadow-xl hover:shadow-2xl backdrop-blur border-2 border-white/5 transition-all hover:-translate-y-2 duration-300 will-change-transform card',
+				'card border-2 border-white/5 bg-base-100/75 shadow-xl backdrop-blur transition-all duration-300 will-change-transform hover:-translate-y-2 hover:border-accent/10 hover:shadow-2xl',
 				className
 			)}
 		>
@@ -43,7 +43,7 @@ const { title, className, image, image_alt, href } = Astro.props;
 						src={image}
 						width={350}
 						height={350 / 1.5}
-						class="w-full h-full object-cover card-image"
+						class="card-image h-full w-full object-cover"
 						alt={image_alt}
 					/>
 				</figure>

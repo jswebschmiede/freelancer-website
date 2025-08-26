@@ -1,8 +1,9 @@
 ---
+import { Icon } from 'astro-icon/components';
 import { Image } from 'astro:assets';
 import { twMerge } from 'tailwind-merge';
 
-const { title, className, image, image_alt, href } = Astro.props;
+const { title, className, image, image_alt, href, icon } = Astro.props;
 ---
 
 {
@@ -10,23 +11,29 @@ const { title, className, image, image_alt, href } = Astro.props;
 		<a
 			href={href}
 			class={twMerge(
-				'group isolate relative bg-base-100/75 shadow-xl hover:shadow-2xl backdrop-blur border-2 border-white/5 transition-all hover:-translate-y-2 duration-300 will-change-transform magic-card card',
+				'magic-card group card relative isolate border-2 border-white/5 bg-base-100/75 shadow-xl backdrop-blur transition-all duration-300 will-change-transform hover:-translate-y-2 hover:shadow-2xl',
 				className
 			)}
 		>
-			<div class="z-0 absolute inset-0 opacity-0 group-hover:opacity-100 rounded-[inherit] transition-opacity duration-300 pointer-events-none magic-card-glow mix-blend-screen" />
+			<div class="magic-card-glow pointer-events-none absolute inset-0 z-0 rounded-[inherit] opacity-0 mix-blend-screen transition-opacity duration-300 group-hover:opacity-100" />
 			{image && (
-				<figure class="z-10 relative h-[220px]">
+				<figure class="relative z-10 h-[220px]">
 					<Image
 						src={image}
 						width={350}
 						height={350 / 1.5}
-						class="w-full h-full object-cover card-image"
+						class="card-image h-full w-full object-cover"
 						alt={image_alt || title || 'Magic card image'}
 					/>
 				</figure>
 			)}
-			<div class="z-10 relative card-body">
+			<div class="card-body relative z-10">
+				{icon && (
+					<div class="absolute right-3 top-3 opacity-5 transition-all duration-500 group-hover:rotate-6 group-hover:scale-110 group-hover:opacity-15">
+						<Icon name={icon} class="h-12 w-12 animate-pulse text-accent" />
+					</div>
+				)}
+
 				{title !== undefined ? <h2 class="card-title">{title}</h2> : null}
 				<slot />
 			</div>
@@ -34,23 +41,30 @@ const { title, className, image, image_alt, href } = Astro.props;
 	) : (
 		<div
 			class={twMerge(
-				'group isolate relative bg-base-100/75 shadow-xl hover:shadow-2xl backdrop-blur border-2 border-white/5 transition-all hover:-translate-y-2 duration-300 will-change-transform magic-card card',
+				'magic-card group card relative isolate border-2 border-white/5 bg-base-100/75 shadow-xl backdrop-blur transition-all duration-300 will-change-transform hover:-translate-y-2 hover:border-accent/10 hover:shadow-2xl',
 				className
 			)}
 		>
-			<div class="z-0 absolute inset-0 opacity-0 group-hover:opacity-100 rounded-[inherit] transition-opacity duration-300 pointer-events-none magic-card-glow mix-blend-screen" />
+			<div class="magic-card-glow pointer-events-none absolute inset-0 z-0 rounded-[inherit] opacity-0 mix-blend-screen transition-opacity duration-300 group-hover:opacity-100" />
+
 			{image && (
-				<figure class="z-10 relative h-[220px]">
+				<figure class="relative z-10 h-[220px]">
 					<Image
 						src={image}
 						width={350}
 						height={350 / 1.5}
-						class="w-full h-full object-cover card-image"
+						class="card-image h-full w-full object-cover"
 						alt={image_alt || title || ''}
 					/>
 				</figure>
 			)}
-			<div class="z-10 relative card-body">
+			<div class="card-body relative z-10">
+				{icon && (
+					<div class="absolute right-3 top-3 opacity-5 transition-all duration-500 group-hover:rotate-6 group-hover:scale-110 group-hover:opacity-15">
+						<Icon name={icon} class="h-12 w-12 animate-pulse text-accent" />
+					</div>
+				)}
+
 				{title !== undefined ? <h2 class="card-title">{title}</h2> : null}
 				<slot />
 			</div>

@@ -29,9 +29,9 @@ const meta = {
 
 	<Section id="leistungen">
 		<div
-			class="mx-auto px-4 max-w-screen-lg text-center reveal-fx--translate-up reveal-fx prose lg:prose-lg"
+			class="reveal-fx--translate-up reveal-fx prose mx-auto max-w-screen-lg px-4 text-center lg:prose-lg"
 		>
-			<h2 class="font-bold text-3xl md:text-5xl"><Dots />Meine Leistungen</h2>
+			<h2 class="text-3xl font-bold md:text-3xl lg:text-5xl"><Dots />Meine Leistungen</h2>
 			<p>
 				Ich biete Ihnen maßgeschneiderte Web-Lösungen für Ihr Projekt. Egal ob Website, CMS oder ein
 				individuelles System, ich unterstütze Sie bei der Umsetzung.
@@ -39,25 +39,25 @@ const meta = {
 		</div>
 
 		<div
-			class="z-10 relative gap-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mx-auto mt-24 mb-6 px-4 max-w-screen-xl reveal-fx--translate-up cards-wrap reveal-fx"
+			class="reveal-fx--translate-up cards-wrap reveal-fx relative z-10 mx-auto mb-6 mt-24 grid max-w-screen-xl grid-cols-1 gap-8 px-4 sm:grid-cols-2 lg:grid-cols-3"
 		>
-			<Glow className="top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
-			<MagicCard title="Card title!">
+			<Glow className="left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2" />
+			<MagicCard title="Card title!" icon="mdi:cellphone-text">
 				<p>If a dog chews shoes whose shoes does he choose?</p>
 			</MagicCard>
-			<MagicCard title="Card title!">
+			<MagicCard title="Card title!" icon="mdi:star-outline">
 				<p>If a dog chews shoes whose shoes does he choose?</p>
 			</MagicCard>
-			<MagicCard title="Card title!">
+			<MagicCard title="Card title!" icon="mdi:auto-fix">
 				<p>If a dog chews shoes whose shoes does he choose?</p>
 			</MagicCard>
-			<MagicCard title="Card title!">
+			<MagicCard title="Card title!" icon="mdi:thunder-outline">
 				<p>If a dog chews shoes whose shoes does he choose?</p>
 			</MagicCard>
-			<MagicCard title="Card title!">
+			<MagicCard title="Card title!" icon="mdi:code-block-braces">
 				<p>If a dog chews shoes whose shoes does he choose?</p>
 			</MagicCard>
-			<MagicCard title="Card title!">
+			<MagicCard title="Card title!" icon="mdi:checkbox-marked-circle-outline">
 				<p>If a dog chews shoes whose shoes does he choose?</p>
 			</MagicCard>
 		</div>
@@ -65,17 +65,19 @@ const meta = {
 
 	<Section id="prozess">
 		<div
-			class="z-10 relative gap-20 grid grid-cols-1 lg:grid-cols-12 mx-auto px-4 max-w-screen-xl reveal-fx--translate-up reveal-fx"
+			class="reveal-fx--translate-up reveal-fx relative z-10 mx-auto grid max-w-screen-xl grid-cols-1 gap-20 px-4 lg:grid-cols-12"
 		>
 			<div class="lg:col-span-5">
-				<div class="top-24 sticky prose lg:prose-lg">
-					<h3 class="font-bold text-3xl md:text-5xl"><Dots className="mx-0" />Workflow</h3>
+				<div class="prose sticky top-24 lg:prose-lg">
+					<h3 class="text-3xl font-bold md:text-3xl lg:text-5xl">
+						<Dots className="mx-0" />Workflow
+					</h3>
 					<p>
 						Ich entwickle moderne und performante Webseiten und Web-Apps. Dabei setze ich auf
 						aktuelle Technologien und Frameworks.
 					</p>
 					<div
-						class="flex sm:flex-row flex-col justify-start items-start sm:items-center gap-8 mt-9"
+						class="mt-9 flex flex-col items-start justify-start gap-8 sm:flex-row sm:items-center"
 					>
 						<Button href="#kontakt" variant="outline"> Anfrage </Button>
 						<Button href="#fragen" variant="neutral"> Fragen? </Button>
@@ -84,15 +86,15 @@ const meta = {
 			</div>
 
 			<div class="space-y-24 lg:col-span-7">
-				<MagicCard className="mx-auto lg:max-w-md transition-shadow hover:translate-y-0">
-					<h3 class="font-bold text-2xl">Schritt 1</h3>
+				<MagicCard className="mx-auto transition-shadow hover:translate-y-0 lg:max-w-md">
+					<h3 class="text-2xl font-bold">Schritt 1</h3>
 					<p>
 						Ich entwickle moderne und performante Webseiten und Web-Apps. Dabei setze ich auf
 						aktuelle Technologien und Frameworks.
 					</p>
 
 					<svg
-						class="lg:hidden block top-full absolute inset-0 fill-white mx-auto w-8 translate-y-5"
+						class="absolute inset-0 top-full mx-auto block w-8 translate-y-5 fill-white lg:hidden"
 						width="52"
 						height="61"
 						viewBox="0 0 52 61"
@@ -104,7 +106,7 @@ const meta = {
 					</svg>
 
 					<svg
-						class="hidden lg:block top-[75%] -left-24 absolute fill-white w-20"
+						class="absolute -left-24 top-[75%] hidden w-20 fill-white lg:block"
 						viewBox="0 0 92 229"
 						fill="none"
 					>
@@ -113,15 +115,15 @@ const meta = {
 							fill="currentColor"></path>
 					</svg>
 				</MagicCard>
-				<MagicCard className="mx-auto lg:max-w-md transition-shadow hover:translate-y-0">
-					<h3 class="font-bold text-2xl">Schritt 2</h3>
+				<MagicCard className="mx-auto transition-shadow hover:translate-y-0 lg:max-w-md">
+					<h3 class="text-2xl font-bold">Schritt 2</h3>
 					<p>
 						Ich entwickle moderne und performante Webseiten und Web-Apps. Dabei setze ich auf
 						aktuelle Technologien und Frameworks.
 					</p>
 
 					<svg
-						class="lg:hidden block top-full absolute inset-0 fill-white mx-auto w-8 translate-y-5"
+						class="absolute inset-0 top-full mx-auto block w-8 translate-y-5 fill-white lg:hidden"
 						width="52"
 						height="61"
 						viewBox="0 0 52 61"
@@ -133,7 +135,7 @@ const meta = {
 					</svg>
 
 					<svg
-						class="hidden lg:block top-[75%] -right-24 absolute fill-white w-20"
+						class="absolute -right-24 top-[75%] hidden w-20 fill-white lg:block"
 						viewBox="0 0 91 229"
 						fill="none"
 					>
@@ -142,15 +144,15 @@ const meta = {
 							fill="currentColor"></path>
 					</svg>
 				</MagicCard>
-				<MagicCard className="mx-auto lg:max-w-md transition-shadow hover:translate-y-0">
-					<h3 class="font-bold text-2xl">Schritt 3</h3>
+				<MagicCard className="mx-auto transition-shadow hover:translate-y-0 lg:max-w-md">
+					<h3 class="text-2xl font-bold">Schritt 3</h3>
 					<p>
 						Ich entwickle moderne und performante Webseiten und Web-Apps. Dabei setze ich auf
 						aktuelle Technologien und Frameworks.
 					</p>
 
 					<svg
-						class="lg:hidden block top-full absolute inset-0 fill-white mx-auto w-8 translate-y-5"
+						class="absolute inset-0 top-full mx-auto block w-8 translate-y-5 fill-white lg:hidden"
 						width="52"
 						height="61"
 						viewBox="0 0 52 61"
@@ -162,7 +164,7 @@ const meta = {
 					</svg>
 
 					<svg
-						class="hidden lg:block top-[75%] -left-24 absolute fill-white w-20"
+						class="absolute -left-24 top-[75%] hidden w-20 fill-white lg:block"
 						viewBox="0 0 92 229"
 						fill="none"
 					>
@@ -171,52 +173,52 @@ const meta = {
 							fill="currentColor"></path>
 					</svg>
 				</MagicCard>
-				<MagicCard className="mx-auto lg:max-w-md transition-shadow hover:translate-y-0">
-					<h3 class="font-bold text-2xl">Schritt 4</h3>
+				<MagicCard className="mx-auto transition-shadow hover:translate-y-0 lg:max-w-md">
+					<h3 class="text-2xl font-bold">Schritt 4</h3>
 					<p>
 						Ich entwickle moderne und performante Webseiten und Web-Apps. Dabei setze ich auf
 						aktuelle Technologien und Frameworks.
 					</p>
 				</MagicCard>
 			</div>
-			<Glow className="top-auto md:right-0 bottom-12 md:left-auto w-[400px] h-[400px]" />
+			<Glow className="bottom-12 top-auto h-[400px] w-[400px] md:left-auto md:right-0" />
 		</div>
 	</Section>
 
 	<Section id="portfolio">
 		<div
-			class="mx-auto px-4 max-w-screen-lg text-center reveal-fx--translate-up reveal-fx prose lg:prose-lg"
+			class="reveal-fx--translate-up reveal-fx prose mx-auto max-w-screen-lg px-4 text-center lg:prose-lg"
 		>
-			<h2 class="font-bold text-3xl md:text-3xl lg:text-5xl"><Dots />Meine Projekte</h2>
+			<h2 class="text-3xl font-bold md:text-3xl lg:text-5xl"><Dots />Meine Projekte</h2>
 			<p class="text-lg">
 				Ich habe bereits an vielen spannenden Projekten gearbeitet. <br /> Hier finden Sie eine Auswahl
 				meiner Arbeiten.
 			</p>
 		</div>
 
-		<div class="z-10 relative mx-auto mt-24 px-4 max-w-screen-xl reveal-fx--translate-up reveal-fx">
-			<Glow className="top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
-			<div class="gap-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 projects">
+		<div class="reveal-fx--translate-up reveal-fx relative z-10 mx-auto mt-24 max-w-screen-xl px-4">
+			<Glow className="left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2" />
+			<div class="projects grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
 				{allProjects.map((project) => <Project project={project} />)}
 			</div>
 		</div>
-		<nav class="flex justify-center px-4 pt-16 reveal-fx--translate-up reveal-fx">
+		<nav class="reveal-fx--translate-up reveal-fx flex justify-center px-4 pt-16">
 			<Button className="ajax-load-more" href="#">Mehr Projekte</Button>
 		</nav>
 	</Section>
 
 	<Section id="fragen">
 		<div
-			class="mx-auto px-4 max-w-screen-lg text-center reveal-fx--translate-up reveal-fx prose lg:prose-lg"
+			class="reveal-fx--translate-up reveal-fx prose mx-auto max-w-screen-lg px-4 text-center lg:prose-lg"
 		>
-			<h2 class="font-bold text-3xl md:text-5xl"><Dots />Fragen?</h2>
+			<h2 class="text-3xl font-bold md:text-3xl lg:text-5xl"><Dots />Fragen?</h2>
 			<p class="text-lg">
 				Haben Sie Fragen oder möchten Sie mehr über meine Leistungen erfahren? <br /> Kontaktieren Sie
 				mich gerne.
 			</p>
 		</div>
-		<div class="z-10 relative grid-cols-3 mx-auto mt-24 px-4 max-w-screen-xl">
-			<Glow className="right-0 left-auto" />
+		<div class="relative z-10 mx-auto mt-24 max-w-screen-xl grid-cols-3 px-4">
+			<Glow className="left-auto right-0" />
 
 			<Faq />
 		</div>
@@ -224,9 +226,9 @@ const meta = {
 
 	<Section id="kontakt">
 		<div
-			class="mx-auto px-4 max-w-screen-lg text-center reveal-fx--translate-up reveal-fx prose lg:prose-lg"
+			class="reveal-fx--translate-up reveal-fx prose mx-auto max-w-screen-lg px-4 text-center lg:prose-lg"
 		>
-			<h2 class="font-bold text-3xl md:text-3xl lg:text-5xl"><Dots />Kontakt</h2>
+			<h2 class="text-3xl font-bold md:text-3xl lg:text-5xl"><Dots />Kontakt</h2>
 			<p class="text-lg">
 				Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quibusdam aspernatur error nobis
 				sequi, odio, omnis ducimus sunt, eius dignissimos commodi maiores veniam consequatur
@@ -234,7 +236,7 @@ const meta = {
 			</p>
 		</div>
 		<div
-			class="z-10 relative place-items-center gap-8 grid grid-cols-1 lg:grid-cols-2 mx-auto mt-24 mb-6 px-4 max-w-screen-xl reveal-fx--translate-up reveal-fx"
+			class="reveal-fx--translate-up reveal-fx relative z-10 mx-auto mb-6 mt-24 grid max-w-screen-xl grid-cols-1 place-items-center gap-8 px-4 lg:grid-cols-2"
 		>
 			<div>
 				<ul>
@@ -260,55 +262,55 @@ const meta = {
 			</div>
 
 			<Card className="w-full transition-shadow hover:translate-y-0">
-				<form id="kontakt-form" class="space-y-8 mb-8" method="post">
-					<div class="gap-8 grid grid-cols-1 lg:grid-cols-2">
-						<label class="gap-3 w-full form-control">
+				<form id="kontakt-form" class="mb-8 space-y-8" method="post">
+					<div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
+						<label class="form-control w-full gap-3">
 							<span class="label-text">Ihr Name *</span>
 							<input
 								type="text"
 								name="name"
-								class="bg-neutral border-2 border-white/5 rounded-lg w-full input"
+								class="input w-full rounded-lg border-2 border-white/5 bg-neutral"
 								required
 							/>
 						</label>
-						<label class="gap-3 w-full form-control">
+						<label class="form-control w-full gap-3">
 							<span class="label-text">E-Mail Adresse *</span>
 							<input
 								type="email"
 								name="email"
-								class="bg-neutral border-2 border-white/5 rounded-lg w-full input"
+								class="input w-full rounded-lg border-2 border-white/5 bg-neutral"
 								required
 							/>
 						</label>
 					</div>
-					<div class="gap-8 grid grid-cols-1 lg:grid-cols-2">
-						<label class="gap-3 w-full form-control">
+					<div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
+						<label class="form-control w-full gap-3">
 							<span class="label-text">Telefonummer</span>
 							<input
 								type="text"
 								name="name"
-								class="bg-neutral border-2 border-white/5 rounded-lg w-full input"
+								class="input w-full rounded-lg border-2 border-white/5 bg-neutral"
 							/>
 						</label>
-						<label class="gap-3 w-full form-control">
+						<label class="form-control w-full gap-3">
 							<span class="label-text">Betreff</span>
 							<input
 								type="email"
 								name="email"
-								class="bg-neutral border-2 border-white/5 rounded-lg w-full input"
+								class="input w-full rounded-lg border-2 border-white/5 bg-neutral"
 							/>
 						</label>
 					</div>
 
-					<label class="gap-3 w-full form-control">
+					<label class="form-control w-full gap-3">
 						<span class="label-text">Ihr Anliegen *</span>
 						<textarea
-							class="bg-neutral border-2 border-white/5 rounded-lg w-full h-32 textarea"
+							class="textarea h-32 w-full rounded-lg border-2 border-white/5 bg-neutral"
 							required></textarea>
 					</label>
 
 					<div class="form-control">
-						<label class="justify-start gap-3 cursor-pointer label">
+						<label class="label cursor-pointer justify-start gap-3">
 							<input type="checkbox" class="checkbox" name="datenschutz" required />
 							<span class="label-text"
 								>Ich habe die Datenschutzerklärung gelesen und stimme ihr zu.
@@ -317,18 +319,18 @@ const meta = {
 					</div>
 
 					<div
-						class="inline-block bg-gradient-to-r from-primary to-accent hover:shadow-2xl p-[0.05rem] rounded-btn hover:scale-[1.025] transition-transform duration-300 cursor-pointer will-change-transform transform"
+						class="inline-block transform cursor-pointer rounded-btn bg-gradient-to-r from-primary to-accent p-[0.05rem] transition-transform duration-300 will-change-transform hover:scale-[1.025] hover:shadow-2xl"
 					>
 						<button
 							type="submit"
-							class="bg-base-100 hover:bg-base-200 shadow-md px-12 btn-outline h-14 min-h-14 font-normal hover:text-neutral-content text-base btn no-animation"
+							class="btn btn-outline no-animation h-14 min-h-14 bg-base-100 px-12 text-base font-normal shadow-md hover:bg-base-200 hover:text-neutral-content"
 						>
 							Absenden
 						</button>
 					</div>
 				</form>
 
-				<span class="self-end gap-2 border-2 border-white/5 h-8 badge">
+				<span class="badge h-8 gap-2 self-end border-2 border-white/5">
 					<Icon name="mdi:info" />
 					Felder mit * müssen ausgefüllt werden!</span
 				>
