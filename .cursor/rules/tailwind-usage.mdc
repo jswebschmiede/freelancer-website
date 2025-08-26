@@ -7,7 +7,6 @@ globs: *.astro,*.tsx,*.jsx,*.css
 ## Grundlegende Verwendung
 
 - Verwende Tailwind-Klassen für Styling
-- Nutze die Konfiguration in [tailwind.config.mjs](mdc:tailwind.config.mjs)
 - Folge den bestehenden Design-Patterns
 
 ## Komponenten-Styling
@@ -24,6 +23,6 @@ globs: *.astro,*.tsx,*.jsx,*.css
 
 ## Anpassungen
 
-- Tailwind-Anpassungen werden in [tailwind.config.mjs](mdc:tailwind.config.mjs) definiert
+- Tailwind-Anpassungen werden in global.css unter @theme definiert
 - Verwende die bestehenden Farben und Schriftarten
 - Halte dich an die definierte Design-Sprache

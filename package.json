@@ -1,7 +1,7 @@
 {
   "name": "freelancer-website",
   "type": "module",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
@@ -12,22 +12,22 @@
   "dependencies": {
     "@astrojs/mdx": "^4.3.0",
     "@astrojs/sitemap": "3.4.1",
-    "@astrojs/tailwind": "^6.0.2",
-    "@fontsource/poppins": "^5.0.8",
+    "@fontsource/poppins": "^5.2.6",
     "@tailwindcss/aspect-ratio": "^0.4.2",
-    "@tailwindcss/typography": "^0.5.10",
+    "@tailwindcss/typography": "^0.5.16",
+    "@tailwindcss/vite": "^4.1.12",
     "astro": "^5.10.1",
     "astro-icon": "^1.1.0",
     "astro-seo": "^0.8.0",
-    "tailwind-scrollbar": "^3.0.5",
-    "tailwindcss": "^3.4.1"
+    "daisyui": "^5.0.51",
+    "tailwind-merge": "^3.3.1",
+    "tailwind-scrollbar": "^4.0.2",
+    "tailwindcss": "^4.1.12"
   },
   "devDependencies": {
     "@iconify-json/mdi": "^1.1.64",
-    "daisyui": "^4.6.2",
     "prettier": "^3.2.5",
     "prettier-plugin-astro": "^0.13.0",
-    "prettier-plugin-tailwindcss": "^0.5.11",
-    "tailwind-merge": "^2.2.1"
+    "prettier-plugin-tailwindcss": "^0.5.11"
   }
 }
