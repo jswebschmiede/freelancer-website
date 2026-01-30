@@ -4,19 +4,19 @@ import { twMerge } from 'tailwind-merge';
 interface Props {
 	href: string;
 	className?: string;
-	variant?: 'outline' | 'neutral';
+	variant?: 'outline' | 'neutral' | 'primary';
 }
 
-const { href, className, variant = 'outline' } = Astro.props;
+const { href, className, variant = 'primary' } = Astro.props;
 ---
 
 {
 	variant?.toLowerCase() === 'outline' ? (
-		<div class="inline-block w-full transform cursor-pointer rounded-btn bg-gradient-to-r from-primary to-accent p-[0.05rem] transition-transform duration-300 will-change-transform hover:scale-[1.025] hover:shadow-2xl sm:w-auto">
+		<div class="inline-block w-full transform cursor-pointer rounded-btn bg-gradient-to-r from-primary to-accent p-[0.05rem] transition-transform duration-300 will-change-transform hover:scale-[1.025] hover:shadow-md sm:w-auto">
 			<a
 				href={href ?? '#'}
 				class:list={twMerge(
-					'btn btn-outline no-animation h-14 min-h-14 w-[inherit] bg-base-100 px-12 text-base font-normal shadow-md hover:bg-base-200 hover:text-neutral-content',
+					'btn btn-outline no-animation h-14 min-h-14 w-[inherit] bg-base-100 px-12 text-base font-normal shadow-sm hover:bg-base-200 hover:text-neutral-content',
 					className
 				)}
 			>
@@ -24,11 +24,11 @@ const { href, className, variant = 'outline' } = Astro.props;
 			</a>
 		</div>
 	) : variant?.toLowerCase() === 'neutral' ? (
-		<div class="inline-block w-full transform cursor-pointer rounded-btn bg-neutral p-[0.05rem] transition-transform duration-300 will-change-transform hover:scale-[1.025] hover:shadow-2xl sm:w-auto">
+		<div class="inline-block w-full transform cursor-pointer rounded-btn bg-neutral p-[0.05rem] transition-transform duration-300 will-change-transform hover:scale-[1.025] hover:shadow-md sm:w-auto">
 			<a
 				href={href ?? '#'}
 				class:list={twMerge(
-					'btn btn-neutral no-animation h-14 min-h-14 w-[inherit] px-12 text-base font-normal shadow-md',
+					'btn btn-neutral no-animation h-14 min-h-14 w-[inherit] px-12 text-base font-normal shadow-sm',
 					className
 				)}
 			>
@@ -36,11 +36,11 @@ const { href, className, variant = 'outline' } = Astro.props;
 			</a>
 		</div>
 	) : (
-		<div class="inline-block w-full transform cursor-pointer rounded-btn bg-neutral p-[0.05rem] transition-transform duration-300 will-change-transform hover:scale-[1.025] hover:shadow-2xl md:w-auto">
+		<div class="inline-block w-full transform cursor-pointer rounded-btn bg-primary p-[0.05rem] transition-transform duration-300 will-change-transform hover:scale-[1.025] hover:shadow-md md:w-auto">
 			<a
 				href={href ?? '#'}
 				class:list={twMerge(
-					'btn no-animation h-14 min-h-14 w-[inherit] px-12 text-base font-normal shadow-md',
+					'btn btn-primary no-animation h-14 min-h-14 w-[inherit] px-12 text-base font-normal shadow-sm',
 					className
 				)}
 			>

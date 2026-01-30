@@ -27,12 +27,12 @@ const meta = {
 <PageLayout {meta} bodyClass="home">
 	<Hero slot="hero" />
 
-	<Section id="leistungen" className="circuit-pattern">
+	<Section id="leistungen">
 		<div
 			class="reveal-fx--translate-up reveal-fx prose mx-auto max-w-screen-lg px-4 text-center lg:prose-lg"
 		>
 			<h2 class="text-3xl font-bold md:text-3xl lg:text-5xl">
-				<Dots />Meine <span class="text-secondary">Leistungen</span>
+				<Dots />Meine <span class="text-primary">Leistungen</span>
 			</h2>
 			<p>
 				Ich biete Ihnen maßgeschneiderte Web-Lösungen für Ihr Projekt. Egal ob Website, CMS oder ein
@@ -43,7 +43,6 @@ const meta = {
 		<div
 			class="reveal-fx--translate-up cards-wrap reveal-fx relative z-10 mx-auto mb-6 mt-24 grid max-w-screen-xl grid-cols-1 gap-8 px-4 sm:grid-cols-2 lg:grid-cols-3"
 		>
-			<Glow className="left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2" />
 			<MagicCard title="Card title!" icon="mdi:cellphone-text">
 				<p>If a dog chews shoes whose shoes does he choose?</p>
 			</MagicCard>
@@ -65,7 +64,7 @@ const meta = {
 		</div>
 	</Section>
 
-	<Section id="prozess" className="circuit-pattern">
+	<Section id="prozess">
 		<div
 			class="reveal-fx--translate-up reveal-fx relative z-10 mx-auto grid max-w-screen-xl grid-cols-1 gap-20 px-4 lg:grid-cols-12"
 		>
@@ -183,16 +182,15 @@ const meta = {
 					</p>
 				</MagicCard>
 			</div>
-			<Glow className="bottom-12 top-auto h-[400px] w-[400px] md:left-auto md:right-0" />
 		</div>
 	</Section>
 
-	<Section id="portfolio" className="circuit-pattern">
+	<Section id="portfolio">
 		<div
 			class="reveal-fx--translate-up reveal-fx prose mx-auto max-w-screen-lg px-4 text-center lg:prose-lg"
 		>
 			<h2 class="text-3xl font-bold md:text-3xl lg:text-5xl">
-				<Dots />Meine <span class="text-secondary">Projekte</span>
+				<Dots />Meine <span class="text-primary">Projekte</span>
 			</h2>
 			<p class="text-lg">
 				Ich habe bereits an vielen spannenden Projekten gearbeitet. <br /> Hier finden Sie eine Auswahl
@@ -201,7 +199,6 @@ const meta = {
 		</div>
 
 		<div class="reveal-fx--translate-up reveal-fx relative z-10 mx-auto mt-24 max-w-screen-xl px-4">
-			<Glow className="left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2" />
 			<div class="projects grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
 				{allProjects.map((project) => <Project project={project} />)}
 			</div>
@@ -211,7 +208,7 @@ const meta = {
 		</nav>
 	</Section>
 
-	<Section id="fragen" className="circuit-pattern">
+	<Section id="fragen">
 		<div
 			class="reveal-fx--translate-up reveal-fx prose mx-auto max-w-screen-lg px-4 text-center lg:prose-lg"
 		>
@@ -222,13 +219,11 @@ const meta = {
 			</p>
 		</div>
 		<div class="relative z-10 mx-auto mt-24 max-w-screen-xl grid-cols-3 px-4">
-			<Glow className="left-auto right-0" />
-
 			<Faq />
 		</div>
 	</Section>
 
-	<Section id="kontakt" className="circuit-pattern">
+	<Section id="kontakt">
 		<div
 			class="reveal-fx--translate-up reveal-fx prose mx-auto max-w-screen-lg px-4 text-center lg:prose-lg"
 		>
@@ -323,11 +318,11 @@ const meta = {
 					</div>
 
 					<div
-						class="inline-block transform cursor-pointer rounded-btn bg-gradient-to-r from-primary to-accent p-[0.05rem] transition-transform duration-300 will-change-transform hover:scale-[1.025] hover:shadow-2xl"
+						class="inline-block transform cursor-pointer rounded-btn bg-gradient-to-r from-primary to-accent p-[0.05rem] transition-transform duration-300 will-change-transform hover:scale-[1.025] hover:shadow-md"
 					>
 						<button
 							type="submit"
-							class="btn btn-outline no-animation h-14 min-h-14 bg-base-100 px-12 text-base font-normal shadow-md hover:bg-base-200 hover:text-neutral-content"
+							class="btn btn-outline no-animation h-14 min-h-14 bg-base-100 px-12 text-base font-normal shadow-sm hover:bg-base-200 hover:text-neutral-content"
 						>
 							Absenden
 						</button>

@@ -20,7 +20,7 @@ const optimizedBackground = await getImage({
 
 <div
 	class:list={twMerge(
-		'group relative w-full h-[400px] lg:h-[var(--scrollable-background-height)] overflow-hidden touch-none cursor-none scrollable-background-container',
+		'scrollable-background-container group relative h-[400px] w-full cursor-none touch-none overflow-hidden lg:h-[var(--scrollable-background-height)]',
 		className
 	)}
 	style={`--scrollable-background-height: ${height};`}
@@ -31,16 +31,16 @@ const optimizedBackground = await getImage({
 >
 	<!-- Custom Cursor - Always visible when mouse is over container -->
 	<div
-		class="hidden md:block z-50 absolute md:group-hover:opacity-100 md:opacity-0 -translate-x-1/2 -translate-y-1/2 pointer-events-none custom-cursor"
+		class="custom-cursor pointer-events-none absolute z-50 hidden -translate-x-1/2 -translate-y-1/2 md:block md:opacity-0 md:group-hover:opacity-100"
 		data-custom-cursor
 		style="left: -100px; top: -100px;"
 	>
 		<div
-			class="flex justify-center items-center shadow-lg btn btn-circle btn-primary"
+			class="btn btn-circle btn-primary flex items-center justify-center shadow-sm"
 			data-cursor-circle
 		>
 			<svg
-				class="w-5 h-5 -rotate-180"
+				class="h-5 w-5 -rotate-180"
 				width="52"
 				height="61"
 				viewBox="0 0 52 61"
@@ -54,12 +54,12 @@ const optimizedBackground = await getImage({
 				</path>
 			</svg>
 
-			<svg class="w-2 h-2" viewBox="0 0 24 24" fill="none" data-cursor-arrow>
+			<svg class="h-2 w-2" viewBox="0 0 24 24" fill="none" data-cursor-arrow>
 				<circle cx="12" cy="12" r="12" fill="currentColor"></circle>
 			</svg>
 
 			<svg
-				class="w-5 h-5 rotate-0"
+				class="h-5 w-5 rotate-0"
 				width="52"
 				height="61"
 				viewBox="0 0 52 61"
@@ -74,7 +74,7 @@ const optimizedBackground = await getImage({
 	</div>
 
 	<div
-		class="absolute bg-[length:100%_auto] bg-center w-full transition-transform duration-300 ease-out scrollable-background"
+		class="scrollable-background absolute w-full bg-[length:100%_auto] bg-center transition-transform duration-300 ease-out"
 		style={`background-image: url(${optimizedBackground.src});`}
 		data-image-height={optimizedBackground.attributes.height}
 		data-image-width={optimizedBackground.attributes.width}

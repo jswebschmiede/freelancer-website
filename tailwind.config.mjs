@@ -49,6 +49,21 @@ export default {
                     ...require('daisyui/src/theming/themes')['synthwave'],
                     '--rounded-btn': '5rem'
                 }
+            },
+            {
+                dark: {
+                    ...require('daisyui/src/theming/themes')['dark'],
+                    '--rounded-btn': '5rem',
+                    'primary': '#0090b5',
+                    'secondary': '#f43098',
+                    'accent': '#00d3bb',
+                    'neutral': '#0b0809',
+                    'info': '#00bafe',
+                    'base-100': '#030712',
+                    'success': '#00d390',
+                    'warning': '#fcb700',
+                    'error': '#ff637d',
+                }
             }
         ]
     },

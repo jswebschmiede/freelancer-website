@@ -7,11 +7,14 @@ const { meta, bodyClass } = Astro.props;
 ---
 
 <Layout {meta} {bodyClass}>
-	<div class="circuit-pattern bg-base-100 pt-[--fixed-header-height]">
+	<div
+		class={`bg-base-100 relative pt-[--fixed-header-height] ${bodyClass?.includes('home') ? 'circuit-pattern' : ''}`}
+	>
 		<div
-			class="mask-radial pointer-events-none absolute inset-0 flex items-center justify-center bg-base-100"
+			class="absolute inset-0 bg-gradient-to-b from-base-100 from-0% via-primary/10 via-20% to-base-100 to-90%"
 		>
 		</div>
+
 		<slot name="header">
 			<Header />
 		</slot>

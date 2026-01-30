@@ -6,22 +6,22 @@ const navLinks = SITE.links;
 ---
 
 <div
-	class="h-[--fixed-header-height] mx-auto px-4 border-b border-b-white/0 max-w-screen-xl navbar"
+	class="navbar mx-auto h-[--fixed-header-height] max-w-screen-xl border-b border-b-white/0 px-4"
 >
-	<div class="opacity-100 translate-x-0 navbar-start">
+	<div class="navbar-start translate-x-0 opacity-100">
 		<a
-			class="flex justify-center items-center shadow-2xl btn-outline lg:w-16 lg:h-16 aspect-1 font-bold text-xl lg:text-4xl btn btn-circle btn-primary"
+			class="btn btn-circle btn-outline btn-primary flex aspect-1 items-center justify-center text-xl font-bold shadow-md lg:h-16 lg:w-16 lg:text-4xl"
 			href="/"
 		>
 			JS
 		</a>
 	</div>
-	<div class="hidden lg:flex navbar-center">
-		<ul class="items-center gap-8 border border-transparent rounded-btn menu menu-horizontal">
+	<div class="navbar-center hidden overflow-hidden rounded-btn lg:flex">
+		<ul class="menu menu-horizontal items-center gap-8 rounded-btn border border-transparent">
 			{
 				navLinks.map((item) => (
 					<li>
-						<a class="inline-flex flex-nowrap py-0 text-base btn btn-ghost" href={item.href}>
+						<a class="btn btn-ghost inline-flex flex-nowrap py-0 text-base" href={item.href}>
 							{item.name}
 						</a>
 					</li>
@@ -31,10 +31,10 @@ const navLinks = SITE.links;
 	</div>
 	<div class="navbar-end">
 		<div class="dropdown dropdown-end">
-			<div tabindex="0" role="button" class="lg:hidden btn btn-ghost">
+			<div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
-					class="w-6 h-6"
+					class="h-6 w-6"
 					fill="none"
 					viewBox="0 0 24 24"
 					stroke="currentColor"
@@ -47,14 +47,14 @@ const navLinks = SITE.links;
 				</svg>
 			</div>
 			<ul
-				class="z-[1] items-start bg-base-100 shadow-lg mt-3 rounded-box w-52 menu dropdown-content menu-sm"
+				class="menu dropdown-content menu-sm z-[1] mt-3 w-52 items-start rounded-box bg-base-100 shadow-sm"
 				tabindex="0"
 			>
 				{
 					navLinks.map((item) => (
 						<li class="flex w-full">
 							<a
-								class="inline-flex flex-nowrap justify-start py-0 w-full text-base text-left btn btn-ghost"
+								class="btn btn-ghost inline-flex w-full flex-nowrap justify-start py-0 text-left text-base"
 								href={item.href}
 							>
 								{item.name}
@@ -72,11 +72,14 @@ const navLinks = SITE.links;
 
 <script>
 	const navbar = document.querySelector('.navbar');
+	const navbarCenter = document.querySelector('.navbar-center');
 	window.addEventListener('scroll', () => {
 		if (window.scrollY > 50) {
 			navbar.classList.add('sticky-navbar');
+			navbarCenter.classList.add('backdrop-blur-sm');
 		} else {
 			navbar.classList.remove('sticky-navbar');
+			navbarCenter.classList.remove('backdrop-blur-sm');
 		}
 	});
 </script>
