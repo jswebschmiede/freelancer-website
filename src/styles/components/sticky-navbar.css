@@ -1,21 +1,21 @@
 .sticky-navbar {
-	@apply !border-b-white/0 bg-base-100/85 shadow-sm backdrop-blur transition-all duration-300 lg:bg-transparent lg:shadow-none lg:backdrop-blur-none;
+  @apply !border-b-white/0 bg-base-100/85 shadow-sm backdrop-blur transition-all duration-300 lg:bg-transparent lg:shadow-none lg:backdrop-blur-none;
 
-	.navbar-start,
-	.navbar-end,
-	.menu {
-		@apply transition-all duration-300 will-change-transform;
-	}
+  .navbar-start,
+  .navbar-end,
+  .menu {
+    @apply transition-all duration-300 will-change-transform;
+  }
 
-	.navbar-start {
-		@apply lg:pointer-events-none lg:-translate-x-4 lg:opacity-0;
-	}
+  .navbar-start {
+    @apply lg:pointer-events-none lg:-translate-x-4 lg:opacity-0;
+  }
 
-	.navbar-end {
-		@apply lg:pointer-events-none lg:translate-x-4 lg:opacity-0;
-	}
+  .navbar-end {
+    @apply lg:pointer-events-none lg:translate-x-4 lg:opacity-0;
+  }
 
-	.menu:not(.menu-sm) {
-		@apply rounded-btn border border-white/5 bg-base-100 bg-opacity-95 shadow-sm backdrop-blur-lg;
-	}
+  .menu:not(.menu-sm) {
+    @apply rounded-btn border border-white/5 bg-base-100 bg-opacity-95 shadow-sm backdrop-blur-lg;
+  }
 }

@@ -1,0 +1,6 @@
+@theme {
+	--font-sans: 'Poppins', sans-serif;
+	--animation-glow-pulse: glow-pulse 12s ease-in-out infinite;
+	--animation-fade-in: fadeIn 0.5s ease-in-out;
+	--animation-scale-in: scaleIn 0.5s ease-out;
+}

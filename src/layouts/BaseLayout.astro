@@ -14,8 +14,8 @@ import ProgressToTopButton from '@components/Ui/ProgressToTopButton.astro';
 import Preloader from '@components/Ui/Preloader.astro';
 
 export interface Props {
-	meta?: MetaSEO;
-	bodyClass?: string;
+  meta?: MetaSEO;
+  bodyClass?: string;
 }
 
 const { meta = {}, bodyClass = 'site' } = Astro.props;
@@ -24,21 +24,21 @@ const { textDirection = 'ltr', lang = 'en' } = SITE;
 
 <!doctype html>
 <html
-	lang={lang}
-	dir={textDirection}
-	class="scrollbar-rounded-lg min-h-full scroll-smooth scrollbar-thin scrollbar-thumb-rounded"
-	data-theme="dark"
+  lang={lang}
+  dir={textDirection}
+  class="scrollbar-rounded-lg min-h-full scroll-smooth scrollbar-thin scrollbar-thumb-rounded"
+  data-theme="dark"
 >
-	<head>
-		<MetaTags {...meta} />
-	</head>
-	<body class:list={['flex h-full flex-col font-sans antialiased', bodyClass]}>
-		<div class="overflow-clip">
-			<slot />
-			<ProgressToTopButton />
-			<Preloader />
-		</div>
+  <head>
+    <MetaTags {...meta} />
+  </head>
+  <body class:list={['flex h-full flex-col font-sans antialiased', bodyClass]}>
+    <div class="overflow-clip">
+      <slot />
+      <ProgressToTopButton />
+      <Preloader />
+    </div>
 
-		<BasicScripts />
-	</body>
+    <BasicScripts />
+  </body>
 </html>
