@@ -27,7 +27,7 @@ Usage: codyhouse.co/license
 }
 .reveal-fx::before {
   display: none;
-  content: "reveal-fx";
+  content: 'reveal-fx';
 }
 .reveal-fx--translate,
 .reveal-fx--translate-up {
@@ -78,10 +78,8 @@ Usage: codyhouse.co/license
 .reveal-fx--rotate-right > *,
 .reveal-fx--rotate-left > *,
 .reveal-fx--rotate-up > * {
-  transition: -webkit-transform var(--reveal-fx-duration)
-    var(--reveal-fx-timing-function);
-  transition: transform var(--reveal-fx-duration)
-    var(--reveal-fx-timing-function);
+  transition: -webkit-transform var(--reveal-fx-duration) var(--reveal-fx-timing-function);
+  transition: transform var(--reveal-fx-duration) var(--reveal-fx-timing-function);
   transition:
     transform var(--reveal-fx-duration) var(--reveal-fx-timing-function),
     -webkit-transform var(--reveal-fx-duration) var(--reveal-fx-timing-function);
@@ -110,16 +108,15 @@ Usage: codyhouse.co/license
 .reveal-fx--text-mask > * {
   display: inline-block;
   transform: translateY(100%);
-  transition: transform var(--reveal-fx-duration)
-    var(--reveal-fx-timing-function);
+  transition: transform var(--reveal-fx-duration) var(--reveal-fx-timing-function);
   will-change: transform;
 }
-[class*="reveal-fx--translate"],
-[class*="reveal-fx--scale"] {
+[class*='reveal-fx--translate'],
+[class*='reveal-fx--scale'] {
   will-change: opacity, transform;
 }
 .reveal-fx--text-mask > *,
-[class*="reveal-fx--rotate"] > * {
+[class*='reveal-fx--rotate'] > * {
   will-change: transform;
 }
 .reveal-fx--clip-x > *,
@@ -140,9 +137,9 @@ Usage: codyhouse.co/license
 .reveal-fx--is-visible {
   opacity: 1;
 }
-.reveal-fx--is-visible[class*="reveal-fx--translate"],
-.reveal-fx--is-visible[class*="reveal-fx--scale"],
-.reveal-fx--is-visible[class*="reveal-fx--rotate"] > *,
+.reveal-fx--is-visible[class*='reveal-fx--translate'],
+.reveal-fx--is-visible[class*='reveal-fx--scale'],
+.reveal-fx--is-visible[class*='reveal-fx--rotate'] > *,
 .reveal-fx--is-visible.reveal-fx--text-mask > * {
   -webkit-transform: translate(0);
   transform: translate(0);

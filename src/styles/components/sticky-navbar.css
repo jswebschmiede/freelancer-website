@@ -1,5 +1,5 @@
 .sticky-navbar {
-  @apply !border-b-white/0 bg-base-100/85 shadow-sm backdrop-blur transition-all duration-300 lg:bg-transparent lg:shadow-none lg:backdrop-blur-none;
+  @apply border-b-white/0! bg-base-100/85 shadow-sm backdrop-blur transition-all duration-300 lg:bg-transparent lg:shadow-none lg:backdrop-blur-none;
 
   .navbar-start,
   .navbar-end,

@@ -3,7 +3,7 @@
 @plugin 'daisyui';
 @plugin "daisyui/theme" {
   name: 'dark';
-  default: false;
+  default: true;
   prefersdark: false;
   color-scheme: 'dark';
   --color-base-100: oklch(25.33% 0.016 252.42);
@@ -42,11 +42,16 @@
 }
 
 @plugin '@tailwindcss/typography';
-
-@import 'theme.css';
 @import '@styles/animations.css';
 @import '@styles/reveal-effects.css';
-@import 'utils.css';
+@import '@styles/projects.css';
+
+@theme {
+  --font-sans: 'Poppins', sans-serif;
+  --animation-glow-pulse: glow-pulse 12s ease-in-out infinite;
+  --animation-fade-in: fadeIn 0.5s ease-in-out;
+  --animation-scale-in: scaleIn 0.5s ease-out;
+}
 
 :root {
   --fixed-header-height: 74px;
@@ -54,4 +59,8 @@
   @variant lg {
     --fixed-header-height: 112px;
   }
+}
+
+@utility rounded-btn {
+  @apply rounded-(--rounded-btn);
 }
