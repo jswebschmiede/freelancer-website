@@ -60,11 +60,12 @@ export default {
         function ({ addUtilities }) {
             addUtilities({
                 '.circuit-pattern': {
-                    'background-image': 'radial-gradient(circle at 1px 1px, oklch(0.86 0.02 213.51 / 0.095) 1px, oklch(0 0 0 / 0) 0)',
+                    'background-image': 'radial-gradient(circle at 1px 1px, oklch(0.86 0.02 213.51 / 0.095) 1px, oklch(0.86 0.02 213.51 / 0) 0)',
                     'background-size': '20px 20px'
                 },
                 '.mask-radial': {
-                    'mask-image': 'radial-gradient(ellipse at center, transparent -30%, #000)'
+                    'mask-image': 'radial-gradient(ellipse at center, rgba(0, 0, 0, 0) -30%, #000)',
+                    'mask-composite': 'intersect'
                 }
             });
         }
