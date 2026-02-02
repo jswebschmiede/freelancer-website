@@ -1,34 +1,39 @@
 ---
 import Button from '@components/Ui/Button.astro';
-import Glow from '@components/Ui/Glow.astro';
+import { Icon } from 'astro-icon/components';
 ---
 
-<div class="hero h-full px-4 pb-24 pt-12 sm:px-8 lg:pt-36">
-	<div class="hero-content relative z-10 p-0 text-center">
-		<div class="max-w-[1024px]">
-			<h1
-				class="js-fade-on-ready translate-y-2 text-[clamp(1.75rem,-0.3765rem_+_7.2289vw,4.25rem)] font-bold leading-tight opacity-0 transition-all duration-700"
-			>
-				Umwandlung Ihrer Designs in
-				<span
-					class="bg-gradient-to-l from-primary from-20% to-accent bg-clip-text text-transparent"
-				>
-					benutzerfreundliche Webseiten
-				</span>
-			</h1>
-			<p
-				class="js-fade-on-ready translate-y-2 pb-12 pt-6 text-[clamp(1rem,0.8319rem_+_0.7470vw,1.5rem)] opacity-0 transition-all duration-700"
-			>
-				Ich biete Ihnen eine schnelle und zuverlässige Umsetzung Ihrer Designs, als statische
-				Webseite oder als Theme für aktuelle CMS-Systeme.
-			</p>
+<div class="hero h-full px-4 pb-24 pt-16 sm:px-8 lg:pt-44">
+  <div class="hero-content relative z-10 p-0 text-center">
+    <div class="max-w-5xl mx-auto">
+      <h1
+        class="js-fade-on-ready translate-y-2 text-[clamp(1.75rem,-0.3765rem+7.2289vw,4.25rem)] font-bold leading-tight opacity-0 transition-all duration-700"
+      >
+        Umwandlung Ihrer Designs in
+        <span class="bg-linear-to-l from-primary from-20% to-accent bg-clip-text text-transparent">
+          benutzerfreundliche Webseiten
+        </span>
+      </h1>
+      <p
+        class="js-fade-on-ready mx-auto max-w-4xl translate-y-2 pb-12 pt-6 text-[clamp(1rem,0.8319rem+0.7470vw,1.5rem)] opacity-0 transition-all duration-700"
+      >
+        Ich biete Ihnen eine schnelle und zuverlässige Umsetzung Ihrer Designs, als statische
+        Webseite oder als Theme für aktuelle CMS-Systeme.
+      </p>
 
-			<div
-				class="js-fade-on-ready flex translate-y-2 flex-col items-center justify-center gap-8 opacity-0 transition-all duration-700 sm:flex-row"
-			>
-				<Button href="#prozess" variant="outline"> Zeig mir wie das geht </Button>
-				<Button href="#leistungen"> Was bietest du noch an? </Button>
-			</div>
-		</div>
-	</div>
+      <div
+        class="js-fade-on-ready flex translate-y-2 flex-col items-center justify-center gap-8 opacity-0 transition-all duration-700 sm:flex-row"
+      >
+        <Button href="#prozess" variant="outline">
+          <Icon name="mdi:eye-outline" class="w-5 h-5" /> Zeig mir wie das geht
+        </Button>
+        <Button href="#leistungen" className="group">
+          Was bietest du noch an? <Icon
+            name="mdi:arrow-right"
+            class="w-5 h-5 group-hover:translate-x-2 transition-transform duration-200 will-change-transform"
+          />
+        </Button>
+      </div>
+    </div>
+  </div>
 </div>

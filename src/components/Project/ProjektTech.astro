@@ -1,17 +1,23 @@
 ---
 interface Props {
-	tags?: string[];
+  tags?: string[];
 }
 
 const { tags } = Astro.props;
 ---
 
 <div class="avatar-group flex items-center -space-x-3 my-4">
-	{
-		tags.map((tag) => (
-			<div class="flex justify-center items-center bg-black-gradient border-2 border-white/10 rounded-full w-8 lg:w-10 h-8 lg:h-10 avatar">
-				<img src={'/' + tag + '.svg'} alt="icon5" class="p-2 !object-contain" title={tag} />
-			</div>
-		))
-	}
+  {
+    tags.map(tag => (
+      <div class="flex justify-center items-center bg-linear-to-r from-base-100 to-base-200/50 border-2 border-white/10 rounded-full w-8 lg:w-10 h-8 lg:h-10 avatar">
+        <img
+          src={'/' + tag + '.svg'}
+          alt="icon5"
+          class="p-2 object-contain!"
+          title={tag}
+          loading="lazy"
+        />
+      </div>
+    ))
+  }
 </div>

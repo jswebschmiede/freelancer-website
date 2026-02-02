@@ -5,17 +5,17 @@ const { faq } = SITE;
 ---
 
 <div
-	class="reveal-fx--translate-up reveal-fx group join join-vertical w-full rounded-lg shadow-sm transition-shadow duration-300 hover:shadow-md"
+  class="reveal-fx--translate-up reveal-fx group join join-vertical w-full rounded-lg shadow-sm transition-shadow duration-200 hover:shadow-md"
 >
-	{
-		faq.map((item, index) => (
-			<div class="collapse join-item collapse-arrow border-2 border-white/5 bg-base-100/75 backdrop-blur transition-all duration-300 group-hover:border-accent/10 hover:border-accent/10">
-				<input type="radio" name="my-accordion-4" />
-				<div class="collapse-title text-xl font-medium">{item.question}</div>
-				<div class="collapse-content">
-					<p>{item.answer}</p>
-				</div>
-			</div>
-		))
-	}
+  {
+    faq.map((item, index) => (
+      <div class="collapse join-item collapse-arrow border-2 border-white/5 bg-base-100/75 backdrop-blur transition-all duration-200 group-hover:border-accent/25 hover:border-accent/25">
+        <input type="radio" name="faq-accordion" />
+        <div class="collapse-title text-xl font-medium">{item.question}</div>
+        <div class="collapse-content">
+          <p>{item.answer}</p>
+        </div>
+      </div>
+    ))
+  }
 </div>

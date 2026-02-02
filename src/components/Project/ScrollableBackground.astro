@@ -1,84 +1,59 @@
 ---
 import { twMerge } from 'tailwind-merge';
 import { getImage } from 'astro:assets';
+import { Icon } from 'astro-icon/components';
 
 interface Props {
-	imageUrl: ImageMetadata;
-	height?: string;
-	alt: string;
-	scrollSensitivity?: number;
-	className?: string;
+  imageUrl: ImageMetadata;
+  height?: string;
+  alt: string;
+  scrollSensitivity?: number;
+  className?: string;
 }
 
 const { imageUrl, height = '600px', alt, scrollSensitivity = 1.0, className } = Astro.props;
 const optimizedBackground = await getImage({
-	src: imageUrl,
-	loading: 'eager',
-	format: 'webp'
+  src: imageUrl,
+  loading: 'eager',
+  format: 'webp',
 });
 ---
 
 <div
-	class:list={twMerge(
-		'scrollable-background-container group relative h-[400px] w-full cursor-none touch-none overflow-hidden lg:h-[var(--scrollable-background-height)]',
-		className
-	)}
-	style={`--scrollable-background-height: ${height};`}
-	role="img"
-	aria-label={alt}
-	data-scrollable
-	data-scroll-sensitivity={scrollSensitivity}
+  class:list={twMerge(
+    'scrollable-background-container group relative h-[400px] w-full cursor-none touch-none overflow-hidden lg:h-(--scrollable-background-height)',
+    className
+  )}
+  style={`--scrollable-background-height: ${height};`}
+  role="img"
+  aria-label={alt}
+  data-scrollable
+  data-scroll-sensitivity={scrollSensitivity}
 >
-	<!-- Custom Cursor - Always visible when mouse is over container -->
-	<div
-		class="custom-cursor pointer-events-none absolute z-50 hidden -translate-x-1/2 -translate-y-1/2 md:block md:opacity-0 md:group-hover:opacity-100"
-		data-custom-cursor
-		style="left: -100px; top: -100px;"
-	>
-		<div
-			class="btn btn-circle btn-primary flex items-center justify-center shadow-sm"
-			data-cursor-circle
-		>
-			<svg
-				class="h-5 w-5 -rotate-180"
-				width="52"
-				height="61"
-				viewBox="0 0 52 61"
-				fill="none"
-				data-arrow-up
-			>
-				<path
-					d="M23.5251 59.4749C24.892 60.8417 27.108 60.8417 28.4749 59.4749L50.7487 37.201C52.1156 35.8342 52.1156 33.6181 50.7487 32.2513C49.3819 30.8844 47.1658 30.8844 45.799 32.2513L26 52.0503L6.20101 32.2513C4.83418 30.8844 2.6181 30.8844 1.25126 32.2513C-0.115571 33.6181 -0.115571 35.8342 1.25126 37.201L23.5251 59.4749ZM22.5 1.5299e-07L22.5 57L29.5 57L29.5 -1.5299e-07L22.5 1.5299e-07Z"
-					fill="currentColor"
-				>
-				</path>
-			</svg>
+  <!-- Custom Cursor - Always visible when mouse is over container -->
+  <div
+    class="custom-cursor pointer-events-none absolute z-50 hidden -translate-x-1/2 -translate-y-1/2 md:block md:opacity-0 md:group-hover:opacity-100"
+    data-custom-cursor
+    style="left: -100px; top: -100px;"
+  >
+    <div
+      class="btn btn-circle btn-primary bg-primary/50 border-primary/25 backdrop-blur-sm flex items-center justify-center shadow-sm"
+      data-cursor-circle
+    >
+      <Icon name="mdi:arrow-up" class="h-5 w-5" data-arrow-up />
 
-			<svg class="h-2 w-2" viewBox="0 0 24 24" fill="none" data-cursor-arrow>
-				<circle cx="12" cy="12" r="12" fill="currentColor"></circle>
-			</svg>
+      <Icon name="mdi:eye" class="h-5 w-5" data-cursor-arrow />
 
-			<svg
-				class="h-5 w-5 rotate-0"
-				width="52"
-				height="61"
-				viewBox="0 0 52 61"
-				fill="none"
-				data-arrow-down
-			>
-				<path
-					d="M23.5251 59.4749C24.892 60.8417 27.108 60.8417 28.4749 59.4749L50.7487 37.201C52.1156 35.8342 52.1156 33.6181 50.7487 32.2513C49.3819 30.8844 47.1658 30.8844 45.799 32.2513L26 52.0503L6.20101 32.2513C4.83418 30.8844 2.6181 30.8844 1.25126 32.2513C-0.115571 33.6181 -0.115571 35.8342 1.25126 37.201L23.5251 59.4749ZM22.5 1.5299e-07L22.5 57L29.5 57L29.5 -1.5299e-07L22.5 1.5299e-07Z"
-					fill="currentColor"></path>
-			</svg>
-		</div>
-	</div>
+      <Icon name="mdi:arrow-down" class="h-5 w-5" data-arrow-down />
+    </div>
+  </div>
 
-	<div
-		class="scrollable-background absolute w-full bg-[length:100%_auto] bg-center transition-transform duration-300 ease-out"
-		style={`background-image: url(${optimizedBackground.src});`}
-		data-image-height={optimizedBackground.attributes.height}
-		data-image-width={optimizedBackground.attributes.width}
-		data-scrollable-element
-	>
-	</div>
+  <div
+    class="scrollable-background absolute w-full bg-size-[100%_auto] bg-center transition-transform duration-200 ease-out"
+    style={`background-image: url(${optimizedBackground.src});`}
+    data-image-height={optimizedBackground.attributes.height}
+    data-image-width={optimizedBackground.attributes.width}
+    data-scrollable-element
+  >
+  </div>
 </div>

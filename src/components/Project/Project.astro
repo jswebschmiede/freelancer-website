@@ -5,23 +5,23 @@ import { Icon } from 'astro-icon/components';
 import Card from '@components/Ui/Card.astro';
 
 interface Props {
-	project: CollectionEntry<'projects'>;
+  project: CollectionEntry<'projects'>;
 }
 
 const { project } = Astro.props;
 ---
 
 <Card
-	title={project.data.title}
-	image={project.data.thumbnail}
-	image_alt={project.data.image_alt}
-	href={`/projekte/${project.slug}`}
+  title={project.data.title}
+  image={project.data.thumbnail}
+  image_alt={project.data.image_alt}
+  href={`/projekte/${project.slug}`}
 >
-	<ProjektTech tags={project.data.tags} />
+  <ProjektTech tags={project.data.tags} />
 
-	<p class="text-sm md:text-base">{project.data.description}</p>
-	<div class="card-actions relative justify-end pt-4">
-		Projekt Details
-		<Icon name="mdi:arrow-top-right" class="relative -top-1 h-5 w-5" />
-	</div>
+  <p class="text-sm md:text-base">{project.data.description}</p>
+  <div class="card-actions relative justify-end pt-4">
+    Projekt Details
+    <Icon name="mdi:arrow-top-right" class="relative -top-1 h-5 w-5" />
+  </div>
 </Card>

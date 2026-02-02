@@ -1,77 +1,51 @@
 ---
+import { Icon } from 'astro-icon/components';
 import type { CollectionEntry } from 'astro:content';
 import { twMerge } from 'tailwind-merge';
 
 interface Props {
-	nextProject: CollectionEntry<'projects'>;
-	prevProject: CollectionEntry<'projects'>;
-	className?: string;
+  nextProject: CollectionEntry<'projects'>;
+  prevProject: CollectionEntry<'projects'>;
+  className?: string;
 }
 
 const { prevProject, nextProject, className } = Astro.props;
 ---
 
 <div class:list={twMerge('relative mx-auto flex w-full max-w-6xl gap-4', className)}>
-	<div class="flex w-full items-center justify-between gap-4 pb-12">
-		<div class="hidden sm:block">
-			<a
-				href="/#portfolio"
-				class="group btn btn-secondary flex items-center gap-2"
-				title="zurück zur Übersicht"
-			>
-				<svg
-					class="h-4 w-4 rotate-90 transition-all duration-300 will-change-transform group-hover:-translate-x-1"
-					width="52"
-					height="61"
-					viewBox="0 0 52 61"
-					fill="none"
-				>
-					<path
-						d="M23.5251 59.4749C24.892 60.8417 27.108 60.8417 28.4749 59.4749L50.7487 37.201C52.1156 35.8342 52.1156 33.6181 50.7487 32.2513C49.3819 30.8844 47.1658 30.8844 45.799 32.2513L26 52.0503L6.20101 32.2513C4.83418 30.8844 2.6181 30.8844 1.25126 32.2513C-0.115571 33.6181 -0.115571 35.8342 1.25126 37.201L23.5251 59.4749ZM22.5 1.5299e-07L22.5 57L29.5 57L29.5 -1.5299e-07L22.5 1.5299e-07Z"
-						fill="currentColor"></path>
-				</svg>
-				zurück zur Übersicht
-			</a>
-		</div>
+  <div class="flex w-full items-center justify-between gap-4 pb-12">
+    <div class="hidden sm:block">
+      <a
+        href="/#portfolio"
+        class="group btn btn-primary rounded-btn flex items-center gap-2"
+        title="zurück zur Übersicht"
+      >
+        <Icon
+          name="mdi:arrow-left"
+          class="h-5 w-5 group-hover:-translate-x-1 transition-transform duration-200 will-change-transform"
+        />
+        zurück zur Übersicht
+      </a>
+    </div>
 
-		<div class="mb-4 flex w-full justify-between gap-4 sm:mb-0 sm:w-auto sm:justify-start">
-			<a
-				href={`/projekte/${prevProject.slug}`}
-				class="btn btn-circle btn-secondary flex items-center gap-2"
-				title="vorheriges Projekt"
-			>
-				<span class="sr-only">vorheriges Projekt</span>
-				<svg
-					class="h-4 w-4 rotate-90 transition-all duration-300 will-change-transform group-hover:-translate-x-1"
-					width="52"
-					height="61"
-					viewBox="0 0 52 61"
-					fill="none"
-				>
-					<path
-						d="M23.5251 59.4749C24.892 60.8417 27.108 60.8417 28.4749 59.4749L50.7487 37.201C52.1156 35.8342 52.1156 33.6181 50.7487 32.2513C49.3819 30.8844 47.1658 30.8844 45.799 32.2513L26 52.0503L6.20101 32.2513C4.83418 30.8844 2.6181 30.8844 1.25126 32.2513C-0.115571 33.6181 -0.115571 35.8342 1.25126 37.201L23.5251 59.4749ZM22.5 1.5299e-07L22.5 57L29.5 57L29.5 -1.5299e-07L22.5 1.5299e-07Z"
-						fill="currentColor"></path>
-				</svg>
-			</a>
+    <div class="mb-4 flex w-full justify-between gap-4 sm:mb-0 sm:w-auto sm:justify-start">
+      <a
+        href={`/projekte/${prevProject.slug}`}
+        class="btn btn-circle btn-primary flex items-center gap-2"
+        title="vorheriges Projekt"
+      >
+        <span class="sr-only">vorheriges Projekt</span>
+        <Icon name="mdi:arrow-left" class="h-5 w-5" />
+      </a>
 
-			<a
-				href={`/projekte/${nextProject.slug}`}
-				class="btn btn-circle btn-secondary flex items-center gap-2"
-				title="nächstes Projekt"
-			>
-				<span class="sr-only">nächstes Projekt</span>
-				<svg
-					class="h-4 w-4 -rotate-90 transition-all duration-300 will-change-transform group-hover:-translate-x-1"
-					width="52"
-					height="61"
-					viewBox="0 0 52 61"
-					fill="none"
-				>
-					<path
-						d="M23.5251 59.4749C24.892 60.8417 27.108 60.8417 28.4749 59.4749L50.7487 37.201C52.1156 35.8342 52.1156 33.6181 50.7487 32.2513C49.3819 30.8844 47.1658 30.8844 45.799 32.2513L26 52.0503L6.20101 32.2513C4.83418 30.8844 2.6181 30.8844 1.25126 32.2513C-0.115571 33.6181 -0.115571 35.8342 1.25126 37.201L23.5251 59.4749ZM22.5 1.5299e-07L22.5 57L29.5 57L29.5 -1.5299e-07L22.5 1.5299e-07Z"
-						fill="currentColor"></path>
-				</svg>
-			</a>
-		</div>
-	</div>
+      <a
+        href={`/projekte/${nextProject.slug}`}
+        class="btn btn-circle btn-primary flex items-center gap-2"
+        title="nächstes Projekt"
+      >
+        <span class="sr-only">nächstes Projekt</span>
+        <Icon name="mdi:arrow-right" class="h-5 w-5" />
+      </a>
+    </div>
+  </div>
 </div>

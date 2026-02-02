@@ -1,0 +1,20 @@
+.form-control {
+  @apply flex flex-col;
+
+  .label-text {
+    @apply text-base-content/75;
+  }
+
+  .input,
+  .textarea {
+    @apply bg-base-100 rounded-xl h-12 px-3 focus:border-primary text-base-content/75;
+  }
+
+  .textarea {
+    @apply h-32;
+  }
+
+  .checkbox {
+    @apply checkbox-primary;
+  }
+}

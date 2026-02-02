@@ -13,26 +13,26 @@ import Section from '@components/Ui/Section.astro';
 import { formatDateForDisplay } from '../../scripts/utils';
 
 interface Props {
-	project: CollectionEntry<'projects'>;
-	nextProject: CollectionEntry<'projects'>;
-	prevProject: CollectionEntry<'projects'>;
+  project: CollectionEntry<'projects'>;
+  nextProject: CollectionEntry<'projects'>;
+  prevProject: CollectionEntry<'projects'>;
 }
 
 // 1. Generate a new path for every collection entry
 export async function getStaticPaths() {
-	const allProjects = await getCollection('projects');
-	// get number of projects
-	const numProjects = allProjects.length;
-	allProjects.sort((a, b) => (a.data.date < b.data.date ? 1 : -1));
+  const allProjects = await getCollection('projects');
+  // get number of projects
+  const numProjects = allProjects.length;
+  allProjects.sort((a, b) => (a.data.date < b.data.date ? 1 : -1));
 
-	return allProjects.map((project, index) => ({
-		params: { slug: project.slug },
-		props: {
-			project,
-			nextProject: allProjects[(index + 1) % numProjects],
-			prevProject: allProjects[(index - 1 + numProjects) % numProjects]
-		}
-	}));
+  return allProjects.map((project, index) => ({
+    params: { slug: project.slug },
+    props: {
+      project,
+      nextProject: allProjects[(index + 1) % numProjects],
+      prevProject: allProjects[(index - 1 + numProjects) % numProjects],
+    },
+  }));
 }
 
 // 2. When it's time to render, you can get the entry directly from the prop
@@ -40,62 +40,60 @@ const { project, nextProject, prevProject } = Astro.props;
 const { Content } = await project.render();
 
 const meta = {
-	title: project.data.title,
-	description: project.data.description
+  title: project.data.title,
+  description: project.data.description,
 };
 ---
 
 <Layout {meta}>
-	<Section>
-		<div class="relative z-10 mx-auto max-w-screen-xl px-4">
-			<div class="flex flex-col">
-				<div
-					class="js-fade-on-ready mx-auto max-w-6xl translate-y-2 pt-10 opacity-0 transition-all duration-700 md:pt-20"
-				>
-					<h1 class="break-words pb-14 text-4xl font-bold sm:text-5xl md:text-7xl">
-						{project.data.title}
-					</h1>
-					<div class="prose relative max-w-none lg:prose-lg prose-a:break-words">
-						<ProjectDetails
-							client={project.data.title}
-							handover={formatDateForDisplay(project.data.date as string)}
-							tags={project.data.tags.join(', ')}
-							website={project.data.website}
-						/>
-					</div>
-				</div>
+  <Section>
+    <div class="relative z-10 mx-auto max-w-7xl px-4">
+      <div
+        class="js-fade-on-ready mx-auto max-w-6xl translate-y-2 pt-16 opacity-0 transition-all duration-700 md:pt-32"
+      >
+        <h1 class="wrap-break-word pb-14 text-4xl text-center font-bold sm:text-5xl md:text-7xl">
+          {project.data.title}
+        </h1>
+        <div class="prose relative mx-auto max-w-6xl lg:prose-lg prose-a:wrap-break-word">
+          <ProjectDetails
+            client={project.data.title}
+            handover={formatDateForDisplay(project.data.date as string)}
+            tags={project.data.tags.join(', ')}
+            website={project.data.website}
+          />
+        </div>
+      </div>
 
-				<div
-					class="reveal-fx--translate-up reveal-fx mockup-browser w-full border border-base-300 bg-base-300/85 shadow-sm transition-all duration-300 hover:shadow-sm"
-				>
-					<div class="mockup-browser-toolbar">
-						<div class="input !flex items-center !bg-base-100 text-xs">
-							{project.data.website || project.data.title}
-						</div>
-					</div>
+      <div
+        class="reveal-fx--translate-up reveal-fx mockup-browser w-full border border-base-300 bg-base-300/85 shadow-sm transition-all duration-300 hover:shadow-sm"
+      >
+        <div class="mockup-browser-toolbar">
+          <div class="input flex! items-center bg-base-100! text-xs py-1.5">
+            {project.data.website || project.data.title}
+          </div>
+        </div>
 
-					<ScrollableBackground
-						imageUrl={project.data.image as ImageMetadata}
-						height="600px"
-						alt={project.data.image_alt}
-						scrollSensitivity={20}
-					/>
-				</div>
-			</div>
+        <ScrollableBackground
+          imageUrl={project.data.image as ImageMetadata}
+          height="600px"
+          alt={project.data.image_alt}
+          scrollSensitivity={20}
+        />
+      </div>
 
-			<div class="mx-auto max-w-6xl pt-10 md:pt-20">
-				<div
-					class="reveal-fx--translate-up reveal-fx prose relative max-w-none lg:prose-lg prose-a:break-words"
-				>
-					<Content />
-				</div>
+      <div class="mx-auto max-w-6xl pt-16 md:pt-32">
+        <div
+          class="reveal-fx--translate-up reveal-fx prose relative max-w-none lg:prose-lg prose-a:wrap-break-word"
+        >
+          <Content />
+        </div>
 
-				<ProjectNav
-					className="reveal-fx--translate-up reveal-fx mt-16 border-t-2 border-base-300 pt-16"
-					nextProject={nextProject}
-					prevProject={prevProject}
-				/>
-			</div>
-		</div>
-	</Section>
+        <ProjectNav
+          className="reveal-fx--translate-up reveal-fx mt-16 border-t-2 border-base-300 pt-16"
+          nextProject={nextProject}
+          prevProject={prevProject}
+        />
+      </div>
+    </div>
+  </Section>
 </Layout>

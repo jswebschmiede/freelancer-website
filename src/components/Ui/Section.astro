@@ -1,9 +1,9 @@
 ---
 import { twMerge } from 'tailwind-merge';
 
-const { id, className } = Astro.props;
+const { id, className, style } = Astro.props;
 ---
 
-<section {id} class={twMerge('relative py-12 sm:py-24 lg:py-32', className)}>
-	<slot />
+<section {id} class={twMerge('relative py-12 sm:py-24 lg:py-32', className)} style={style}>
+  <slot />
 </section>

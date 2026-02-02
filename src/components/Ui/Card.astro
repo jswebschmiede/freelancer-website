@@ -6,52 +6,54 @@ const { title, className, image, image_alt, href } = Astro.props;
 ---
 
 {
-	href ? (
-		<a
-			href={href}
-			class={twMerge(
-				'card border-2 border-white/5 bg-base-100/75 shadow-sm backdrop-blur transition-all duration-300 will-change-transform hover:-translate-y-2 hover:border-accent/10 hover:shadow-md',
-				className
-			)}
-		>
-			{image && (
-				<figure class="h-[220px]">
-					<Image
-						src={image}
-						width={350}
-						height={350 / 1.5}
-						class="card-image h-full w-full object-cover"
-						alt={image_alt}
-					/>
-				</figure>
-			)}
-			<div class="card-body">
-				{title !== undefined ? <h2 class="card-title">{title}</h2> : null}
-				<slot />
-			</div>
-		</a>
-	) : (
-		<div
-			class={twMerge(
-				'card border-2 border-white/5 bg-base-100/75 shadow-sm backdrop-blur transition-all duration-300 will-change-transform hover:-translate-y-2 hover:border-accent/10 hover:shadow-md',
-				className
-			)}
-		>
-			{image && (
-				<figure class="h-[220px]">
-					<Image
-						src={image}
-						width={350}
-						height={350 / 1.5}
-						class="card-image h-full w-full object-cover"
-						alt={image_alt}
-					/>
-				</figure>
-			)}
-			<div class="card-body">
-				{title !== undefined ? <h2 class="card-title">{title}</h2> : null}
-				<slot />
-			</div>
-		</div>
-	)
+  href ? (
+    <a
+      href={href}
+      class={twMerge(
+        'card border-2 border-white/5 bg-base-100/75 shadow-sm backdrop-blur transition-all duration-300 will-change-transform hover:-translate-y-2 hover:border-accent/10 hover:shadow-md',
+        className
+      )}
+    >
+      {image && (
+        <figure class="aspect-4/3">
+          <Image
+            src={image}
+            width={550}
+            height={550 / 1.5}
+            class="card-image h-full w-full object-cover"
+            alt={image_alt}
+            loading="lazy"
+          />
+        </figure>
+      )}
+      <div class="card-body">
+        {title !== undefined ? <h2 class="card-title">{title}</h2> : null}
+        <slot />
+      </div>
+    </a>
+  ) : (
+    <div
+      class={twMerge(
+        'card border-2 border-white/5 bg-base-100/75 shadow-sm backdrop-blur transition-all duration-300 will-change-transform hover:-translate-y-2 hover:border-accent/10 hover:shadow-md',
+        className
+      )}
+    >
+      {image && (
+        <figure class="aspect-4/3">
+          <Image
+            src={image}
+            width={550}
+            height={550 / 1.5}
+            class="card-image h-full w-full object-cover"
+            loading="lazy"
+            alt={image_alt}
+          />
+        </figure>
+      )}
+      <div class="card-body">
+        {title !== undefined ? <h2 class="card-title">{title}</h2> : null}
+        <slot />
+      </div>
+    </div>
+  )
 }

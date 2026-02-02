@@ -5,12 +5,12 @@
   name: 'dark';
   default: true;
   prefersdark: false;
-  color-scheme: 'dark';
-  --color-base-100: oklch(25.33% 0.016 252.42);
+  color-scheme: 'light';
+  --color-base-100: oklch(13% 0.028 261.692);
   --color-base-200: oklch(23.26% 0.014 253.1);
   --color-base-300: oklch(21.15% 0.012 254.09);
   --color-base-content: oklch(97.807% 0.029 256.847);
-  --color-primary: oklch(58% 0.233 277.117);
+  --color-primary: oklch(60% 0.126 221.723);
   --color-primary-content: oklch(96% 0.018 272.314);
   --color-secondary: oklch(65% 0.241 354.308);
   --color-secondary-content: oklch(94% 0.028 342.258);
@@ -27,14 +27,15 @@
   --color-error: oklch(71% 0.194 13.428);
   --color-error-content: oklch(27% 0.105 12.094);
   --radius-selector: 1rem;
-  --radius-field: 2.25rem;
+  --radius-field: 1.25rem;
   --radius-box: 0.5rem;
   --size-selector: 0.25rem;
-  --size-field: 0.25rem;
+  --size-field: 0.35rem;
   --border: 1px;
   --depth: 1;
   --noise: 0;
-  --rounded-btn: calc(var(--radius-field) * 2);
+  --rounded-btn: calc(2.25rem * 2);
+  --cardtitle-fs: 1.25rem;
 }
 
 @plugin 'tailwind-scrollbar' {
@@ -45,12 +46,13 @@
 @import '@styles/animations.css';
 @import '@styles/reveal-effects.css';
 @import '@styles/projects.css';
+@import '@styles/forms.css';
 
 @theme {
   --font-sans: 'Poppins', sans-serif;
-  --animation-glow-pulse: glow-pulse 12s ease-in-out infinite;
-  --animation-fade-in: fadeIn 0.5s ease-in-out;
-  --animation-scale-in: scaleIn 0.5s ease-out;
+  --animate-glow-pulse: glow-pulse 12s ease-in-out infinite;
+  --animate-fade-in: fadeIn 0.5s ease-in-out;
+  --animate-scale-in: scaleIn 0.5s ease-out;
 }
 
 :root {
@@ -63,4 +65,18 @@
 
 @utility rounded-btn {
   @apply rounded-(--rounded-btn);
+}
+
+@utility circuit-pattern {
+  background-image: radial-gradient(
+    circle at 1px 1px,
+    oklch(0.86 0.02 213.51 / 0.095) 1px,
+    oklch(0.86 0.02 213.51 / 0) 0
+  );
+  @apply bg-size-[20px_20px];
+}
+
+@utility mask-radial {
+  mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 0) -30%, #000);
+  @apply mask-intersect;
 }

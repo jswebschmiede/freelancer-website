@@ -2,11 +2,11 @@
 import { Icon } from 'astro-icon/components';
 
 interface Props {
-	icon: string;
-	title: string;
-	text: string;
-	isMail?: boolean;
-	isPhone?: boolean;
+  icon: string;
+  title: string;
+  text: string;
+  isMail?: boolean;
+  isPhone?: boolean;
 }
 
 const { icon, title, text, isMail = false, isPhone = false } = Astro.props;
@@ -17,40 +17,40 @@ const encodedEmail = isMail ? encodeEmail(text) : '';
 ---
 
 <li class="group mb-8">
-	<div class="flex items-center">
-		<div
-			class="font-heading relative flex aspect-1 h-[3.9375rem] w-[3.9375rem] items-center justify-center rounded-full border-2 border-white/5 bg-base-100/60 text-center text-[34px] shadow-sm transition-all duration-300 after:absolute after:left-full after:top-1/2 after:mt-[-1px] after:h-[2px] after:w-10 after:bg-white/5 after:transition-all after:duration-300 group-hover:border-accent/10 group-hover:shadow-none group-hover:after:bg-accent/10"
-		>
-			<Icon class="h-6 w-6" name={icon} />
-		</div>
+  <div class="flex items-center">
+    <div
+      class="font-heading relative flex aspect-1 h-15.75 w-15.75 items-center justify-center rounded-full border-2 border-white/5 bg-base-100/60 text-center text-[34px] shadow-sm transition-all duration-200 after:absolute after:left-full after:top-1/2 after:-mt-px after:h-[2px] after:w-10 after:bg-white/5 after:transition-all after:duration-200 group-hover:border-accent/25 group-hover:shadow-none group-hover:after:bg-accent/10"
+    >
+      <Icon class="h-6 w-6" name={icon} />
+    </div>
 
-		<div class="pl-16">
-			<h3 class="text-2xl font-semibold">{title}</h3>
+    <div class="pl-16">
+      <h3 class="text-2xl font-semibold">{title}</h3>
 
-			<div class="text-gray-500">
-				{
-					isMail && (
-						<span
-							data-obfuscate-email
-							data-email-b64={encodedEmail}
-							class="cursor-pointer transition-colors hover:text-white"
-						/>
-					)
-				}
+      <div class="text-gray-500">
+        {
+          isMail && (
+            <span
+              data-obfuscate-email
+              data-email-b64={encodedEmail}
+              class="cursor-pointer transition-colors hover:text-white"
+            />
+          )
+        }
 
-				{
-					isPhone && (
-						<a
-							class="cursor-pointer transition-colors hover:text-white"
-							href={`tel:+49${text.replace(/^0+|-/g, '')}`}
-						>
-							{text}
-						</a>
-					)
-				}
+        {
+          isPhone && (
+            <a
+              class="cursor-pointer transition-colors hover:text-white"
+              href={`tel:+49${text.replace(/^0+|-/g, '')}`}
+            >
+              {text}
+            </a>
+          )
+        }
 
-				{!isMail && !isPhone && <span>{text}</span>}
-			</div>
-		</div>
-	</div>
+        {!isMail && !isPhone && <span>{text}</span>}
+      </div>
+    </div>
+  </div>
 </li>

@@ -6,6 +6,9 @@ Descr: A collection of animated circle loaders
 Usage: codyhouse.co/license
 
 -------------------------------- */
+
+@reference '../global.css';
+
 :root {
   --circle-loader-v1-size: 48px;
   --circle-loader-v1-stroke-width: 4px;

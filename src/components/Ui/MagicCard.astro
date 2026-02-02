@@ -7,94 +7,95 @@ const { title, className, image, image_alt, href, icon } = Astro.props;
 ---
 
 {
-	href ? (
-		<a
-			href={href}
-			class={twMerge(
-				'magic-card group card relative isolate border-2 border-white/5 bg-base-100/75 shadow-sm backdrop-blur transition-all duration-300 will-change-transform hover:-translate-y-2 hover:shadow-md',
-				className
-			)}
-		>
-			<div class="magic-card-glow pointer-events-none absolute inset-0 z-0 rounded-[inherit] opacity-0 mix-blend-screen transition-opacity duration-300 group-hover:opacity-100" />
-			{image && (
-				<figure class="relative z-10 h-[220px]">
-					<Image
-						src={image}
-						width={350}
-						height={350 / 1.5}
-						class="card-image h-full w-full object-cover"
-						alt={image_alt || title || 'Magic card image'}
-					/>
-				</figure>
-			)}
-			<div class="card-body relative z-10">
-				{icon && (
-					<div class="absolute right-3 top-3 opacity-5 transition-all duration-500 group-hover:rotate-6 group-hover:scale-110 group-hover:opacity-15">
-						<Icon name={icon} class="h-12 w-12 animate-pulse text-accent" />
-					</div>
-				)}
+  href ? (
+    <a
+      href={href}
+      class={twMerge(
+        'magic-card group card relative isolate border-2 border-white/5 bg-base-100/75 shadow-sm backdrop-blur transition-all duration-200 will-change-transform hover:-translate-y-2 hover:shadow-md',
+        className
+      )}
+    >
+      <div class="magic-card-glow pointer-events-none absolute inset-0 z-0 rounded-[inherit] opacity-0 mix-blend-screen transition-opacity duration-200 group-hover:opacity-100" />
+      {image && (
+        <figure class="relative z-10 h-[220px]">
+          <Image
+            src={image}
+            width={350}
+            height={350 / 1.5}
+            class="card-image h-full w-full object-cover"
+            alt={image_alt || title || 'Magic card image'}
+          />
+        </figure>
+      )}
+      <div class="card-body relative z-10">
+        {icon && (
+          <div class="absolute right-3 top-3 opacity-5 transition-all duration-500 group-hover:rotate-6 group-hover:scale-110 group-hover:opacity-15">
+            <Icon name={icon} class="h-12 w-12 animate-pulse text-accent" />
+          </div>
+        )}
 
-				{title !== undefined ? <h2 class="card-title">{title}</h2> : null}
-				<slot />
-			</div>
-		</a>
-	) : (
-		<div
-			class={twMerge(
-				'magic-card group card relative isolate border-2 border-white/5 bg-base-100/75 shadow-sm backdrop-blur-sm transition-all duration-300 will-change-transform hover:-translate-y-2 hover:border-accent/10 hover:shadow-md',
-				className
-			)}
-		>
-			<div class="magic-card-glow pointer-events-none absolute inset-0 z-0 rounded-[inherit] opacity-0 mix-blend-screen transition-opacity duration-300 group-hover:opacity-100" />
+        {title !== undefined ? <h2 class="card-title group-hover:text-primary">{title}</h2> : null}
+        <slot />
+      </div>
+    </a>
+  ) : (
+    <div
+      class={twMerge(
+        'magic-card group card relative isolate border-2 border-white/5 bg-base-100/75 shadow-sm backdrop-blur-sm transition-all duration-200 will-change-transform hover:-translate-y-2 hover:border-accent/10 hover:shadow-md',
+        className
+      )}
+    >
+      <div class="magic-card-glow pointer-events-none absolute inset-0 z-0 rounded-[inherit] opacity-0 mix-blend-screen transition-opacity duration-200 group-hover:opacity-100" />
 
-			{image && (
-				<figure class="relative z-10 h-[220px]">
-					<Image
-						src={image}
-						width={350}
-						height={350 / 1.5}
-						class="card-image h-full w-full object-cover"
-						alt={image_alt || title || ''}
-					/>
-				</figure>
-			)}
-			<div class="card-body relative z-10">
-				{icon && (
-					<div class="absolute right-3 top-3 opacity-5 transition-all duration-500 group-hover:rotate-6 group-hover:scale-110 group-hover:opacity-15">
-						<Icon name={icon} class="h-12 w-12 animate-pulse text-accent" />
-					</div>
-				)}
+      {image && (
+        <figure class="relative z-10 h-[220px]">
+          <Image
+            src={image}
+            width={350}
+            height={350 / 1.5}
+            class="card-image h-full w-full object-cover"
+            loading="lazy"
+            alt={image_alt || title || ''}
+          />
+        </figure>
+      )}
+      <div class="card-body relative z-10">
+        {icon && (
+          <div class="absolute right-3 top-3 opacity-5 transition-all duration-500 group-hover:rotate-6 group-hover:scale-110 group-hover:opacity-15">
+            <Icon name={icon} class="h-12 w-12 animate-pulse text-accent" />
+          </div>
+        )}
 
-				{title !== undefined ? <h2 class="card-title">{title}</h2> : null}
-				<slot />
-			</div>
-		</div>
-	)
+        {title !== undefined ? <h2 class="card-title group-hover:text-primary">{title}</h2> : null}
+        <slot />
+      </div>
+    </div>
+  )
 }
 
 <script>
-	/**
-	 * Handles the mouse movement over magic cards to create a glow effect
-	 * using a radial gradient that follows the mouse position
-	 */
-	const magicCards = document.querySelectorAll('.magic-card');
+  /**
+   * Handles the mouse movement over magic cards to create a glow effect
+   * using a radial gradient that follows the mouse position
+   */
+  const magicCards = document.querySelectorAll('.magic-card');
 
-	if (magicCards) {
-		magicCards.forEach((card) => {
-			const glowElement = card.querySelector('.magic-card-glow') as HTMLElement;
+  if (magicCards) {
+    magicCards.forEach(card => {
+      const glowElement = card.querySelector('.magic-card-glow') as HTMLElement;
 
-			card.addEventListener('mousemove', (e: MouseEvent) => {
-				const rect = card.getBoundingClientRect();
-				const x = e.clientX - rect.left;
-				const y = e.clientY - rect.top;
+      card.addEventListener('mousemove', (e: MouseEvent) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
 
-				glowElement.style.background = `radial-gradient(400px at ${x}px ${y}px, rgba(0, 144, 181, 0.15), transparent 80%)`;
-				glowElement.style.opacity = '0.8';
-			});
+        glowElement.style.background = `radial-gradient(400px at ${x}px ${y}px, rgba(0, 144, 181, 0.15), transparent 80%)`;
+        glowElement.style.opacity = '0.8';
+      });
 
-			card.addEventListener('mouseleave', () => {
-				glowElement.style.opacity = '0';
-			});
-		});
-	}
+      card.addEventListener('mouseleave', () => {
+        glowElement.style.opacity = '0';
+      });
+    });
+  }
 </script>
