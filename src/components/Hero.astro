@@ -1,11 +1,17 @@
 ---
 import Button from '@components/Ui/Button.astro';
 import { Icon } from 'astro-icon/components';
+import EyebrowHeading from './Ui/EyebrowHeading.astro';
 ---
 
 <div class="hero h-full px-4 pb-24 pt-16 sm:px-8 lg:pt-44">
   <div class="hero-content relative z-10 p-0 text-center">
     <div class="max-w-5xl mx-auto">
+      <EyebrowHeading
+        icon="mdi:hand-wave-outline"
+        text="Willkommen"
+        className="js-fade-on-ready opacity-0 transition-all duration-700 translate-y-2"
+      />
       <h1
         class="js-fade-on-ready translate-y-2 text-[clamp(1.75rem,-0.3765rem+7.2289vw,4.25rem)] font-bold leading-tight opacity-0 transition-all duration-700"
       >
