@@ -10,7 +10,7 @@ import type { MetaSEO } from '../types';
 import '../styles/global.css';
 import MetaTags from '@components/MetaTags.astro';
 import BasicScripts from '@components/BasicScripts.astro';
-import ProgressToTopButton from '@components/Ui/ProgressToTopButton.astro';
+import ProgressToTopButton2 from '@components/Ui/ProgressToTopButton2.astro';
 import Preloader from '@components/Ui/Preloader.astro';
 
 export interface Props {
@@ -35,7 +35,7 @@ const { textDirection = 'ltr', lang = 'en' } = SITE;
   <body class:list={['flex h-full flex-col font-sans antialiased', bodyClass]}>
     <div class="overflow-clip">
       <slot />
-      <ProgressToTopButton />
+      <ProgressToTopButton2 />
       <Preloader />
     </div>
 

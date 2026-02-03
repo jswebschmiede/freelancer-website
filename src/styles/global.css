@@ -47,7 +47,9 @@
 @import '@styles/reveal-effects.css';
 @import '@styles/projects.css';
 @import '@styles/forms.css';
+@import '@styles/scroll-top.css';
 
+/* Theme */
 @theme {
   --font-sans: 'Poppins', sans-serif;
   --animate-glow-pulse: glow-pulse 12s ease-in-out infinite;
@@ -55,6 +57,7 @@
   --animate-scale-in: scaleIn 0.5s ease-out;
 }
 
+/* Variables */
 :root {
   --fixed-header-height: 74px;
 
@@ -63,6 +66,7 @@
   }
 }
 
+/* Utility Classes */
 @utility rounded-btn {
   @apply rounded-(--rounded-btn);
 }

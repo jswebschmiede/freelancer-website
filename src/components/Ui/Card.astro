@@ -10,7 +10,7 @@ const { title, className, image, image_alt, href } = Astro.props;
     <a
       href={href}
       class={twMerge(
-        'card border-2 border-white/5 bg-base-100/75 shadow-sm backdrop-blur transition-all duration-300 will-change-transform hover:-translate-y-2 hover:border-accent/10 hover:shadow-md',
+        'card border border-primary/20 bg-base-100/75 shadow-sm backdrop-blur transition-all duration-300 will-change-transform hover:-translate-y-2 hover:border-primary/40 hover:shadow-md',
         className
       )}
     >
@@ -34,7 +34,7 @@ const { title, className, image, image_alt, href } = Astro.props;
   ) : (
     <div
       class={twMerge(
-        'card border-2 border-white/5 bg-base-100/75 shadow-sm backdrop-blur transition-all duration-300 will-change-transform hover:-translate-y-2 hover:border-accent/10 hover:shadow-md',
+        'card border border-primary/20 bg-base-100/75 shadow-sm backdrop-blur transition-all duration-300 will-change-transform hover:-translate-y-2 hover:border-primary/40 hover:shadow-md',
         className
       )}
     >

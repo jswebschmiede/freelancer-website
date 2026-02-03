@@ -3,49 +3,54 @@ import { SITE } from '../config';
 ---
 
 <script>
-	// import { followCursor } from '@scripts/mouse-cursor';
-	import { totopButton } from '@scripts/totop-button';
-	import { ObfuscateEmail } from '@scripts/obfuscateEmail';
-	import { ChangeUrl } from '@scripts/changeUrl';
-	import { FakeLoadMore } from '@scripts/fakeLoadMore';
-	import DraggableBackground from '@scripts/draggableBackground';
-	import ScrollableBackground from '@scripts/scrollableBackground';
-	import '@scripts/reveal-effects';
-	import '@scripts/preloader';
+  // import { followCursor } from '@scripts/mouse-cursor';
+  // import { totopButton } from '@scripts/totop-button';
+  import ProgressToTopV2 from '@scripts/totop-button-2';
+  import { ObfuscateEmail } from '@scripts/obfuscateEmail';
+  import { ChangeUrl } from '@scripts/changeUrl';
+  import { FakeLoadMore } from '@scripts/fakeLoadMore';
+  import DraggableBackground from '@scripts/draggableBackground';
+  import ScrollableBackground from '@scripts/scrollableBackground';
+  import '@scripts/reveal-effects';
+  import '@scripts/preloader';
 
-	(() => {
-		// init totop button
-		const progressWrap = (document.querySelector('.progress-wrap') as HTMLElement) || null;
-		if (progressWrap) new totopButton(progressWrap);
+  (() => {
+    /**
+     * Progress to top v2
+     */
+    const progressToTopV2 = document.querySelector('#scroll-top') as HTMLElement | null;
+    if (progressToTopV2) {
+      new ProgressToTopV2(progressToTopV2);
+    }
 
-		new ObfuscateEmail();
+    new ObfuscateEmail();
 
-		const changeUrl = document.querySelector('.navbar') as HTMLElement | null;
-		const body = document.querySelector('body') as HTMLElement | null;
+    const changeUrl = document.querySelector('.navbar') as HTMLElement | null;
+    const body = document.querySelector('body') as HTMLElement | null;
 
-		if (changeUrl && !body.classList.contains('home')) {
-			new ChangeUrl(changeUrl);
-		}
+    if (changeUrl && !body.classList.contains('home')) {
+      new ChangeUrl(changeUrl);
+    }
 
-		const loadMore = document.querySelector('.projects') as HTMLElement | null;
-		if (loadMore) {
-			new FakeLoadMore();
-		}
+    const loadMore = document.querySelector('.projects') as HTMLElement | null;
+    if (loadMore) {
+      new FakeLoadMore();
+    }
 
-		// init draggable background
-		const draggableBackgrounds = document.querySelector('[data-draggable]') as HTMLElement | null;
-		if (draggableBackgrounds) {
-			new DraggableBackground(draggableBackgrounds);
-		}
+    // init draggable background
+    const draggableBackgrounds = document.querySelector('[data-draggable]') as HTMLElement | null;
+    if (draggableBackgrounds) {
+      new DraggableBackground(draggableBackgrounds);
+    }
 
-		// init scrollable background
-		const scrollableBackgrounds = document.querySelector('[data-scrollable]') as HTMLElement | null;
-		if (scrollableBackgrounds) {
-			new ScrollableBackground(scrollableBackgrounds);
-		}
-	})();
+    // init scrollable background
+    const scrollableBackgrounds = document.querySelector('[data-scrollable]') as HTMLElement | null;
+    if (scrollableBackgrounds) {
+      new ScrollableBackground(scrollableBackgrounds);
+    }
+  })();
 </script>
 
 <script is:inline define:vars={{ defaultTheme: SITE.defaultTheme }}>
-	document.documentElement.classList.add('js');
+  document.documentElement.classList.add('js');
 </script>
