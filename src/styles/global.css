@@ -79,8 +79,3 @@
   );
   @apply bg-size-[20px_20px];
 }
-
-@utility mask-radial {
-  mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 0) -30%, #000);
-  @apply mask-intersect;
-}
