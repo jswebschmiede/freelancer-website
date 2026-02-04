@@ -1,0 +1,16 @@
+---
+import { Icon } from 'astro-icon/components';
+import { twMerge } from 'tailwind-merge';
+
+const { icon, className, text } = Astro.props;
+---
+
+<div
+  class:list={twMerge(
+    'inline-flex items-center gap-2 border border-primary/30 rounded-btn px-4 py-2 bg-primary/10 mb-6 text-primary',
+    className
+  )}
+>
+  <Icon name={icon} class="size-4" />
+  <span class="text-sm font-semibold">{text}</span>
+</div>

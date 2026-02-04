@@ -1,5 +1,7 @@
 ---
-globs: *.astro,*.tsx,*.jsx,*.css
+description: 
+globs: *.astro, *.tsx, *.jsx, *.css
+alwaysApply: false
 ---
 
 # Tailwind CSS Usage Guide
@@ -24,6 +26,5 @@ globs: *.astro,*.tsx,*.jsx,*.css
 
 ## Anpassungen
 
-- Tailwind-Anpassungen werden in [tailwind.config.mjs](mdc:tailwind.config.mjs) definiert
 - Verwende die bestehenden Farben und Schriftarten
 - Halte dich an die definierte Design-Sprache
