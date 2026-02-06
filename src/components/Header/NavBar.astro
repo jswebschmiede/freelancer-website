@@ -2,17 +2,19 @@
 import { SITE } from 'src/config';
 import Button from '@components/Ui/Button.astro';
 import '@styles/sticky-navbar.css';
+import { Icon } from 'astro-icon/components';
 
 const navLinks = SITE.links;
 ---
 
 <div class="navbar mx-auto h-(--fixed-header-height) max-w-7xl border-b border-b-white/0 px-4">
   <div class="navbar-start translate-x-0 opacity-100">
-    <a
-      class="btn btn-circle btn-outline btn-primary flex aspect-1 items-center justify-center text-xl font-bold shadow-md lg:h-16 lg:w-16 lg:text-4xl"
-      href="/"
-    >
-      JS
+    <a class="btn btn-ghost flex items-center justify-center text-xl font-bold" href="/">
+      <Icon name="mdi:code-braces-box" class="w-6 h-6 text-primary opacity-80" />
+      <span
+        class="bg-linear-to-r from-primary to-accent/80 bg-clip-text text-transparent text-shadow-md"
+        >jswebForge</span
+      >
     </a>
   </div>
   <div class="navbar-center hidden overflow-hidden rounded-btn lg:flex">
