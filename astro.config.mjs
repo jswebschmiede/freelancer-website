@@ -29,5 +29,5 @@ export default defineConfig({
     output: 'static',
     build: {
         assets: '__assets'
-    }
+    },
 });
