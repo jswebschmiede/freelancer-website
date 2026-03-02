@@ -1,4 +1,5 @@
-import { defineConfig } from 'astro/config';
+import { defineConfig, envField } from 'astro/config';
+import node from '@astrojs/node';
 import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
 import mdx from '@astrojs/mdx';
@@ -8,11 +9,10 @@ import path from 'path';
 
 // https://astro.build/config
 export default defineConfig({
-    integrations: [
-        sitemap(),
-        icon(),
-        mdx()
-    ],
+    adapter: node({
+        mode: 'standalone'
+    }),
+    integrations: [sitemap(), icon(), mdx()],
     vite: {
         plugins: [tailwindcss()],
         resolve: {
@@ -26,7 +26,18 @@ export default defineConfig({
         }
     },
     compressHTML: true,
-    output: 'static',
+    output: 'server',
+    env: {
+        schema: {
+            SMTP_HOST: envField.string({ context: 'server', access: 'secret' }),
+            SMTP_PORT: envField.number({ context: 'server', access: 'secret', default: 587 }),
+            SMTP_SECURE: envField.boolean({ context: 'server', access: 'secret', default: false }),
+            SMTP_USER: envField.string({ context: 'server', access: 'secret' }),
+            SMTP_PASS: envField.string({ context: 'server', access: 'secret' }),
+            FROM_EMAIL: envField.string({ context: 'server', access: 'secret' }),
+            CONTACT_TO_EMAIL: envField.string({ context: 'server', access: 'secret' }),
+        },
+    },
     build: {
         assets: '__assets'
     },

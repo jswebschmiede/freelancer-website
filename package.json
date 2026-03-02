@@ -11,6 +11,7 @@
 	},
 	"dependencies": {
 		"@astrojs/mdx": "^4.3.0",
+		"@astrojs/node": "^9.4.0",
 		"@astrojs/sitemap": "3.4.1",
 		"@fontsource/poppins": "^5.0.8",
 		"@tailwindcss/aspect-ratio": "^0.4.2",
@@ -19,8 +20,9 @@
 		"astro": "^5.10.1",
 		"astro-icon": "^1.1.0",
 		"astro-seo": "^0.8.0",
-		"sharp": "^0.33.5",
 		"daisyui": "^5.5.14",
+		"nodemailer": "^8.0.1",
+		"sharp": "^0.33.5",
 		"tailwind-merge": "^3.3.1",
 		"tailwind-scrollbar": "^4.0.2",
 		"tailwindcss": "^4.1.18"
