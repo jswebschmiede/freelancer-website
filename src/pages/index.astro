@@ -19,6 +19,7 @@ const meta = {
   description:
     'Erfahren Sie mehr über jswebforge, einen leidenschaftlichen Full-Stack-Entwickler mit umfangreicher Expertise. Entdecken Sie maßgeschneiderte Web-Lösungen für Ihr Projekt',
 };
+const formStatus = Astro.url.searchParams.get('status');
 ---
 
 <PageLayout {meta} bodyClass="home">
@@ -216,7 +217,26 @@ const meta = {
       <Card
         className="w-full p-4 bg-linear-to-br from-primary/10 from-0% via-base-100 via-50% to-primary/10 to-100% transition-shadow hover:translate-y-0"
       >
-        <form id="kontakt-form" class="mb-8 space-y-8" method="post">
+        <form id="kontakt-form" class="mb-8 space-y-8" method="post" action="/api/contact">
+          <input type="text" name="website" tabindex="-1" autocomplete="off" class="hidden" />
+          <div
+            data-form-status
+            role="status"
+            aria-live="polite"
+            class:list={[
+              'hidden',
+              'mb-8',
+              formStatus === 'success' && 'alert alert-success',
+              formStatus === 'error' && 'alert alert-error',
+            ]}
+          >
+            {formStatus === 'success' && 'Vielen Dank! Ihre Nachricht wurde erfolgreich versendet.'}
+            {
+              formStatus === 'error' &&
+                'Der Versand ist fehlgeschlagen. Bitte versuchen Sie es erneut.'
+            }
+          </div>
+
           <div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
             <label class="form-control w-full gap-3" for="name">
               <span class="label-text">Ihr Name *</span>
@@ -269,6 +289,7 @@ const meta = {
             <span class="label-text">Ihr Anliegen *</span>
             <textarea
               class="textarea w-full"
+              name="anliegen"
               placeholder="Was möchten Sie mir mitteilen?"
               required
               id="anliegen"></textarea>
@@ -296,11 +317,17 @@ const meta = {
               type="submit"
               class="btn btn-primary w-[inherit] px-12 text-base font-normal shadow-sm"
             >
-              Absenden
+              <span
+                data-submit-label
+                data-default-text="Absenden"
+                data-loading-text="Wird gesendet...">Absenden</span
+              >
               <Icon
                 name="mdi:arrow-right"
+                data-submit-icon
                 class="w-5 h-5 group-hover:translate-x-2 transition-transform duration-200 will-change-transform"
               />
+              <Icon name="mdi:loading" data-submit-spinner class="hidden w-5 h-5 animate-spin" />
             </button>
           </div>
         </form>

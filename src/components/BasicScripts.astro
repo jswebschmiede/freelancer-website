@@ -7,6 +7,7 @@ import { SITE } from '../config';
   import { ObfuscateEmail } from '@scripts/obfuscateEmail';
   import { ChangeUrl } from '@scripts/changeUrl';
   import { FakeLoadMore } from '@scripts/fakeLoadMore';
+  import ContactForm from '@scripts/contactForm';
   import DraggableBackground from '@scripts/draggableBackground';
   import ScrollableBackground from '@scripts/scrollableBackground';
   import '@scripts/reveal-effects';
@@ -33,6 +34,11 @@ import { SITE } from '../config';
     const loadMore = document.querySelector('.projects') as HTMLElement | null;
     if (loadMore) {
       new FakeLoadMore();
+    }
+
+    const contactForm = document.querySelector('#kontakt-form') as HTMLFormElement | null;
+    if (contactForm) {
+      new ContactForm(contactForm);
     }
 
     // init draggable background
