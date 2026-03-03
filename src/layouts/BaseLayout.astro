@@ -32,8 +32,8 @@ const { textDirection = 'ltr', lang = 'en' } = SITE;
   <head>
     <MetaTags {...meta} />
   </head>
-  <body class:list={['flex h-full flex-col font-sans antialiased', bodyClass]}>
-    <div class="overflow-clip">
+  <body class:list={['flex flex-col min-h-screen font-sans antialiased', bodyClass]}>
+    <div class="overflow-clip flex flex-col grow">
       <slot />
       <ProgressToTopButton2 />
       <Preloader />

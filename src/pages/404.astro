@@ -1,0 +1,28 @@
+---
+export const prerender = true;
+
+import Button from '@components/Ui/Button.astro';
+import Section from '@components/Ui/Section.astro';
+import PageLayout from '@layouts/PageLayout.astro';
+
+const meta = {
+  title: '404 | Seite nicht gefunden',
+  description: 'Seite nicht gefunden.',
+};
+---
+
+<PageLayout {meta}>
+  <Section>
+    <div class="prose relative z-10 mx-auto max-w-5xl px-4 text-center lg:prose-lg">
+      <h1 class="bg-linear-to-l from-primary from-20% to-accent bg-clip-text text-transparent">
+        404 - Seite nicht gefunden
+      </h1>
+      <p class="text-lg xs:text-xl md:text-2xl">
+        Ups, die von Ihnen gesuchte Seite konnte nicht gefunden werden.
+      </p>
+      <div>
+        <Button href="/" variant="primary">Zurück zur Startseite</Button>
+      </div>
+    </div>
+  </Section>
+</PageLayout>
