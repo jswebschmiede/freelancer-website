@@ -41,4 +41,5 @@ export default defineConfig({
     build: {
         assets: '__assets'
     },
+    site: 'https://www.jswebforge.de',
 });
