@@ -1,7 +1,7 @@
 import { FAQS } from './faqs';
 
 const SiteConfig = {
-  siteName: 'jswebforge - Serviceangebot für Webdesign & Webentwicklung',
+  siteName: 'jswebforge',
   defaultTheme: 'system', // Values: "system" | "light" | "dark" | "light:only" | "dark:only"
   textDirection: 'ltr',
   lang: 'de',
