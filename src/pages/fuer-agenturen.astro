@@ -1,0 +1,403 @@
+---
+export const prerender = true;
+
+import { Icon } from 'astro-icon/components';
+import Section from '@components/Ui/Section.astro';
+import Card from '@components/Ui/Card.astro';
+import LandingPageLayout from '@layouts/LandingPageLayout.astro';
+import Button from '@components/Ui/Button.astro';
+import MagicCard from '@components/Ui/MagicCard.astro';
+import EyebrowHeading from '@components/Ui/EyebrowHeading.astro';
+import { painPoints, services, trustItems, steps, techCategories } from '../agentur';
+
+const meta = {
+  title: 'Freelance Webentwickler für Agenturen | White-Label WordPress & Astro',
+  description:
+    'Zuverlässige Webentwicklung für Agenturen: Pixel-perfect Design-to-Code, Custom WordPress-Themes, Joomla-Templates und Astro-Websites. White-Label, termingerecht, sauberer Code.',
+};
+
+const formStatus = Astro.url.searchParams.get('status');
+---
+
+<LandingPageLayout {meta} bodyClass="landing">
+  {/* ─── Hero ─── */}
+  <div
+    slot="hero"
+    class="hero relative min-h-[80vh] px-4 pb-24 pt-20 sm:px-8 lg:pt-36 circuit-pattern"
+  >
+    <div
+      class="absolute inset-0 bg-linear-to-b from-base-100 from-0% via-primary/15 via-40% to-base-100 to-90%"
+    >
+    </div>
+    <div class="relative z-10 mx-auto max-w-4xl text-center">
+      <EyebrowHeading
+        icon="mdi:handshake-outline"
+        text="Für Agenturen & Webdienstleister"
+        className="reveal-fx reveal-fx--translate-up"
+      />
+      <h1
+        class="reveal-fx reveal-fx--translate-up text-[clamp(1.75rem,-0.3765rem+7.2289vw,3.75rem)] font-bold leading-tight"
+      >
+        Ihr technisches Rückgrat.
+        <span class="bg-linear-to-l from-primary from-20% to-accent bg-clip-text text-transparent">
+          Skalierbare Webentwicklung für Ihre Agentur.
+        </span>
+      </h1>
+      <p
+        class="reveal-fx reveal-fx--translate-up mx-auto max-w-3xl pb-12 pt-6 text-[clamp(1rem,0.8319rem+0.7470vw,1.35rem)] text-base-content/75"
+      >
+        Sie liefern Design und Strategie – ich liefere den Code. Zuverlässig, White-Label,
+        termingerecht. Als erfahrener Freelancer unterstütze ich Ihre Agentur bei Spitzenlasten oder
+        fehlendem internen Know-how.
+      </p>
+
+      <div
+        class="reveal-fx reveal-fx--translate-up flex flex-col items-center justify-center gap-6 sm:flex-row"
+      >
+        <Button href="#kontakt-agentur" variant="primary">
+          Kapazitäten anfragen
+          <Icon
+            name="mdi:arrow-right"
+            class="w-5 h-5 group-hover:translate-x-2 transition-transform duration-200 will-change-transform"
+          />
+        </Button>
+        <Button href="#leistungen" variant="outline">
+          <Icon name="mdi:arrow-down" class="w-5 h-5" /> Mehr erfahren
+        </Button>
+      </div>
+
+      <div
+        class="reveal-fx reveal-fx--translate-up mt-12 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-sm text-base-content/60"
+      >
+        <span class="flex items-center gap-2">
+          <Icon name="mdi:check-circle" class="w-4 h-4 text-primary" /> 100% White-Label
+        </span>
+        <span class="flex items-center gap-2">
+          <Icon name="mdi:check-circle" class="w-4 h-4 text-primary" /> Pixelgenau
+        </span>
+        <span class="flex items-center gap-2">
+          <Icon name="mdi:check-circle" class="w-4 h-4 text-primary" /> Festpreise möglich
+        </span>
+      </div>
+    </div>
+  </div>
+
+  {/* ─── Pain Points ─── */}
+  <Section
+    id="probleme"
+    className="bg-[radial-gradient(circle_at_30%_50%,var(--color-primary)_-200%,transparent_25%)]"
+  >
+    <div
+      class="reveal-fx reveal-fx--translate-up prose mx-auto max-w-7xl px-4 text-center lg:prose-lg prose-h2:mt-0"
+    >
+      <EyebrowHeading icon="mdi:alert-circle-outline" text="Die Herausforderung" />
+      <h2 class="text-3xl font-bold md:text-3xl lg:text-5xl">
+        Kennen Sie <span class="text-primary">das?</span>
+      </h2>
+    </div>
+
+    <div
+      class="reveal-fx reveal-fx--translate-up relative z-10 mx-auto mt-16 grid max-w-7xl grid-cols-1 gap-8 px-4 sm:grid-cols-2 lg:grid-cols-3"
+    >
+      {(painPoints ?? []).map(item => (
+        <MagicCard
+          title={item.title}
+          icon={item.icon}
+          className="hover:translate-y-0 border-error/20 hover:border-error/40"
+        >
+          <p>{item.text}</p>
+        </MagicCard>
+      ))}
+    </div>
+
+    <div class="reveal-fx reveal-fx--translate-up mx-auto mt-16 max-w-3xl px-4 text-center">
+      <p class="text-lg text-base-content/75">
+        <strong class="text-primary">Die gute Nachricht:</strong> Sie müssen das nicht alleine lösen.
+        Konzentrieren Sie sich auf Kreation und Kundenbetreuung – ich übernehme die technische Umsetzung.
+      </p>
+    </div>
+  </Section>
+
+  {/* ─── Services ─── */}
+  <Section
+    id="leistungen"
+    className="bg-[radial-gradient(circle_at_70%_60%,var(--color-accent)_-200%,transparent_20%)]"
+  >
+    <div
+      class="reveal-fx reveal-fx--translate-up prose mx-auto max-w-7xl px-4 text-center lg:prose-lg prose-h2:mt-0"
+    >
+      <EyebrowHeading icon="mdi:cog-outline" text="Leistungen für Agenturen" />
+      <h2 class="text-3xl font-bold md:text-3xl lg:text-5xl">
+        Ihr verlängerter <span class="text-primary">Entwickler-Arm</span>
+      </h2>
+      <p class="mx-auto max-w-3xl">
+        Ob als langfristige Unterstützung oder Feuerwehr bei Engpässen: Ich liefere sauberen Code,
+        halte Deadlines ein und integriere mich nahtlos in Ihre Prozesse.
+      </p>
+    </div>
+
+    <div
+      class="reveal-fx reveal-fx--translate-up relative z-10 mx-auto mt-16 grid max-w-7xl grid-cols-1 gap-8 px-4 sm:grid-cols-2 lg:grid-cols-3"
+    >
+      {(services ?? []).map(item => (
+        <MagicCard title={item.title} icon={item.icon}>
+          <p>{item.text}</p>
+        </MagicCard>
+      ))}
+    </div>
+  </Section>
+
+  {/* ─── Trust Elements ─── */}
+  <Section
+    id="vertrauen"
+    className="bg-[radial-gradient(circle_at_30%_50%,var(--color-primary)_-200%,transparent_25%),radial-gradient(circle_at_70%_60%,var(--color-accent)_-200%,transparent_20%)]"
+  >
+    <div
+      class="reveal-fx reveal-fx--translate-up prose mx-auto max-w-7xl px-4 text-center lg:prose-lg prose-h2:mt-0"
+    >
+      <EyebrowHeading icon="mdi:shield-check-outline" text="Warum ich?" />
+      <h2 class="text-3xl font-bold md:text-3xl lg:text-5xl">
+        Was mich von anderen <span class="text-primary">Freelancern</span> unterscheidet
+      </h2>
+    </div>
+
+    <div
+      class="reveal-fx reveal-fx--translate-up relative z-10 mx-auto mt-16 grid max-w-7xl grid-cols-1 gap-8 px-4 sm:grid-cols-2"
+    >
+      {(trustItems ?? []).map(item => (
+        <MagicCard title={item.title} icon={item.icon}>
+          <p>{item.text}</p>
+        </MagicCard>
+      ))}
+    </div>
+  </Section>
+
+  {/* ─── Process ─── */}
+  <Section id="prozess">
+    <div
+      class="reveal-fx reveal-fx--translate-up prose mx-auto max-w-7xl px-4 text-center lg:prose-lg prose-h2:mt-0"
+    >
+      <EyebrowHeading icon="mdi:workflow-outline" text="In 4 Schritten" />
+      <h2 class="text-3xl font-bold md:text-3xl lg:text-5xl">
+        So läuft die <span class="text-primary">Zusammenarbeit</span>
+      </h2>
+    </div>
+
+    <div class="reveal-fx reveal-fx--translate-up relative z-10 mx-auto mt-16 max-w-4xl px-4">
+      <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+        {(steps ?? []).map(step => (
+          <MagicCard className="hover:translate-y-0">
+            <div class="flex items-start gap-4">
+              <span class="shrink-0 text-4xl font-black text-primary/20">{step.number}</span>
+              <div>
+                <h3 class="text-xl font-bold group-hover:text-primary">{step.title}</h3>
+                <p class="mt-1 text-base-content/70">{step.text}</p>
+              </div>
+            </div>
+          </MagicCard>
+        ))}
+      </div>
+    </div>
+  </Section>
+
+  {/* ─── Tech Stack ─── */}
+  <Section
+    id="technologien"
+    className="bg-[radial-gradient(circle_at_70%_40%,var(--color-primary)_-200%,transparent_25%)]"
+  >
+    <div
+      class="reveal-fx reveal-fx--translate-up prose mx-auto max-w-7xl px-4 text-center lg:prose-lg prose-h2:mt-0"
+    >
+      <EyebrowHeading icon="mdi:layers-outline" text="Tech Stack" />
+      <h2 class="text-3xl font-bold md:text-3xl lg:text-5xl">
+        Technologien, auf die Sie sich <span class="text-primary">verlassen</span> können
+      </h2>
+    </div>
+
+    <div
+      class="reveal-fx reveal-fx--translate-up relative z-10 mx-auto mt-16 grid max-w-5xl grid-cols-1 gap-8 px-4 sm:grid-cols-2"
+    >
+      {(techCategories ?? []).map(cat => (
+        <MagicCard title={cat.label} className="hover:translate-y-0">
+          <div class="flex flex-wrap gap-2 pt-2">
+            {(cat.items ?? []).map(item => (
+              <span class="badge badge-outline border-primary/30 bg-primary/5 px-3 py-2.5 text-sm">
+                {item}
+              </span>
+            ))}
+          </div>
+        </MagicCard>
+      ))}
+    </div>
+  </Section>
+
+  {/* ─── Contact Form ─── */}
+  <Section id="kontakt-agentur">
+    <div
+      class="reveal-fx reveal-fx--translate-up prose mx-auto max-w-7xl px-4 text-center lg:prose-lg prose-h2:mt-0"
+    >
+      <EyebrowHeading icon="mdi:message-outline" text="Kontakt" />
+      <h2 class="text-3xl font-bold md:text-3xl lg:text-5xl">
+        Lassen Sie uns über Ihr <span class="text-primary">nächstes Projekt</span> sprechen
+      </h2>
+      <p class="mx-auto max-w-3xl">
+        Schicken Sie mir Ihre Anforderungen – ich melde mich mit einer Einschätzung. Unverbindlich
+        und kostenlos.
+      </p>
+    </div>
+
+    <div class="reveal-fx reveal-fx--translate-up relative z-10 mx-auto mt-16 max-w-3xl px-4">
+      <Card
+        className="w-full p-4 bg-linear-to-br from-primary/10 from-0% via-base-100 via-50% to-primary/10 to-100% transition-shadow hover:translate-y-0"
+      >
+        <form id="kontakt-form" class="mb-8 space-y-8" method="post" action="/api/contact">
+          <input type="text" name="website" tabindex="-1" autocomplete="off" class="hidden" />
+          <input type="hidden" name="betreff" value="Agentur-Kooperation" />
+
+          <div
+            data-form-status
+            role="status"
+            aria-live="polite"
+            class:list={[
+              'hidden',
+              'mb-8',
+              formStatus === 'success' && 'alert alert-success',
+              formStatus === 'error' && 'alert alert-error',
+            ]}
+          >
+            {formStatus === 'success' && 'Vielen Dank! Ihre Nachricht wurde erfolgreich versendet.'}
+            {
+              formStatus === 'error' &&
+                'Der Versand ist fehlgeschlagen. Bitte versuchen Sie es erneut.'
+            }
+          </div>
+
+          <div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
+            <label class="form-control w-full gap-3" for="agentur">
+              <span class="label-text">Agenturname *</span>
+              <input
+                type="text"
+                name="agentur"
+                id="agentur"
+                class="input"
+                placeholder="Name Ihrer Agentur"
+                required
+              />
+            </label>
+            <label class="form-control w-full gap-3" for="name">
+              <span class="label-text">Ansprechpartner *</span>
+              <input
+                type="text"
+                name="name"
+                id="name"
+                class="input"
+                placeholder="Ihr Name"
+                required
+              />
+            </label>
+          </div>
+
+          <div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
+            <label class="form-control w-full gap-3" for="email">
+              <span class="label-text">E-Mail Adresse *</span>
+              <input
+                type="email"
+                name="email"
+                id="email"
+                class="input"
+                placeholder="Ihre E-Mail Adresse"
+                required
+              />
+            </label>
+            <label class="form-control w-full gap-3" for="telefon">
+              <span class="label-text">Telefonnummer</span>
+              <input
+                type="text"
+                name="telefon"
+                id="telefon"
+                class="input"
+                placeholder="Ihre Telefonnummer"
+              />
+            </label>
+          </div>
+
+          <div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
+            <label class="form-control w-full gap-3" for="techstack">
+              <span class="label-text">Gewünschter Tech-Stack</span>
+              <select name="techstack" id="techstack" class="select w-full">
+                <option value="" disabled selected>Bitte wählen</option>
+                <option value="WordPress">WordPress</option>
+                <option value="Joomla">Joomla</option>
+                <option value="Astro">Astro (Statische Website)</option>
+                <option value="Noch unklar">Noch unklar / Beratung gewünscht</option>
+              </select>
+            </label>
+            <label class="form-control w-full gap-3" for="zeitrahmen">
+              <span class="label-text">Zeitrahmen</span>
+              <select name="zeitrahmen" id="zeitrahmen" class="select w-full">
+                <option value="" disabled selected>Bitte wählen</option>
+                <option value="Sofort">Sofort</option>
+                <option value="In 2-4 Wochen">In 2–4 Wochen</option>
+                <option value="In 1-3 Monaten">In 1–3 Monaten</option>
+                <option value="Noch offen">Noch offen</option>
+              </select>
+            </label>
+          </div>
+
+          <label class="form-control w-full gap-3" for="anliegen">
+            <span class="label-text">Projektbeschreibung *</span>
+            <textarea
+              class="textarea w-full"
+              name="anliegen"
+              id="anliegen"
+              placeholder="Beschreiben Sie kurz Ihr Projekt: Was soll umgesetzt werden? Gibt es bereits ein Design?"
+              required></textarea>
+          </label>
+
+          <div class="form-control">
+            <label class="label cursor-pointer justify-start gap-3" for="datenschutz">
+              <input
+                type="checkbox"
+                class="checkbox"
+                name="datenschutz"
+                id="datenschutz"
+                required
+              />
+              <span class="label-text">
+                Ich habe die Datenschutzerklärung gelesen und stimme ihr zu.
+              </span>
+            </label>
+          </div>
+
+          <div
+            class="group inline-block w-full transform cursor-pointer rounded-btn bg-primary p-[0.05rem] transition-transform duration-200 will-change-transform hover:shadow-md active:translate-y-[0.5px]"
+          >
+            <button
+              type="submit"
+              class="btn btn-primary w-[inherit] px-12 text-base font-normal shadow-sm"
+            >
+              <span
+                data-submit-label
+                data-default-text="Unverbindlich anfragen"
+                data-loading-text="Wird gesendet..."
+              >
+                Unverbindlich anfragen
+              </span>
+              <Icon
+                name="mdi:arrow-right"
+                data-submit-icon
+                class="w-5 h-5 group-hover:translate-x-2 transition-transform duration-200 will-change-transform"
+              />
+              <Icon name="mdi:loading" data-submit-spinner class="hidden w-5 h-5 animate-spin" />
+            </button>
+          </div>
+        </form>
+
+        <span class="badge h-8 gap-2 self-end border-2 border-white/5">
+          <Icon name="mdi:info" />
+          Felder mit * müssen ausgefüllt werden!
+        </span>
+      </Card>
+    </div>
+  </Section>
+</LandingPageLayout>

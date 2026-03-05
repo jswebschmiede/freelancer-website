@@ -6,7 +6,8 @@
   }
 
   .input,
-  .textarea {
+  .textarea,
+  .select {
     @apply bg-base-100 rounded-xl h-12 px-3 focus:border-primary text-base-content/75;
   }
 

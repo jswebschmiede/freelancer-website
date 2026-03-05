@@ -10,6 +10,9 @@ const MAX_EMAIL_LENGTH = 254;
 const MAX_PHONE_LENGTH = 50;
 const MAX_SUBJECT_LENGTH = 150;
 const MAX_MESSAGE_LENGTH = 5000;
+const MAX_AGENCY_LENGTH = 200;
+const MAX_TECHSTACK_LENGTH = 200;
+const MAX_TIMEFRAME_LENGTH = 100;
 
 /**
  * Safely reads and trims a string value from FormData.
@@ -122,6 +125,10 @@ export const POST: APIRoute = async ({ request }) => {
     const message = readField(formData, 'anliegen', MAX_MESSAGE_LENGTH);
     const privacyAccepted = formData.get('datenschutz') !== null;
 
+    const agency = readField(formData, 'agentur', MAX_AGENCY_LENGTH);
+    const techStack = readField(formData, 'techstack', MAX_TECHSTACK_LENGTH);
+    const timeframe = readField(formData, 'zeitrahmen', MAX_TIMEFRAME_LENGTH);
+
     if (!name || !email || !message || !privacyAccepted || !isValidEmail(email)) {
       return createResponse(
         request,
@@ -143,18 +150,29 @@ export const POST: APIRoute = async ({ request }) => {
     const safePhone = escapeHtml(phone || '-');
     const safeSubject = escapeHtml(subject);
     const safeMessage = escapeHtml(message).replaceAll('\n', '<br/>');
+    const safeAgency = agency ? escapeHtml(agency) : '';
+    const safeTechStack = techStack ? escapeHtml(techStack) : '';
+    const safeTimeframe = timeframe ? escapeHtml(timeframe) : '';
+
+    const agencyTextBlock = agency
+      ? `Agentur: ${agency}\n${techStack ? `Tech-Stack: ${techStack}\n` : ''}${timeframe ? `Zeitrahmen: ${timeframe}\n` : ''}`
+      : '';
+
+    const agencyHtmlBlock = safeAgency
+      ? `<p><strong>Agentur:</strong> ${safeAgency}</p>${safeTechStack ? `<p><strong>Tech-Stack:</strong> ${safeTechStack}</p>` : ''}${safeTimeframe ? `<p><strong>Zeitrahmen:</strong> ${safeTimeframe}</p>` : ''}`
+      : '';
 
     await transporter.sendMail({
       from: FROM_EMAIL,
       to: CONTACT_TO_EMAIL,
       subject: `Kontaktformular: ${subject}`,
       replyTo: email,
-      text: `Neue Kontaktanfrage\n\nName: ${name}\nE-Mail: ${email}\nTelefon: ${phone || '-'}\nBetreff: ${subject}\n\nNachricht:\n${message}`,
+      text: `Neue Kontaktanfrage\n\nName: ${name}\nE-Mail: ${email}\nTelefon: ${phone || '-'}\n${agencyTextBlock}Betreff: ${subject}\n\nNachricht:\n${message}`,
       html: `<h2>Neue Kontaktanfrage</h2>
 <p><strong>Name:</strong> ${safeName}</p>
 <p><strong>E-Mail:</strong> ${safeEmail}</p>
 <p><strong>Telefon:</strong> ${safePhone}</p>
-<p><strong>Betreff:</strong> ${safeSubject}</p>
+${agencyHtmlBlock}<p><strong>Betreff:</strong> ${safeSubject}</p>
 <p><strong>Nachricht:</strong><br/>${safeMessage}</p>`,
     });
 
