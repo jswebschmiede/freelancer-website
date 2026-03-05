@@ -34,7 +34,9 @@ const { title, className, image, image_alt, href, icon } = Astro.props;
           </div>
         )}
 
-        {title !== undefined ? <h2 class="card-title group-hover:text-primary">{title}</h2> : null}
+        {title !== undefined ? (
+          <h2 class="card-title group-hover:text-primary" set:html={title} />
+        ) : null}
         <slot />
       </div>
     </a>
@@ -66,7 +68,9 @@ const { title, className, image, image_alt, href, icon } = Astro.props;
           </div>
         )}
 
-        {title !== undefined ? <h2 class="card-title group-hover:text-primary">{title}</h2> : null}
+        {title !== undefined ? (
+          <h2 class="card-title group-hover:text-primary" set:html={title} />
+        ) : null}
         <slot />
       </div>
     </div>

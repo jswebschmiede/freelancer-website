@@ -1,51 +1,51 @@
 export const painPoints = [
   {
-    icon: 'mdi:clock-alert-outline',
-    title: 'Das Design ist fertig – aber niemand hat Zeit zu coden.',
-    text: 'Ihr Team ist ausgelastet, der Kunde wartet. Ein Engpass in der Entwicklung bremst das ganze Projekt.',
+    icon: 'mdi:palette-swatch-outline',
+    title: 'Design ist Ihre Stärke <br>– aber die Technik fehlt?',
+    text: 'Sie sind eine reine Grafik- oder Designagentur?<br>Ich verwandle Ihre Layouts in pixelgenauen Code, damit Sie Ihren Kunden das technische Komplettpaket bieten können.',
   },
   {
-    icon: 'mdi:code-not-equal-variant',
-    title: 'Der letzte Freelancer hat Spaghetti-Code geliefert.',
-    text: 'Und jetzt muss Ihr Team das warten. Das kostet Zeit, Nerven und Geld.',
+    icon: 'mdi:account-alert-outline',
+    title: 'Entwickler ausgefallen <br>oder "Land unter"?',
+    text: 'Ihr internes Team ist überlastet oder eine Stelle ist unbesetzt? Ich springe flexibel ein und fange Spitzenlasten ab – zuverlässig und ohne lange Einarbeitung.',
   },
   {
     icon: 'mdi:head-lightbulb-outline',
-    title: 'Sie brauchen jemanden, der mitdenkt.',
-    text: 'Einen Partner, der technische Probleme erkennt, bevor sie entstehen – nicht nur Tickets abarbeitet.',
+    title: 'Sie suchen einen festen <br>technischen Partner?',
+    text: 'Statt wechselnder Freelancer suchen Sie eine Konstante? Ich agiere als Ihr technischer Ansprechpartner, der mitdenkt und Probleme löst, bevor sie entstehen.',
   },
 ];
 
 export const services = [
+  {
+    icon: 'mdi:wordpress',
+    title: 'WordPress Entwicklung',
+    text: 'Eigene Themes und Plugins für WordPress – abgestimmt auf Ihr Design, kompatibel mit Gutenberg und Elementor. Kein aufgeblähter Theme-Forest-Standard.',
+  },
+  {
+    icon: 'simple-icons:joomla',
+    title: 'Joomla Entwicklung',
+    text: 'Templates, Module und Erweiterungen für Joomla – passgenau für Ihr Projekt und so gebaut, dass Sie (oder Ihr Team) damit langfristig arbeiten können.',
+  },
+  {
+    icon: 'mdi:rocket-launch-outline',
+    title: 'Statische Webseiten (Astro)',
+    text: 'Für Landingpages und Marketing-Sites: Blitzschnelle statische Websites mit perfekten Core Web Vitals.',
+  },
   {
     icon: 'mdi:palette-swatch-outline',
     title: 'Design-to-Code (Pixel-Perfect)',
     text: 'Ihre Layouts aus Figma, Adobe XD oder Sketch – umgesetzt in semantischen, barrierefreien Code. Keine Kompromisse.',
   },
   {
-    icon: 'mdi:incognito',
-    title: 'White-Label Entwicklung',
-    text: 'Ich arbeite unsichtbar im Hintergrund. Kommunikation über Ihre Tools (Slack, Teams, Jira). Ihr Kunde merkt nichts.',
-  },
-  {
-    icon: 'mdi:wordpress',
-    title: 'Custom WordPress & Joomla',
-    text: 'Individuelle Themes, Gutenberg-Blöcke, ACF Pro, Plugins und Module. Kein Theme-Forest-Standard.',
-  },
-  {
-    icon: 'mdi:rocket-launch-outline',
-    title: 'High-Performance mit Astro',
-    text: 'Für Landingpages und Marketing-Sites: Blitzschnelle statische Websites mit perfekten Core Web Vitals.',
-  },
-  {
-    icon: 'mdi:source-branch',
-    title: 'Sauberer Git-Workflow',
-    text: 'Versionierung, Branching, Code Reviews – ich integriere mich nahtlos in Ihre bestehenden Prozesse.',
-  },
-  {
     icon: 'mdi:lifebuoy',
-    title: 'Support nach Launch',
-    text: 'Updates, Bugfixes, Performance-Monitoring. Auch nach dem Go-Live bin ich erreichbar.',
+    title: 'Support & Wartung',
+    text: 'Langfristige Betreuung: Updates, Sicherheitspatches, Performance-Optimierung und technischer Support – auf Wunsch per Wartungsvertrag.',
+  },
+  {
+    icon: 'mdi:lightbulb-on',
+    title: 'Beratung & Konzeption',
+    text: 'Welches CMS ist das richtige? WordPress, Joomla oder doch eine statische Seite? Ich berate bei der Auswahl und plane die technische Umsetzung mit Ihnen.',
   },
 ];
 
@@ -73,20 +73,32 @@ export const trustItems = [
 ];
 
 export const steps = [
-  { number: '01', title: 'Briefing', text: 'Sie senden mir Design und Anforderungen.' },
-  { number: '02', title: 'Angebot', text: 'Ich liefere eine transparente Aufwandsschätzung.' },
-  { number: '03', title: 'Umsetzung', text: 'Regelmäßige Updates, Code per Git.' },
+  {
+    number: '01',
+    title: 'Briefing & Angebot',
+    text: 'Wir besprechen Ihre Anforderungen, das Design und den Tech-Stack (WordPress, Joomla, Astro). Sie erhalten eine transparente Aufwandsschätzung und ein faires Angebot.',
+  },
+  {
+    number: '02',
+    title: 'Design & Assets',
+    text: 'Sie liefern das finale Design (z.B. als Figma oder Adobe XD Datei) und alle notwendigen Inhalte. Ich prüfe alles auf technische Machbarkeit.',
+  },
+  {
+    number: '03',
+    title: 'Umsetzung',
+    text: 'Ich programmiere Themes, Templates, Plugins oder die komplette Website. Der Code ist versioniert mit Git – Sie können den Fortschritt jederzeit nachverfolgen.',
+  },
   {
     number: '04',
-    title: 'Übergabe',
-    text: 'Deployment oder ZIP-Paket + optionaler Support.',
+    title: 'Übergabe & Betreuung',
+    text: 'Deployment auf Ihrem Server oder Übergabe als installierbares Paket (ZIP). Nach dem Launch stehe ich Ihnen mit technischem Support und optionalem Wartungsvertrag zur Seite.',
   },
 ];
 
 export const techCategories = [
   {
     label: 'CMS',
-    items: ['WordPress', 'Gutenberg', 'ACF Pro', 'WooCommerce', 'Joomla'],
+    items: ['WordPress', 'Gutenberg', 'Elementor', 'WooCommerce', 'Joomla'],
   },
   {
     label: 'Frontend',
@@ -94,10 +106,10 @@ export const techCategories = [
   },
   {
     label: 'Frameworks',
-    items: ['Astro', 'React', 'Alpine.js'],
+    items: ['Astro', 'React'],
   },
   {
     label: 'Tools & Workflow',
-    items: ['Git', 'Figma', 'Adobe XD', 'VS Code', 'CI/CD'],
+    items: ['Git', 'Figma', 'Adobe XD', 'Cursor AI', 'CI/CD', 'Docker'],
   },
 ];

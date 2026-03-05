@@ -13,7 +13,7 @@ import Faq from '@components/Faq.astro';
 import Hero from '@components/Hero.astro';
 import MagicCard from '@components/Ui/MagicCard.astro';
 import EyebrowHeading from '@components/Ui/EyebrowHeading.astro';
-import { painPoints, trustItems, techCategories } from '../agentur';
+import { painPoints, trustItems, services, steps, techCategories } from '../agentur';
 
 const allProjects = await getCollection('projects');
 allProjects.sort((a, b) => (a.data.date < b.data.date ? 1 : -1));
@@ -52,7 +52,7 @@ const formStatus = Astro.url.searchParams.get('status');
             icon={item.icon}
             className="hover:translate-y-0 border-error/20 hover:border-error/40"
           >
-            <p>{item.text}</p>
+            <p set:html={item.text} />
           </MagicCard>
         ))
       }
@@ -73,57 +73,26 @@ const formStatus = Astro.url.searchParams.get('status');
     <div
       class="reveal-fx--translate-up reveal-fx prose mx-auto max-w-7xl px-4 text-center lg:prose-lg prose-h2:mt-0"
     >
-      <EyebrowHeading icon="mdi:view-grid-outline" text="Was ich anbiete" />
+      <EyebrowHeading icon="mdi:cog-outline" text="Leistungen für Agenturen" />
       <h2 class="text-3xl font-bold md:text-3xl lg:text-5xl">
-        Webentwicklung, die zu Ihrem <br />
-        <span class="text-primary">Vorhaben passt</span>
+        Ihr verlängerter <span class="text-primary">Entwickler-Arm</span>
       </h2>
       <p class="mx-auto max-w-4xl">
-        Ob individuelles WordPress-Theme, Joomla-Template oder eine schnelle Astro-Website – ich
-        setze um, was Ihre Agentur oder Ihr Unternehmen technisch braucht. Inklusive Plugins, Module
-        und allem, was dazugehört.
+        Ob als langfristige Unterstützung oder Feuerwehr bei Engpässen: Ich liefere sauberen Code,
+        halte Deadlines ein und integriere mich nahtlos in Ihre Prozesse.
       </p>
     </div>
 
     <div
       class="reveal-fx--translate-up cards-wrap reveal-fx relative z-10 mx-auto mb-6 mt-24 grid max-w-7xl grid-cols-1 gap-8 px-4 sm:grid-cols-2 lg:grid-cols-3"
     >
-      <MagicCard title="WordPress Entwicklung" icon="mdi:wordpress">
-        <p>
-          Eigene Themes und Plugins für WordPress – abgestimmt auf Ihr Design, kompatibel mit
-          Gutenberg und Elementor. Kein aufgeblähter Theme-Forest-Standard.
-        </p>
-      </MagicCard>
-      <MagicCard title="Joomla Entwicklung" icon="simple-icons:joomla">
-        <p>
-          Templates, Module und Erweiterungen für Joomla – passgenau für Ihr Projekt und so gebaut,
-          dass Sie (oder Ihr Team) damit langfristig arbeiten können.
-        </p>
-      </MagicCard>
-      <MagicCard title="Statische Webseiten (Astro)" icon="mdi:rocket-launch-outline">
-        <p>
-          Statische Websites mit Astro – schnell, sicher und wartungsarm. Gut geeignet für
-          Landingpages, Firmenseiten und Dokumentationen.
-        </p>
-      </MagicCard>
-      <MagicCard title="Design-to-Code" icon="mdi:palette-swatch-outline">
-        <p>
-          Ihre Layouts aus Figma, Adobe XD oder Sketch – pixelgenau umgesetzt in sauberen,
-          barrierefreien Code.
-        </p>
-      </MagicCard>
-      <MagicCard title="Support & Wartung" icon="mdi:lifebuoy">
-        <p>
-          Langfristige Betreuung: Updates, Sicherheitspatches, Performance-Optimierung und
-          technischer Support – auf Wunsch per Wartungsvertrag.
-        </p>
-      </MagicCard>
-      <MagicCard title="Beratung & Konzeption" icon="mdi:lightbulb-on">
-        <p>
-          Welches CMS ist das richtige? WordPress, Joomla oder doch eine statische Seite? Ich berate
-          bei der Auswahl und plane die technische Umsetzung mit Ihnen.
-        </p>
-      </MagicCard>
+      {
+        (services ?? []).map(item => (
+          <MagicCard title={item.title} icon={item.icon}>
+            <p set:html={item.text} />
+          </MagicCard>
+        ))
+      }
     </div>
   </Section>
 
@@ -158,36 +127,14 @@ const formStatus = Astro.url.searchParams.get('status');
       </div>
 
       <div class="space-y-24 lg:col-span-7">
-        <MagicCard className="mx-auto transition-shadow hover:translate-y-0 lg:max-w-md">
-          <h3 class="text-2xl font-bold group-hover:text-primary">Schritt 1: Briefing & Angebot</h3>
-          <p>
-            Wir besprechen Ihre Anforderungen, das Design und den Tech-Stack (WordPress, Joomla,
-            Astro). Sie erhalten eine transparente Aufwandsschätzung und ein faires Angebot.
-          </p>
-        </MagicCard>
-        <MagicCard className="mx-auto transition-shadow hover:translate-y-0 lg:max-w-md">
-          <h3 class="text-2xl font-bold group-hover:text-primary">Schritt 2: Design & Assets</h3>
-          <p>
-            Sie liefern das finale Design (z.B. als Figma oder Adobe XD Datei) und alle notwendigen
-            Inhalte. Ich prüfe alles auf technische Machbarkeit.
-          </p>
-        </MagicCard>
-        <MagicCard className="mx-auto transition-shadow hover:translate-y-0 lg:max-w-md">
-          <h3 class="text-2xl font-bold group-hover:text-primary">Schritt 3: Umsetzung</h3>
-          <p>
-            Ich programmiere Themes, Templates, Plugins oder die komplette Website. Der Code ist
-            versioniert mit Git – Sie können den Fortschritt jederzeit nachverfolgen.
-          </p>
-        </MagicCard>
-        <MagicCard className="mx-auto transition-shadow hover:translate-y-0 lg:max-w-md">
-          <h3 class="text-2xl font-bold group-hover:text-primary">
-            Schritt 4: Übergabe & Betreuung
-          </h3>
-          <p>
-            Deployment auf Ihrem Server oder Übergabe als installierbares Paket (ZIP). Nach dem
-            Launch stehe ich Ihnen mit technischem Support und optionalem Wartungsvertrag zur Seite.
-          </p>
-        </MagicCard>
+        {
+          (steps ?? []).map(step => (
+            <MagicCard className="mx-auto transition-shadow hover:translate-y-0 lg:max-w-md">
+              <h3 class="text-2xl font-bold group-hover:text-primary">{step.title}</h3>
+              <p>{step.text}</p>
+            </MagicCard>
+          ))
+        }
       </div>
     </div>
   </Section>
@@ -211,7 +158,7 @@ const formStatus = Astro.url.searchParams.get('status');
       {
         trustItems.map(item => (
           <MagicCard title={item.title} icon={item.icon}>
-            <p>{item.text}</p>
+            <p set:html={item.text} />
           </MagicCard>
         ))
       }
@@ -305,10 +252,13 @@ const formStatus = Astro.url.searchParams.get('status');
       class="reveal-fx--translate-up reveal-fx prose mx-auto max-w-7xl px-4 text-center lg:prose-lg prose-h2:mt-0"
     >
       <EyebrowHeading icon="mdi:message-outline" text="Kontakt" />
-      <h2 class="text-3xl font-bold md:text-3xl lg:text-5xl">Projekt starten</h2>
+      <h2 class="text-3xl font-bold md:text-3xl lg:text-5xl">
+        Lassen Sie uns über Ihr <br /><span class="text-primary">nächstes Projekt</span> sprechen
+      </h2>
       <p class="mx-auto max-w-4xl">
         Neues Webprojekt oder Unterstützung bei einem bestehenden? Schreiben Sie mir, was Sie
-        brauchen und welchen Tech-Stack Sie im Blick haben. Ich melde mich mit einer Einschätzung
+        brauchen und welchen Tech-Stack Sie im Blick haben. ich melde mich mit einer Einschätzung.
+        Unverbindlich und kostenlos.
       </p>
     </div>
     <div
@@ -342,6 +292,8 @@ const formStatus = Astro.url.searchParams.get('status');
       >
         <form id="kontakt-form" class="mb-8 space-y-8" method="post" action="/api/contact">
           <input type="text" name="website" tabindex="-1" autocomplete="off" class="hidden" />
+          <input type="hidden" name="betreff" value="Agentur-Kooperation" />
+
           <div
             data-form-status
             role="status"
@@ -361,17 +313,31 @@ const formStatus = Astro.url.searchParams.get('status');
           </div>
 
           <div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
+            <label class="form-control w-full gap-3" for="agentur">
+              <span class="label-text">Agenturname *</span>
+              <input
+                type="text"
+                name="agentur"
+                id="agentur"
+                class="input"
+                placeholder="Name Ihrer Agentur"
+                required
+              />
+            </label>
             <label class="form-control w-full gap-3" for="name">
-              <span class="label-text">Ihr Name *</span>
+              <span class="label-text">Ansprechpartner *</span>
               <input
                 type="text"
                 name="name"
+                id="name"
                 class="input"
                 placeholder="Ihr Name"
                 required
-                id="name"
               />
             </label>
+          </div>
+
+          <div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
             <label class="form-control w-full gap-3" for="email">
               <span class="label-text">E-Mail Adresse *</span>
               <input
@@ -383,39 +349,49 @@ const formStatus = Astro.url.searchParams.get('status');
                 required
               />
             </label>
-          </div>
-
-          <div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
             <label class="form-control w-full gap-3" for="telefon">
-              <span class="label-text">Telefonummer</span>
+              <span class="label-text">Telefonnummer</span>
               <input
                 type="text"
                 name="telefon"
+                id="telefon"
                 class="input"
                 placeholder="Ihre Telefonnummer"
-                id="telefon"
               />
             </label>
-            <label class="form-control w-full gap-3" for="betreff">
-              <span class="label-text">Betreff</span>
-              <input
-                type="text"
-                name="betreff"
-                class="input"
-                placeholder="Ihre Anfrage"
-                id="betreff"
-              />
+          </div>
+
+          <div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
+            <label class="form-control w-full gap-3" for="techstack">
+              <span class="label-text">Gewünschter Tech-Stack</span>
+              <select name="techstack" id="techstack" class="select w-full">
+                <option value="" disabled selected>Bitte wählen</option>
+                <option value="WordPress">WordPress</option>
+                <option value="Joomla">Joomla</option>
+                <option value="Astro">Astro (Statische Website)</option>
+                <option value="Noch unklar">Noch unklar / Beratung gewünscht</option>
+              </select>
+            </label>
+            <label class="form-control w-full gap-3" for="zeitrahmen">
+              <span class="label-text">Zeitrahmen</span>
+              <select name="zeitrahmen" id="zeitrahmen" class="select w-full">
+                <option value="" disabled selected>Bitte wählen</option>
+                <option value="Sofort">Sofort</option>
+                <option value="In 2-4 Wochen">In 2–4 Wochen</option>
+                <option value="In 1-3 Monaten">In 1–3 Monaten</option>
+                <option value="Noch offen">Noch offen</option>
+              </select>
             </label>
           </div>
 
           <label class="form-control w-full gap-3" for="anliegen">
-            <span class="label-text">Ihr Anliegen *</span>
+            <span class="label-text">Projektbeschreibung *</span>
             <textarea
               class="textarea w-full"
               name="anliegen"
-              placeholder="Was möchten Sie mir mitteilen?"
-              required
-              id="anliegen"></textarea>
+              id="anliegen"
+              placeholder="Beschreiben Sie kurz Ihr Projekt: Was soll umgesetzt werden? Gibt es bereits ein Design?"
+              required></textarea>
           </label>
 
           <div class="form-control">
@@ -424,11 +400,11 @@ const formStatus = Astro.url.searchParams.get('status');
                 type="checkbox"
                 class="checkbox"
                 name="datenschutz"
-                required
                 id="datenschutz"
+                required
               />
-              <span class="label-text"
-                >Ich habe die Datenschutzerklärung gelesen und stimme ihr zu.
+              <span class="label-text">
+                Ich habe die Datenschutzerklärung gelesen und stimme ihr zu.
               </span>
             </label>
           </div>
@@ -442,9 +418,11 @@ const formStatus = Astro.url.searchParams.get('status');
             >
               <span
                 data-submit-label
-                data-default-text="Absenden"
-                data-loading-text="Wird gesendet...">Absenden</span
+                data-default-text="Unverbindlich anfragen"
+                data-loading-text="Wird gesendet..."
               >
+                Unverbindlich anfragen
+              </span>
               <Icon
                 name="mdi:arrow-right"
                 data-submit-icon
