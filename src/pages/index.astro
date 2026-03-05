@@ -13,6 +13,7 @@ import Faq from '@components/Faq.astro';
 import Hero from '@components/Hero.astro';
 import MagicCard from '@components/Ui/MagicCard.astro';
 import EyebrowHeading from '@components/Ui/EyebrowHeading.astro';
+import { painPoints, trustItems, techCategories } from '../agentur';
 
 const allProjects = await getCollection('projects');
 allProjects.sort((a, b) => (a.data.date < b.data.date ? 1 : -1));
@@ -27,6 +28,43 @@ const formStatus = Astro.url.searchParams.get('status');
 
 <PageLayout {meta} bodyClass="home">
   <Hero slot="hero" />
+
+  <Section
+    id="herausforderung"
+    className="bg-[radial-gradient(circle_at_30%_50%,var(--color-primary)_-200%,transparent_25%)]"
+  >
+    <div
+      class="reveal-fx--translate-up reveal-fx prose mx-auto max-w-7xl px-4 text-center lg:prose-lg prose-h2:mt-0"
+    >
+      <EyebrowHeading icon="mdi:alert-circle-outline" text="Die Herausforderung" />
+      <h2 class="text-3xl font-bold md:text-3xl lg:text-5xl">
+        Kennen Sie <span class="text-primary">das?</span>
+      </h2>
+    </div>
+
+    <div
+      class="reveal-fx--translate-up reveal-fx relative z-10 mx-auto mt-16 grid max-w-7xl grid-cols-1 gap-8 px-4 sm:grid-cols-2 lg:grid-cols-3"
+    >
+      {
+        painPoints.map(item => (
+          <MagicCard
+            title={item.title}
+            icon={item.icon}
+            className="hover:translate-y-0 border-error/20 hover:border-error/40"
+          >
+            <p>{item.text}</p>
+          </MagicCard>
+        ))
+      }
+    </div>
+
+    <div class="reveal-fx--translate-up reveal-fx mx-auto mt-16 max-w-3xl px-4 text-center">
+      <p class="text-lg text-base-content/75">
+        <strong class="text-primary">Die gute Nachricht:</strong> Sie müssen das nicht alleine lösen.
+        Konzentrieren Sie sich auf Kreation und Kundenbetreuung – ich übernehme die technische Umsetzung.
+      </p>
+    </div>
+  </Section>
 
   <Section
     id="leistungen"
@@ -151,6 +189,64 @@ const formStatus = Astro.url.searchParams.get('status');
           </p>
         </MagicCard>
       </div>
+    </div>
+  </Section>
+
+  <Section
+    id="vertrauen"
+    className="bg-[radial-gradient(circle_at_30%_50%,var(--color-primary)_-200%,transparent_25%),radial-gradient(circle_at_70%_60%,var(--color-accent)_-200%,transparent_20%)]"
+  >
+    <div
+      class="reveal-fx--translate-up reveal-fx prose mx-auto max-w-7xl px-4 text-center lg:prose-lg prose-h2:mt-0"
+    >
+      <EyebrowHeading icon="mdi:shield-check-outline" text="Warum ich?" />
+      <h2 class="text-3xl font-bold md:text-3xl lg:text-5xl">
+        Was mich von anderen <br /><span class="text-primary">Freelancern</span> unterscheidet
+      </h2>
+    </div>
+
+    <div
+      class="reveal-fx--translate-up reveal-fx relative z-10 mx-auto mt-16 grid max-w-7xl grid-cols-1 gap-8 px-4 sm:grid-cols-2"
+    >
+      {
+        trustItems.map(item => (
+          <MagicCard title={item.title} icon={item.icon}>
+            <p>{item.text}</p>
+          </MagicCard>
+        ))
+      }
+    </div>
+  </Section>
+
+  <Section
+    id="technologien"
+    className="bg-[radial-gradient(circle_at_70%_40%,var(--color-primary)_-200%,transparent_25%)]"
+  >
+    <div
+      class="reveal-fx--translate-up reveal-fx prose mx-auto max-w-7xl px-4 text-center lg:prose-lg prose-h2:mt-0"
+    >
+      <EyebrowHeading icon="mdi:layers-outline" text="Tech Stack" />
+      <h2 class="text-3xl font-bold md:text-3xl lg:text-5xl">
+        Technologien, auf die Sie sich <br /><span class="text-primary">verlassen</span> können
+      </h2>
+    </div>
+
+    <div
+      class="reveal-fx--translate-up reveal-fx relative z-10 mx-auto mt-16 grid max-w-5xl grid-cols-1 gap-8 px-4 sm:grid-cols-2"
+    >
+      {
+        techCategories.map(cat => (
+          <MagicCard title={cat.label} className="hover:translate-y-0">
+            <div class="flex flex-wrap gap-2 pt-2">
+              {cat.items.map(item => (
+                <span class="badge badge-outline border-primary/30 bg-primary/5 px-3 py-2.5 text-sm">
+                  {item}
+                </span>
+              ))}
+            </div>
+          </MagicCard>
+        ))
+      }
     </div>
   </Section>
 

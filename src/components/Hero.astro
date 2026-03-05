@@ -4,7 +4,7 @@ import { Icon } from 'astro-icon/components';
 import EyebrowHeading from './Ui/EyebrowHeading.astro';
 ---
 
-<div class="hero h-full px-4 pb-24 pt-16 sm:px-8 lg:pt-44">
+<div class="hero h-full px-4 pb-24 pt-16 sm:px-8 lg:pt-32">
   <div class="hero-content relative z-10 p-0 text-center">
     <div class="max-w-5xl mx-auto">
       <EyebrowHeading
@@ -41,6 +41,20 @@ import EyebrowHeading from './Ui/EyebrowHeading.astro';
             class="w-5 h-5 group-hover:translate-x-2 transition-transform duration-200 will-change-transform"
           />
         </Button>
+      </div>
+
+      <div
+        class="js-fade-on-ready mt-12 opacity-0 translate-y-2 transition-all duration-700 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-sm text-base-content/60"
+      >
+        <span class="flex items-center gap-2">
+          <Icon name="mdi:check-circle" class="w-4 h-4 text-primary" /> 100% White-Label
+        </span>
+        <span class="flex items-center gap-2">
+          <Icon name="mdi:check-circle" class="w-4 h-4 text-primary" /> Pixelgenau
+        </span>
+        <span class="flex items-center gap-2">
+          <Icon name="mdi:check-circle" class="w-4 h-4 text-primary" /> Festpreise möglich
+        </span>
       </div>
     </div>
   </div>

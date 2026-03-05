@@ -14,7 +14,11 @@ const { footerLinks } = SITE;
 ---
 
 <Layout {meta} bodyClass={bodyClass}>
-  <div class="bg-base-100 relative">
+  <div class="bg-base-100 relative circuit-pattern">
+    <div
+      class="absolute inset-0 bg-linear-to-b from-base-100 from-0% via-primary/15 via-40% to-base-100 to-90%"
+    >
+    </div>
     <header class="fixed top-0 z-20 w-full border-b border-white/5 bg-base-100/80 backdrop-blur-md">
       <div class="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 lg:h-20">
         <a class="flex items-center gap-2 text-xl font-bold" href="/">

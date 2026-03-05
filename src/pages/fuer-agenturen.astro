@@ -21,14 +21,7 @@ const formStatus = Astro.url.searchParams.get('status');
 
 <LandingPageLayout {meta} bodyClass="landing">
   {/* ─── Hero ─── */}
-  <div
-    slot="hero"
-    class="hero relative min-h-[80vh] px-4 pb-24 pt-20 sm:px-8 lg:pt-36 circuit-pattern"
-  >
-    <div
-      class="absolute inset-0 bg-linear-to-b from-base-100 from-0% via-primary/15 via-40% to-base-100 to-90%"
-    >
-    </div>
+  <div slot="hero" class="hero relative min-h-[80vh] px-4 pb-24 pt-20 sm:px-8 lg:pt-36">
     <div class="relative z-10 mx-auto max-w-4xl text-center">
       <EyebrowHeading
         icon="mdi:handshake-outline"
@@ -99,15 +92,17 @@ const formStatus = Astro.url.searchParams.get('status');
     <div
       class="reveal-fx reveal-fx--translate-up relative z-10 mx-auto mt-16 grid max-w-7xl grid-cols-1 gap-8 px-4 sm:grid-cols-2 lg:grid-cols-3"
     >
-      {(painPoints ?? []).map(item => (
-        <MagicCard
-          title={item.title}
-          icon={item.icon}
-          className="hover:translate-y-0 border-error/20 hover:border-error/40"
-        >
-          <p>{item.text}</p>
-        </MagicCard>
-      ))}
+      {
+        (painPoints ?? []).map(item => (
+          <MagicCard
+            title={item.title}
+            icon={item.icon}
+            className="hover:translate-y-0 border-error/20 hover:border-error/40"
+          >
+            <p>{item.text}</p>
+          </MagicCard>
+        ))
+      }
     </div>
 
     <div class="reveal-fx reveal-fx--translate-up mx-auto mt-16 max-w-3xl px-4 text-center">
@@ -139,11 +134,13 @@ const formStatus = Astro.url.searchParams.get('status');
     <div
       class="reveal-fx reveal-fx--translate-up relative z-10 mx-auto mt-16 grid max-w-7xl grid-cols-1 gap-8 px-4 sm:grid-cols-2 lg:grid-cols-3"
     >
-      {(services ?? []).map(item => (
-        <MagicCard title={item.title} icon={item.icon}>
-          <p>{item.text}</p>
-        </MagicCard>
-      ))}
+      {
+        (services ?? []).map(item => (
+          <MagicCard title={item.title} icon={item.icon}>
+            <p>{item.text}</p>
+          </MagicCard>
+        ))
+      }
     </div>
   </Section>
 
@@ -157,18 +154,20 @@ const formStatus = Astro.url.searchParams.get('status');
     >
       <EyebrowHeading icon="mdi:shield-check-outline" text="Warum ich?" />
       <h2 class="text-3xl font-bold md:text-3xl lg:text-5xl">
-        Was mich von anderen <span class="text-primary">Freelancern</span> unterscheidet
+        Was mich von anderen <br /><span class="text-primary">Freelancern</span> unterscheidet
       </h2>
     </div>
 
     <div
       class="reveal-fx reveal-fx--translate-up relative z-10 mx-auto mt-16 grid max-w-7xl grid-cols-1 gap-8 px-4 sm:grid-cols-2"
     >
-      {(trustItems ?? []).map(item => (
-        <MagicCard title={item.title} icon={item.icon}>
-          <p>{item.text}</p>
-        </MagicCard>
-      ))}
+      {
+        (trustItems ?? []).map(item => (
+          <MagicCard title={item.title} icon={item.icon}>
+            <p>{item.text}</p>
+          </MagicCard>
+        ))
+      }
     </div>
   </Section>
 
@@ -185,17 +184,19 @@ const formStatus = Astro.url.searchParams.get('status');
 
     <div class="reveal-fx reveal-fx--translate-up relative z-10 mx-auto mt-16 max-w-4xl px-4">
       <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
-        {(steps ?? []).map(step => (
-          <MagicCard className="hover:translate-y-0">
-            <div class="flex items-start gap-4">
-              <span class="shrink-0 text-4xl font-black text-primary/20">{step.number}</span>
-              <div>
-                <h3 class="text-xl font-bold group-hover:text-primary">{step.title}</h3>
-                <p class="mt-1 text-base-content/70">{step.text}</p>
+        {
+          (steps ?? []).map(step => (
+            <MagicCard className="hover:translate-y-0">
+              <div class="flex items-start gap-4">
+                <span class="shrink-0 text-4xl font-black text-primary/20">{step.number}</span>
+                <div>
+                  <h3 class="text-xl font-bold group-hover:text-primary">{step.title}</h3>
+                  <p class="mt-1 text-base-content/70">{step.text}</p>
+                </div>
               </div>
-            </div>
-          </MagicCard>
-        ))}
+            </MagicCard>
+          ))
+        }
       </div>
     </div>
   </Section>
@@ -210,24 +211,26 @@ const formStatus = Astro.url.searchParams.get('status');
     >
       <EyebrowHeading icon="mdi:layers-outline" text="Tech Stack" />
       <h2 class="text-3xl font-bold md:text-3xl lg:text-5xl">
-        Technologien, auf die Sie sich <span class="text-primary">verlassen</span> können
+        Technologien, auf die Sie sich <br /><span class="text-primary">verlassen</span> können
       </h2>
     </div>
 
     <div
       class="reveal-fx reveal-fx--translate-up relative z-10 mx-auto mt-16 grid max-w-5xl grid-cols-1 gap-8 px-4 sm:grid-cols-2"
     >
-      {(techCategories ?? []).map(cat => (
-        <MagicCard title={cat.label} className="hover:translate-y-0">
-          <div class="flex flex-wrap gap-2 pt-2">
-            {(cat.items ?? []).map(item => (
-              <span class="badge badge-outline border-primary/30 bg-primary/5 px-3 py-2.5 text-sm">
-                {item}
-              </span>
-            ))}
-          </div>
-        </MagicCard>
-      ))}
+      {
+        (techCategories ?? []).map(cat => (
+          <MagicCard title={cat.label} className="hover:translate-y-0">
+            <div class="flex flex-wrap gap-2 pt-2">
+              {(cat.items ?? []).map(item => (
+                <span class="badge badge-outline border-primary/30 bg-primary/5 px-3 py-2.5 text-sm">
+                  {item}
+                </span>
+              ))}
+            </div>
+          </MagicCard>
+        ))
+      }
     </div>
   </Section>
 
@@ -238,7 +241,7 @@ const formStatus = Astro.url.searchParams.get('status');
     >
       <EyebrowHeading icon="mdi:message-outline" text="Kontakt" />
       <h2 class="text-3xl font-bold md:text-3xl lg:text-5xl">
-        Lassen Sie uns über Ihr <span class="text-primary">nächstes Projekt</span> sprechen
+        Lassen Sie uns über Ihr <br /><span class="text-primary">nächstes Projekt</span> sprechen
       </h2>
       <p class="mx-auto max-w-3xl">
         Schicken Sie mir Ihre Anforderungen – ich melde mich mit einer Einschätzung. Unverbindlich

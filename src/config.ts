@@ -7,7 +7,7 @@ const SiteConfig = {
   lang: 'de',
   links: [
     {
-      name: 'Alle Leistungen',
+      name: 'Was ich anbiete',
       href: '#leistungen',
     },
     {
