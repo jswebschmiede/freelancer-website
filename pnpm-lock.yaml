@@ -47,6 +47,9 @@ importers:
       sharp:
         specifier: ^0.33.5
         version: 0.33.5
+      swetrix:
+        specifier: ^4.1.0
+        version: 4.1.0
       tailwind-merge:
         specifier: ^3.3.1
         version: 3.4.0
@@ -2302,6 +2305,9 @@ packages:
     resolution: {integrity: sha512-OoohrmuUlBs8B8o6MB2Aevn+pRIH9zDALSR+6hhqVfa6fRwG/Qw9VUMSMW9VNg2CFc/MTIfabtdOVl9ODIJjpw==}
     engines: {node: '>=14.0.0'}
     hasBin: true
+
+  swetrix@4.1.0:
+    resolution: {integrity: sha512-TPOr14oYBt3LquPfWqBjRP6IhbQ+WOiz8ticORRvg4gECb3loFbHB455OUWcpXPCTaFi/E9s5TVgxgqIX+viHQ==}
 
   tailwind-merge@3.4.0:
     resolution: {integrity: sha512-uSaO4gnW+b3Y2aWoWfFpX62vn2sR3skfhbjsEnaBI81WD1wBLlHZe5sWf0AqjksNdYTbGBEd0UasQMT3SNV15g==}
@@ -5503,6 +5509,8 @@ snapshots:
       css-what: 6.1.0
       csso: 5.0.5
       picocolors: 1.1.1
+
+  swetrix@4.1.0: {}
 
   tailwind-merge@3.4.0: {}
 
