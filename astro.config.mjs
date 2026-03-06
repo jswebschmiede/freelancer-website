@@ -6,7 +6,6 @@ import mdx from '@astrojs/mdx';
 import icon from 'astro-icon';
 import path from 'path';
 
-
 // https://astro.build/config
 export default defineConfig({
     adapter: node({
