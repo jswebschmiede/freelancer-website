@@ -1,3 +1,5 @@
+import * as Swetrix from 'swetrix';
+
 type ApiResponse = {
   success: boolean;
   message?: string;
@@ -140,6 +142,11 @@ export default class ContactForm {
     const formData = new FormData(this.form);
     this.toggleLoading(true);
     this.updateStatus('idle', 'Nachricht wird gesendet...');
+
+    Swetrix.track({
+      ev: 'CONTACT_FORM_SUBMITTED',
+      meta: { source: 'contact_form' },
+    });
 
     try {
       const response = await fetch(this.form.action, {

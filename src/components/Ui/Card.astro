@@ -2,7 +2,15 @@
 import { Image } from 'astro:assets';
 import { twMerge } from 'tailwind-merge';
 
-const { title, className, image, image_alt, href } = Astro.props;
+const {
+  title,
+  className,
+  image,
+  image_alt,
+  href,
+  trackEvent = 'CARD_CLICKED',
+  trackSource = 'card',
+} = Astro.props;
 ---
 
 {
@@ -13,6 +21,8 @@ const { title, className, image, image_alt, href } = Astro.props;
         'card border border-primary/20 bg-base-100/75 shadow-sm backdrop-blur transition-all duration-300 will-change-transform hover:-translate-y-2 hover:border-primary/40 hover:shadow-md',
         className
       )}
+      data-track-event={trackEvent}
+      data-track-source={trackSource}
     >
       {image && (
         <figure class="aspect-4/3">

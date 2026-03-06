@@ -16,6 +16,7 @@ const { project } = Astro.props;
   image={project.data.thumbnail}
   image_alt={project.data.image_alt}
   href={`/projekte/${project.slug}`}
+  trackEvent={`PROJEKT_${project.data.title.toUpperCase().replace(/ /g, '_')}_CLICKED`}
 >
   <ProjektTech tags={project.data.tags} />
 

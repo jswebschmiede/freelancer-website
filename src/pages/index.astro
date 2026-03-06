@@ -113,10 +113,10 @@ const formStatus = Astro.url.searchParams.get('status');
           <div
             class="mt-9 flex flex-col items-start justify-start gap-8 sm:flex-row sm:items-center"
           >
-            <Button href="#kontakt" variant="outline">
+            <Button href="#kontakt" variant="outline" trackEvent="ANFRAGE_STELLEN_CLICKED">
               <Icon name="mdi:message-outline" class="w-5 h-5" /> Anfrage stellen
             </Button>
-            <Button href="#fragen" className="group">
+            <Button href="#fragen" className="group" trackEvent="FRAGEN_CLICKED">
               Fragen? <Icon
                 name="mdi:arrow-right"
                 class="w-5 h-5 group-hover:translate-x-2 transition-transform duration-200 will-change-transform"

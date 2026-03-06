@@ -31,10 +31,10 @@ import EyebrowHeading from './Ui/EyebrowHeading.astro';
       <div
         class="js-fade-on-ready flex translate-y-2 flex-col items-center justify-center gap-8 opacity-0 transition-all duration-700 sm:flex-row"
       >
-        <Button href="#prozess" variant="outline">
+        <Button href="#prozess" variant="outline" trackEvent="ZUM_PROJEKTTABLEAUF_CLICKED">
           <Icon name="mdi:workflow-outline" class="w-5 h-5" /> Zum Projektablauf
         </Button>
-        <Button href="#leistungen" className="group">
+        <Button href="#leistungen" className="group" trackEvent="MEINE_LEISTUNGEN_CLICKED">
           Meine Leistungen <Icon
             name="mdi:arrow-right"
             class="w-5 h-5 group-hover:translate-x-2 transition-transform duration-200 will-change-transform"

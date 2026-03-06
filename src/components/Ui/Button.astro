@@ -5,9 +5,17 @@ interface Props {
   href: string;
   className?: string;
   variant?: 'outline' | 'neutral' | 'primary';
+  trackEvent?: string;
+  trackSource?: string;
 }
 
-const { href, className, variant = 'primary' } = Astro.props;
+const {
+  href,
+  className,
+  variant,
+  trackEvent = 'BUTTON_CLICKED',
+  trackSource = 'button',
+} = Astro.props;
 ---
 
 {
@@ -19,6 +27,8 @@ const { href, className, variant = 'primary' } = Astro.props;
           'btn btn-outline gap-2 rounded-btn mr-[0.05rem] mt-[0.05rem] mb-[0.1rem] ml-[0.05rem] border-0 no-underline translate-0 w-[inherit] bg-base-100 px-12 text-base font-normal group-hover:shadow-none group-hover:bg-base-200 group-hover:text-neutral-content',
           className
         )}
+        data-track-event={trackEvent}
+        data-track-source={trackSource}
       >
         <slot />
       </a>
@@ -31,6 +41,8 @@ const { href, className, variant = 'primary' } = Astro.props;
           'btn btn-neutral gap-2 rounded-btn no-underline translate-0 w-[inherit] px-12 text-base font-normal shadow-sm',
           className
         )}
+        data-track-event={trackEvent}
+        data-track-source={trackSource}
       >
         <slot />
       </a>
@@ -43,6 +55,8 @@ const { href, className, variant = 'primary' } = Astro.props;
           'btn btn-primary gap-2 rounded-btn no-underline translate-0 w-[inherit] px-12 text-base font-normal shadow-sm',
           className
         )}
+        data-track-event={trackEvent}
+        data-track-source={trackSource}
       >
         <slot />
       </a>

@@ -3,6 +3,7 @@ import { SITE } from '../config';
 ---
 
 <script>
+  import * as Swetrix from 'swetrix';
   import ProgressToTopV2 from '@scripts/totop-button-2';
   import { ObfuscateEmail } from '@scripts/obfuscateEmail';
   import { ChangeUrl } from '@scripts/changeUrl';
@@ -54,6 +55,19 @@ import { SITE } from '../config';
       new ScrollableBackground(scrollableBackgrounds);
     }
   })();
+
+  document.addEventListener('click', event => {
+    const el = (event.target as HTMLElement).closest('[data-track-event]');
+    if (!el) return;
+
+    const ev = el.getAttribute('data-track-event');
+    const source = el.getAttribute('data-track-source');
+
+    Swetrix.track({
+      ev,
+      meta: { source },
+    });
+  });
 </script>
 
 <script is:inline define:vars={{ defaultTheme: SITE.defaultTheme }}>
