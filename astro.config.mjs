@@ -35,7 +35,8 @@ export default defineConfig({
             SMTP_PASS: envField.string({ context: 'server', access: 'secret' }),
             FROM_EMAIL: envField.string({ context: 'server', access: 'secret' }),
             CONTACT_TO_EMAIL: envField.string({ context: 'server', access: 'secret' }),
-            DEV: envField.boolean({ context: 'server', access: 'secret', default: false }),
+            DEV: envField.boolean({ context: 'client', access: 'public', default: false }),
+            PUBLIC_SWETRIX_PID: envField.string({ context: 'client', access: 'public' }),
         },
     },
     build: {
