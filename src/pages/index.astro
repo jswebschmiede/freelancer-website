@@ -126,11 +126,14 @@ const formStatus = Astro.url.searchParams.get('status');
         </div>
       </div>
 
-      <div class="space-y-24 lg:col-span-7">
+      <div class="space-y-8 md:space-y-12 lg:col-span-7">
         {
           (steps ?? []).map(step => (
             <MagicCard className="mx-auto transition-shadow hover:translate-y-0 lg:max-w-md">
-              <h3 class="text-2xl font-bold group-hover:text-primary">{step.title}</h3>
+              <h3 class="text-2xl font-bold group-hover:text-primary">
+                {' '}
+                {step.number}. {step.title}
+              </h3>
               <p>{step.text}</p>
             </MagicCard>
           ))
@@ -284,7 +287,15 @@ const formStatus = Astro.url.searchParams.get('status');
         className="w-full bg-linear-to-br from-primary/10 from-0% via-base-100 via-50% to-primary/10 to-100% transition-shadow hover:translate-y-0"
       >
         <form id="kontakt-form" class="mb-8 space-y-8" method="post" action="/api/contact">
-          <input type="text" name="website" tabindex="-1" autocomplete="off" class="hidden" />
+          <label for="website" class="hidden">Website</label>
+          <input
+            type="text"
+            name="website"
+            tabindex="-1"
+            autocomplete="off"
+            class="hidden"
+            id="website"
+          />
           <input type="hidden" name="betreff" value="Agentur-Kooperation" />
 
           <div
