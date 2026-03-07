@@ -25,9 +25,16 @@ Usage: codyhouse.co/license
     -webkit-transform var(--reveal-fx-timing-function);
   transition-duration: var(--reveal-fx-duration);
 }
+
 .reveal-fx::before {
-  display: none;
-  content: 'reveal-fx';
+  content: none;
+}
+
+@variant md {
+  .reveal-fx::before {
+    display: none;
+    content: 'reveal-fx';
+  }
 }
 .reveal-fx--translate,
 .reveal-fx--translate-up {
