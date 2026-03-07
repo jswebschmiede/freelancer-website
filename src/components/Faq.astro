@@ -10,8 +10,10 @@ const { faq } = SITE;
   {
     faq.map((item, index) => (
       <div class="collapse join-item collapse-arrow border border-primary/20 bg-base-100/75 backdrop-blur transition-all duration-200 group-hover:border-primary/40 hover:border-primary/40">
-        <input type="radio" name="faq-accordion" />
-        <div class="collapse-title text-xl font-medium">{item.question}</div>
+        <input type="radio" name="faq-accordion" id={`faq-${index}`} />
+        <label for={`faq-${index}`} class="collapse-title text-xl font-medium">
+          {item.question}
+        </label>
         <div class="collapse-content">
           <p>{item.answer}</p>
         </div>
