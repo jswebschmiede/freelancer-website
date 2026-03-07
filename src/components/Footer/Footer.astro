@@ -6,7 +6,9 @@ const { footerLinks } = SITE;
 ---
 
 <div class="border-t-2 border-white/5 bg-base-200/60 backdrop-blur"></div>
-<footer class="flex mx-auto max-w-7xl items-center p-10 text-lg md:justify-between w-full">
+<footer
+  class="flex flex-col md:flex-row mx-auto max-w-7xl items-center p-10 text-lg md:justify-between w-full"
+>
   <aside class="order-last w-full md:order-first">
     <p class="mb-4 w-full text-center text-base font-bold md:mb-0 md:text-left">
       Built with <span class="px-1 text-2xl text-primary">♡</span>
@@ -17,7 +19,9 @@ const { footerLinks } = SITE;
       >
     </p>
   </aside>
-  <nav class="flex w-full items-center justify-end gap-12">
+  <nav
+    class="flex flex-col md:flex-row w-full items-center justify-end gap-4 md:gap-12 md:mb-0 mb-8"
+  >
     <a
       class="link-hover link flex items-center gap-2 text-base"
       href="https://github.com/jswebschmiede"

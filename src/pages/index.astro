@@ -264,31 +264,24 @@ const formStatus = Astro.url.searchParams.get('status');
     <div
       class="reveal-fx--translate-up reveal-fx relative z-10 mx-auto mb-6 mt-24 grid max-w-7xl grid-cols-1 place-items-center gap-8 px-4 lg:grid-cols-2"
     >
-      <div>
-        <ul>
-          <ContactItem
-            icon="mdi:map-outline"
-            title="Adresse"
-            text="Heinrich-Heine-Straße 34, 04600 Altenburg"
-          />
-          <ContactItem
-            icon="mdi:email-outline"
-            title="E-Mail"
-            isMail={true}
-            text="schoeneburg.j@googlemail.com"
-          />
+      <ul class="w-full">
+        <ContactItem
+          icon="mdi:map-outline"
+          title="Adresse"
+          text="Heinrich-Heine-Straße 34, 04600 Altenburg"
+        />
+        <ContactItem
+          icon="mdi:email-outline"
+          title="E-Mail"
+          isMail={true}
+          text="schoeneburg.j@googlemail.com"
+        />
 
-          <ContactItem
-            icon="mdi:phone-outline"
-            title="Telefon"
-            text="03447-487890"
-            isPhone={true}
-          />
-        </ul>
-      </div>
+        <ContactItem icon="mdi:phone-outline" title="Telefon" text="03447-487890" isPhone={true} />
+      </ul>
 
       <Card
-        className="w-full p-4 bg-linear-to-br from-primary/10 from-0% via-base-100 via-50% to-primary/10 to-100% transition-shadow hover:translate-y-0"
+        className="w-full bg-linear-to-br from-primary/10 from-0% via-base-100 via-50% to-primary/10 to-100% transition-shadow hover:translate-y-0"
       >
         <form id="kontakt-form" class="mb-8 space-y-8" method="post" action="/api/contact">
           <input type="text" name="website" tabindex="-1" autocomplete="off" class="hidden" />
@@ -403,7 +396,7 @@ const formStatus = Astro.url.searchParams.get('status');
                 id="datenschutz"
                 required
               />
-              <span class="label-text">
+              <span class="label-text whitespace-normal">
                 Ich habe die Datenschutzerklärung gelesen und stimme ihr zu.
               </span>
             </label>
@@ -414,7 +407,7 @@ const formStatus = Astro.url.searchParams.get('status');
           >
             <button
               type="submit"
-              class="btn btn-primary w-[inherit] px-12 text-base font-normal shadow-sm"
+              class="btn btn-primary w-[inherit] px-4 md:px-12 text-sm md:text-base font-normal shadow-sm"
             >
               <span
                 data-submit-label
@@ -433,7 +426,7 @@ const formStatus = Astro.url.searchParams.get('status');
           </div>
         </form>
 
-        <span class="badge h-8 gap-2 self-end border-2 border-white/5">
+        <span class="badge badge-sm md:badge-md min-h-8 gap-2 self-end border-2 border-white/5">
           <Icon name="mdi:info" />
           Felder mit * müssen ausgefüllt werden!</span
         >
