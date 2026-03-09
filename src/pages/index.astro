@@ -47,7 +47,7 @@ const formStatus = Astro.url.searchParams.get('status');
     >
       {
         painPoints.map(item => (
-          <MagicCard title={item.title} icon={item.icon} className="hover:translate-y-0">
+          <MagicCard title={item.title} icon={item.icon}>
             <p set:html={item.text} />
           </MagicCard>
         ))
@@ -125,7 +125,7 @@ const formStatus = Astro.url.searchParams.get('status');
       <div class="space-y-8 md:space-y-12 lg:col-span-7">
         {
           (steps ?? []).map(step => (
-            <MagicCard className="mx-auto transition-shadow hover:translate-y-0 lg:max-w-md">
+            <MagicCard className="mx-auto transition-shadow hover:translate-y-0 lg:max-w-lg">
               <h3 class="text-2xl font-bold group-hover:text-primary">
                 {' '}
                 {step.number}. {step.title}
