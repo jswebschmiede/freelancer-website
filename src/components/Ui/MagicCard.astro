@@ -27,7 +27,7 @@ const { title, className, image, image_alt, href, icon } = Astro.props;
           />
         </figure>
       )}
-      <div class="card-body relative z-10">
+      <div class="card-body relative z-10 gap-4">
         {icon && (
           <div class="absolute right-3 top-3 opacity-5 transition-all duration-500 group-hover:rotate-6 group-hover:scale-110 group-hover:opacity-15">
             <Icon name={icon} class="h-12 w-12 animate-pulse text-accent" />
@@ -61,7 +61,7 @@ const { title, className, image, image_alt, href, icon } = Astro.props;
           />
         </figure>
       )}
-      <div class="card-body relative z-10">
+      <div class="card-body relative z-10 gap-4">
         {icon && (
           <div class="absolute right-3 top-3 opacity-5 transition-all duration-500 group-hover:rotate-6 group-hover:scale-110 group-hover:opacity-15">
             <Icon name={icon} class="h-12 w-12 animate-pulse text-accent" />

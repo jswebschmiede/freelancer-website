@@ -2,7 +2,7 @@ export const painPoints = [
   {
     icon: 'mdi:palette-swatch-outline',
     title: 'Design ist Ihre Stärke <br>– aber die Technik fehlt?',
-    text: 'Sie sind eine reine Grafik- oder Designagentur?<br>Ich verwandle Ihre Layouts in pixelgenauen Code, damit Sie Ihren Kunden das technische Komplettpaket bieten können.',
+    text: 'Sie sind eine reine Grafik- oder Designagentur? Ich verwandle Ihre Layouts in pixelgenauen Code, damit Sie Ihren Kunden das technische Komplettpaket bieten können.',
   },
   {
     icon: 'mdi:account-alert-outline',

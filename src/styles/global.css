@@ -35,7 +35,8 @@
   --depth: 1;
   --noise: 0;
   --rounded-btn: calc(2.25rem * 2);
-  --cardtitle-fs: 1.25rem;
+  --cardtitle-fs: 1.5rem;
+  --card-fs: 1rem;
   --card-p: 2rem;
 }
 
