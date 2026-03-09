@@ -47,11 +47,7 @@ const formStatus = Astro.url.searchParams.get('status');
     >
       {
         painPoints.map(item => (
-          <MagicCard
-            title={item.title}
-            icon={item.icon}
-            className="hover:translate-y-0 border-error/20 hover:border-error/40"
-          >
+          <MagicCard title={item.title} icon={item.icon} className="hover:translate-y-0">
             <p set:html={item.text} />
           </MagicCard>
         ))

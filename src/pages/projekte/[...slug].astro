@@ -39,6 +39,7 @@ const { Content } = await project.render();
 
 const meta = {
   title: project.data.title,
+  client: project.data.client,
   description: project.data.description,
 };
 ---
@@ -54,7 +55,7 @@ const meta = {
         </h1>
         <div class="prose relative mx-auto max-w-6xl lg:prose-lg prose-a:wrap-break-word">
           <ProjectDetails
-            client={project.data.title}
+            client={project.data.client}
             handover={formatDateForDisplay(project.data.date as string)}
             tags={project.data.tags.join(', ')}
             website={project.data.website}
