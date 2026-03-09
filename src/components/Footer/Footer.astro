@@ -10,13 +10,30 @@ const { footerLinks } = SITE;
   class="flex flex-col md:flex-row mx-auto max-w-7xl items-center p-10 text-lg md:justify-between w-full"
 >
   <aside class="order-last w-full md:order-first">
-    <p class="mb-4 w-full text-center text-base font-bold md:mb-0 md:text-left">
-      Built with <span class="px-1 text-2xl text-primary">♡</span>
-      by&nbsp; <a
-        class="link-hover link text-base"
-        href="https://www.joerg-schoeneburg.de"
-        target="_blank">Jörg Schöneburg</a
+    <p class="mb-4 w-full text-center text-base flex gap-1.5 font-bold md:mb-0 md:text-left">
+      Built with <span class="px-1 text-2xl text-primary -mt-1">♡</span>
+      by
+      <a
+        class="text-base group relative transition duration-200 focus:outline-none focus-visible:ring focus-visible:ring-white/50 focus-visible:ring-inset"
+        aria-label="Jörg Schöneburg Webseite (öffnet in neuem Fenster)"
+        href="https://joerg-schoeneburg.de"
+        target="_blank"
       >
+        <span
+          class="inline-block text-primary transition duration-300 ease-out group-hover:-translate-x-0.5 group-hover:text-secondary"
+        >
+          {'{'}
+        </span>
+        <span class="font-bold"> Jörg Schöneburg </span>
+        <span
+          class="inline-block text-primary transition duration-300 ease-out group-hover:translate-x-0.5 group-hover:text-secondary"
+        >
+          {'}'}
+        </span>
+        <span
+          class="absolute -bottom-0.5 left-3 h-px w-[84%] origin-right scale-x-0 bg-current transition duration-300 ease-out will-change-transform group-hover:origin-left group-hover:scale-x-100"
+        ></span>
+      </a>
     </p>
   </aside>
   <nav
