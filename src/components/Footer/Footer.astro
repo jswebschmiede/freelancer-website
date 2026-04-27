@@ -7,10 +7,12 @@ const { footerLinks } = SITE;
 
 <div class="border-t-2 border-white/5 bg-base-200/60 backdrop-blur"></div>
 <footer
-  class="flex flex-col md:flex-row mx-auto max-w-7xl items-center p-10 text-lg md:justify-between w-full"
+  class="flex flex-col min-[900px]:flex-row mx-auto max-w-7xl items-center p-10 text-lg md:justify-between w-full"
 >
-  <aside class="order-last w-full md:order-first">
-    <p class="mb-4 w-full text-center text-base flex gap-1.5 font-bold md:mb-0 md:text-left">
+  <aside class="order-last w-full min-[900px]:order-first">
+    <p
+      class="mb-4 w-full text-center text-base flex justify-center min-[900px]:justify-start gap-1.5 font-bold md:mb-0 md:text-left"
+    >
       Built with <span class="px-1 text-2xl text-primary -mt-1">♡</span>
       by
       <a
@@ -37,7 +39,7 @@ const { footerLinks } = SITE;
     </p>
   </aside>
   <nav
-    class="flex flex-col md:flex-row w-full items-center justify-end gap-4 md:gap-12 md:mb-0 mb-8"
+    class="flex flex-col min-[900px]:flex-row w-full items-center justify-end gap-4 min-[900px]:gap-12 min-[900px]:mb-0 mb-8"
   >
     <a
       class="link-hover link flex items-center gap-2 text-base"
