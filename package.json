@@ -28,6 +28,12 @@
     "tailwind-scrollbar": "^4.0.2",
     "tailwindcss": "^4.1.18"
   },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild",
+      "sharp"
+    ]
+  },
   "devDependencies": {
     "@iconify-json/mdi": "^1.1.64",
     "@iconify-json/simple-icons": "^1.1.64",
